@@ -36,7 +36,6 @@ const storage = multer.diskStorage({
 // 画像をアップロードするためのミドルウェア
 const upload = multer({ storage: storage });
 
-
 // ファイルアップロード用のルーティングを設定する
 app.post('/upload', upload.single('image'), (req, res) => {
   // アップロードされた画像が存在しない場合は、処理を中断する
@@ -67,25 +66,21 @@ app.post('/upload', upload.single('image'), (req, res) => {
         return;
       }
       console.log('画像のパスを格納しました');
-      res.json({
-        message: '画像をアップロードしました'
-      });
+      res.status(200).send('画像をアップロードしました');
     }
   );
 });
 
 
-app.post('/comment', upload.single('comment'), (req, res) => {
+app.post('/decode', upload.single('decode'), (req, res) => {
   //コメントが空の場合は，処理を中断する
   if (!req.body.comment) {
-    res.status(400).send('テキストが入力されていません');
+    res.status(400).send('テキストが入力されていません.');
     return;
   }
 
-  // bodyのコメントを取得
-  const commant = req.body.comment;
-
-
+  // bodyの解読文を取得
+  const commant = req.body.decode;
 })
 
 // Webサーバーを起動する
