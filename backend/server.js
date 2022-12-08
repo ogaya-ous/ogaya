@@ -59,8 +59,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
     "INSERT INTO document VALUES (13, (?), (?), '20221202', 0)",
     [imageTitle, imagePath],
     function(error, results, fields) {
-
-      // エラーがあれば表示す
+      // エラー
       if (error) {
         console.log(error);
         return;
@@ -81,6 +80,20 @@ app.post('/decode', upload.single('decode'), (req, res) => {
 
   // bodyの解読文を取得
   const commant = req.body.decode;
+
+  // データベースに接続し，SQLを実行
+  connection_doc.query(
+    "",
+    function(error, results, fields) {
+      // エラー
+      if (error) {
+        console.log(error);
+        return;
+      }
+      console.log('解読テキストを保存しました．');
+      res.status(200).send('テキストをアップロードしました．');
+    }
+  );
 })
 
 // Webサーバーを起動する
