@@ -1,3 +1,18 @@
+<script>
+	let username = '';
+	let password = '';
+
+	function handleLogin() {
+    if (username === "admin" && password === "admin") {
+      // ログイン成功
+      alert("ログイン成功");
+    } else {
+      // ログイン失敗
+      alert("ログイン失敗");
+    }
+  }
+</script>
+
 <style>
   body {
     font-family: sans-serif;
@@ -22,13 +37,13 @@
 
   .login-form input[type="text"],
   .login-form input[type="password"] {
-  	width: 100%;
-  	height: 40px;
-  	margin-bottom: 20px;
-  	padding: 0 10px;
-  	border: 1px solid #ddd;
-  	border-radius: 4px;
-	}
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
 
   .login-form input[type="submit"] {
     width: 100%;
@@ -39,11 +54,15 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  </style>
+</style>
 
 <form class="login-form">
   <h1>ログイン</h1>
-  <input type="text" placeholder="ユーザー名" />
-  <input type="password" placeholder="パスワード" />
-  <input type="submit" value="ログイン" />
+  <input type="text" placeholder="ユーザー名" bind:value={username} />
+  <input
+    type="password"
+    placeholder="パスワード"
+    bind:value={password}
+  />
+  <input type="submit" value="ログイン" on:click={handleLogin} />
 </form>
