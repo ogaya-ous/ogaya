@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // ファイルアップロード用のルーティングを設定する
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post('/api/upload', upload.single('image'), (req, res) => {
   // アップロードされた画像が存在しない場合は、処理を中断する
   if (!req.file) {
     res.status(400).send('画像が選択されていません');
@@ -50,14 +50,18 @@ app.post('/upload', upload.single('image'), (req, res) => {
   }
 
   // アップロードされた画像のパスを取得する
-  const imagePath = req.file.path;
-  //bodyのタイトルを取得する
-  const imageTitle = req.body.title;
+  let documentPath = req.file.path;
+  // bodyのタイトルを取得する
+  let documentName = req.body.name;
+  // bodyのdiscovery_yearを取得
+  let discoveryYear = req.body.year;
+  // bodyのowned_locationを取得
+  let ownedLocation = req.body.location;
 
   // データベースに接続し、SQLを実行
   connection_doc.query(
-    "INSERT INTO document VALUES (13, (?), (?), '20221202', 0)",
-    [imageTitle, imagePath],
+    "INSERT INTO document (document_name, document_path, discovery_year, owned_location) VALUES ((?), (?), (?), (?))",
+    [documentName, documentPath, discoveryYear, ownedLocation],
     function(error, results, fields) {
       // エラー
       if (error) {
@@ -71,7 +75,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
 });
 
 
-app.post('/decode', upload.single('decode'), (req, res) => {
+app.post('/api/decode', upload.single('decode'), (req, res) => {
   //コメントが空の場合は，処理を中断する
   if (!req.body.comment) {
     res.status(400).send('テキストが入力されていません.');
@@ -83,7 +87,7 @@ app.post('/decode', upload.single('decode'), (req, res) => {
 
   // データベースに接続し，SQLを実行
   connection_doc.query(
-    "",
+    "INSERT INTO DECODER VALUES ,",
     function(error, results, fields) {
       // エラー
       if (error) {
