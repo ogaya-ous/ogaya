@@ -5,15 +5,15 @@
 
 <header>
 	<div class="logo">
-		<a href="/"><img src={logo}></a>
+		<a href="/"><img src={ logo }></a>
 	</div>
 	<nav>
 		<ul>
-			<li><a href="/">ホーム</a></li>
-			<li><a href="#">区有文書を読み解く</a></li>
-			<li><a href="#">大茅地区の歴史</a></li>
-			<li><a href="#">お問い合わせ</a></li>
-			<li class="join_btn"><a href="/login">参加する</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="#">Decipher</a></li>
+			<li><a href="#">History</a></li>
+			<li><a href="#">Contact</a></li>
+			<li class="login_btn"><a href="/login">ログイン</a></li>
 		</ul>
 	</nav>
 </header>
@@ -35,6 +35,7 @@
 		align-items: center;
 		box-sizing: border-box;
 		justify-content: right;
+		background-color: white;
 	}
 
 	ul {
@@ -46,11 +47,11 @@
 	}
 
 	a {
-		font-family: "メイリオ";
+		font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', 'YuGothic', 'Yu Gothic', 'メイリオ', 'Meiryo', 'MS Pゴシック', 'MS PGothic';
 		padding: 10px 0px;
 		display: block;
 		text-decoration: none;
-		color: #113285;
+		color: black;
 		margin-right: 35px;
 	}
 
@@ -58,14 +59,14 @@
 		text-decoration: underline #113285;
 	}
 
-	li.join_btn a {
+	li.login_btn a {
 		color: white;
 		padding: 10px 30px;
 		border-radius: 10px;
 		background-color: #0F4C3A;
 	}
 
-	li.join_btn a:hover {
+	li.login_btn a:hover {
 		text-decoration: none;
 		background-color: #197157;
 	}

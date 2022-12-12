@@ -17,6 +17,10 @@
 
 	#index {
 		background-image: url(../lib/images/first_view.jpg);
+		background-position: center center;
+		background-repeat: no-repeat;
+  		background-size: cover;
+  		height: 100vh;
 	}
 </style>
 

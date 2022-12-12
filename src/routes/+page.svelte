@@ -7,16 +7,19 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div id="index">
 <main>
+	<dev id="first_view">
 		<dev id="wrap">
 			<dev class="content">
 				<h1>キャッチコピー<br>キャッチコピー</h1>
 				<p>ここには「よってたかって大茅地区」に関する説明文章が入ります。</p>
+				<div class="join_btn">
+					<a href="/register">参加する</a>
+				</div>
 			</dev>
 		</dev>
+	</dev>
 </main>
-</div>
 
 <style>
 	* {
@@ -24,11 +27,64 @@
     	padding: 0;
 	}
 
-	#index h1 {
+	#first_view h1 {
+		color: white;
 		font-size: 100px;
 		line-height: 1;
-		margin-top: 150px;
+		margin-top: 10%;
+		margin-left: 10px;
 		margin-bottom: 50px;
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+	}
+
+	#first_view p {
+		color: white;
+		margin-left: 20px;
+	}
+
+	.join_btn a {
+		background: #eee;
+		border-radius: 3px;
+		position: relative;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 2%;
+		margin-right: 0;
+		margin-left: 20px;
+		margin-bottom: 0;
+		max-width: 280px;
+		padding: 10px 25px;
+		color: #313131;
+		transition: 0.3s ease-in-out;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.join_btn a:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		bottom: 0;
+		right: 2rem;
+		font-size: 90%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: right 0.3s;
+		width: 6px;
+		height: 6px;
+		border-top: solid 2px currentColor;
+		border-right: solid 2px currentColor;
+		transform: translateY(-50%) rotate(45deg);
+	}
+		
+	.join_btn a:hover {
+		background: #6bb6ff;
+		color: #FFF;
+	}
+	
+	.join_btn a:hover:after {
+		right: 1.4rem;
 	}
 </style>
