@@ -1,129 +1,84 @@
 <script>
 	import { page } from '$app/stores';
-	import github from '$lib/images/github.svg';
-	import logo from '$lib/images/svelte-logo.svg';
+	import logo from '$lib/images/logo.svg';
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
+	<div class="logo">
+		<a href="/"><img src={logo}></a>
 	</div>
-
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/login' ? 'page' : undefined}>
-				<a href="/login">login</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
+			<li><a href="/">ホーム</a></li>
+			<li><a href="#">区有文書を読み解く</a></li>
+			<li><a href="#">大茅地区の歴史</a></li>
+			<li><a href="#">お問い合わせ</a></li>
+			<li class="join_btn"><a href="/login">参加する</a></li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
 </header>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
+	* {
+		margin: 0;
+		padding: 0;
 	}
 
 	nav {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 70px;
+		margin: 0 auto;
+		padding-top: 5px;
 		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
+		align-items: center;
+		box-sizing: border-box;
+		justify-content: right;
+		background-color: white;
 	}
 
 	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
 		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
 	}
 
 	li {
-		position: relative;
-		height: 100%;
+		list-style: none;
 	}
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
+	a {
+		font-family: "メイリオ";
+		padding: 10px 0px;
+		display: block;
 		text-decoration: none;
-		transition: color 0.2s linear;
+		color: #113285;
+		margin-right: 35px;
 	}
 
 	a:hover {
-		color: var(--color-theme-1);
+		text-decoration: underline #113285;
+	}
+
+	li.join_btn a {
+		color: white;
+		padding: 10px 30px;
+		border-radius: 10px;
+		background-color: #0F4C3A;
+	}
+
+	li.join_btn a:hover {
+		text-decoration: none;
+		background-color: #197157;
+	}
+
+	.logo {
+		margin-left: 35px;
+		float: left;
+		position: fixed;
+	}
+
+	.logo img {
+		width: auto;
+		height: 50px;
 	}
 </style>

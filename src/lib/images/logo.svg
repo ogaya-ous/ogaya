@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="150"
+   height="50"
+   viewBox="0 0 39.687499 13.229167"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     units="px"
+     inkscape:zoom="6.4070146"
+     inkscape:cx="60.558626"
+     inkscape:cy="24.89459"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
+     inkscape:window-x="1911"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid824" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <rect
+       x="20"
+       y="15"
+       width="110"
+       height="30"
+       id="rect27536" />
+    <rect
+       x="-45"
+       y="-45"
+       width="135"
+       height="35"
+       id="rect2632" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.47772866,0,0,0.47772866,20.95464,20.975962)"
+       id="text2630"
+       style="font-size:10px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2632)"><tspan
+         x="-45"
+         y="-34.951172"
+         id="tspan33975"><tspan
+           style="font-family:'Yu Mincho';-inkscape-font-specification:'Yu Mincho'"
+           id="tspan33973">よってたかって</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.73006963,0,0,0.73006963,-4.191662,-6.4028135)"
+       id="text27534"
+       style="font-size:10px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect27536)"><tspan
+         x="20"
+         y="25.048828"
+         id="tspan33979"><tspan
+           style="font-family:'Yu Mincho';-inkscape-font-specification:'Yu Mincho'"
+           id="tspan33977">大茅地区</tspan></tspan></text>
+  </g>
+</svg>

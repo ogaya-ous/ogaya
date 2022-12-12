@@ -1,22 +1,16 @@
 <script>
-	import Login from './login.svelte';
+	
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>よってたかって大茅地区</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<Login />
-</section>
+<main>
+	<p>index page</p>
+</main>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+	
 </style>
