@@ -1,16 +1,26 @@
 <script>
 	import Header from './Header.svelte';
-	import './styles.css';
 </script>
 
-<div class="app">
+<div id="index">
 	<Header />
-
 	<main>
 		<slot />
 	</main>
 </div>
 
+<style>
+	* {
+    	margin: 0;
+    	padding: 0;
+	}
+
+	#index {
+		background-image: url(../lib/images/first_view.jpg);
+	}
+</style>
+
+<!--
 <style>
 	.app {
 		display: flex;
@@ -47,3 +57,4 @@
 		}
 	}
 </style>
+-->

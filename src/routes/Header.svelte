@@ -35,7 +35,6 @@
 		align-items: center;
 		box-sizing: border-box;
 		justify-content: right;
-		background-color: white;
 	}
 
 	ul {
