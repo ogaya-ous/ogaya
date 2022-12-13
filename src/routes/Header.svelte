@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/logo.svg';
+	import logo from '$lib/images/logo.png';
 </script>
 
 <header>
@@ -13,7 +13,7 @@
 			<li><a href="#">Decipher</a></li>
 			<li><a href="#">History</a></li>
 			<li><a href="#">Contact</a></li>
-			<li class="login_btn"><a href="/login">ログイン</a></li>
+			<li class="login_btn"><a href="/login">Login</a></li>
 		</ul>
 	</nav>
 </header>
