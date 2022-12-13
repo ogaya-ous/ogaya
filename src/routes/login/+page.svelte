@@ -26,7 +26,6 @@
 	}
 
 	#login section {
-		display: flex;
 		padding-top: 12%;
 		flex-direction: column;
 		justify-content: center;
