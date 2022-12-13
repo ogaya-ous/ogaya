@@ -3,17 +3,31 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>よってたかって大茅地区</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<Login />
-</section>
+
+<div id="login">
+	<section>
+		<Login />
+	</section>
+</div>
 
 <style>
-	section {
+	* {
+    	margin: 0;
+    	padding: 0;
+	}
+
+	#login {
+		height: calc(100vh - 70px);
+		background-color: #e7e7e7;
+	}
+
+	#login section {
 		display: flex;
+		padding-top: 12%;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
