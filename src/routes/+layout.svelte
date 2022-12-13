@@ -2,7 +2,7 @@
 	import Header from './Header.svelte';
 </script>
 
-<div id="index">
+<div>
 	<Header />
 	<main>
 		<slot />
@@ -13,15 +13,6 @@
 	* {
     	margin: 0;
     	padding: 0;
-	}
-
-	#index {
-		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../lib/images/first_view.jpg);
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-  		background-size: cover;
-  		height: 100vh;
 	}
 </style>
 
