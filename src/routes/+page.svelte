@@ -29,8 +29,7 @@
 	}
 
 	#first_view {
-		background-color: rgba(0, 0, 0, 0.5);
-		background-image: url(../lib/images/first_view.jpg);
+		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view.jpg);
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
