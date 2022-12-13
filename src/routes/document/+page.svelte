@@ -29,6 +29,15 @@
             </div>
         </section>
     </div>
+    <div id="paging">
+        <ul class="example">
+            <li class="pre">前へ</li>
+            <li class="this">1</li>
+            <li><a href="/page2">2</a></li>
+            <li><a href="/page-3">3</a></li>
+            <li><a href="/page-2">次へ</a></li>
+        </ul>
+    </div>
 </main>
 
 <style>
@@ -84,6 +93,45 @@
         float: left;
         width: 60%;
     }
+    .example {
+        list-style: none;
+        display: flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .example li {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 12px;
+        border: 1px #ccc solid;
+        color:#000053;
+        border-radius: 5px / 5px;
+    }
+
+    .example li a{
+        display: block;
+        text-decoration: none;
+    }
+
+    .example li a:hover {
+        color: #fff;
+        text-decoration: none;
+        background-color: #003396;
+    }
+
+    .example .pre {
+        background-color: #ccc;
+        color:#333;
+    }
+
+    .example .this {
+        background-color: #777;
+        color: #fff;
+    }    
 }
 
 </style>
