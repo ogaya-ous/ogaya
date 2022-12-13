@@ -16,9 +16,10 @@
 	}
 
 	#index {
-		background-image: url(../lib/images/first_view.jpg);
+		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../lib/images/first_view.jpg);
 		background-position: center center;
 		background-repeat: no-repeat;
+		background-attachment: fixed;
   		background-size: cover;
   		height: 100vh;
 	}
@@ -26,23 +27,6 @@
 
 <!--
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
 	footer {
 		display: flex;
 		flex-direction: column;

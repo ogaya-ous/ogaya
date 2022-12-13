@@ -11,8 +11,11 @@
 	<dev id="first_view">
 		<dev id="wrap">
 			<dev class="content">
-				<h1>キャッチコピー<br>キャッチコピー</h1>
-				<p>ここには「よってたかって大茅地区」に関する説明文章が入ります。</p>
+				<h1>源流集落の<br>歴史をひも解く</h1>
+				<p>
+					よってたかって大茅地区は、岡山県北部にある西粟倉村大茅地区の区有文書解読を目的とした古文書翻訳サイトです。<br>
+					大茅地区にあるすべての区有文書の解読を目指します。
+				</p>
 				<div class="join_btn">
 					<a href="/register">参加する</a>
 				</div>
@@ -25,6 +28,11 @@
 	* {
     	margin: 0;
     	padding: 0;
+	}
+
+	#first_view {
+		height: 500px;
+		background-color: rgba(0, 0, 0, 0.5);
 	}
 
 	#first_view h1 {
@@ -40,10 +48,11 @@
 	#first_view p {
 		color: white;
 		margin-left: 20px;
+		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 	}
 
 	.join_btn a {
-		background: #eee;
+		background: white;
 		border-radius: 3px;
 		position: relative;
 		display: flex;
