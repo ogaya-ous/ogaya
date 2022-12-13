@@ -35,7 +35,7 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
   		background-size: cover;
-  		height: 87.5vh;
+  		height: calc(100vh - 70px);
 	}
 
 	#first_view .content {

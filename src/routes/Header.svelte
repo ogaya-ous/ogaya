@@ -10,7 +10,7 @@
 	<nav>
 		<ul>
 			<li><a href="/">Home</a></li>
-			<li><a href="#">Decipher</a></li>
+			<li><a href="/document">Document</a></li>
 			<li><a href="#">History</a></li>
 			<li><a href="#">Contact</a></li>
 			<li class="login_btn"><a href="/login">Login</a></li>
