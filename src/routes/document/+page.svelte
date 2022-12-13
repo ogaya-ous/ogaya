@@ -6,11 +6,27 @@
     <div id="contents" class="cf">
         <section id="work" class="cf">
             <h2>文書一覧</h2>
-            <article>
-                <img src={ img_path } width="313" height="269" alt="doc_1">
-                <h3>文書一巻</h3>
-                <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
-            </article>
+            <div id="document">
+                <article>
+                    <img src={ img_path } width="313" height="269" alt="work1">
+                    <h3>文書一巻</h3>
+                    <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
+                </article>
+            </div>
+            <div id="document">
+                <article>
+                    <img src={ img_path } width="313" height="269" alt="work2">
+                    <h3>文書二巻</h3>
+                    <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
+                </article>
+            </div>
+            <div id="document">
+                <article>
+                    <img src={ img_path } width="313" height="269" alt="work3">
+                    <h3>文書二巻</h3>
+                    <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
+                </article>
+            </div>
         </section>
     </div>
 </main>
@@ -34,16 +50,24 @@
 }
 
 @media only screen and (min-width: 961px) {
+    section#work h2 {
+        background-color: rgba(8, 8, 8, 0.521);
+    }
+    div#document {
+        display:flex;
+        margin: 20px 0 20px
+    }
     div#contents {
         max-width: 960px;
         margin: 0 auto;
+        color: rgb(212, 211, 211);
     }
     div#contents section#work article {
-        width: 10px;
+        width: 100%;
     }
     div#contents section#work article img {
         float: left;
-        max-width: 350px;
+        max-width: 305px;
         margin-right: 20px;
     }
     div#contents section#work article h3 {
