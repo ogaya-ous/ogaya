@@ -35,7 +35,7 @@
 		align-items: center;
 		box-sizing: border-box;
 		justify-content: right;
-		background-color: rgba(121, 121, 121, 0.219);
+		background-color: rgba(121, 121, 121, 0.082);
 	}
 
 	ul {
