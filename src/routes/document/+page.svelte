@@ -6,21 +6,21 @@
     <div id="contents" class="cf">
         <section id="work" class="cf">
             <h2>文書一覧</h2>
-            <div id="document">
+            <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work1">
                     <h3>文書一巻</h3>
                     <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
                 </article>
             </div>
-            <div id="document">
+            <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work2">
                     <h3>文書二巻</h3>
                     <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
                 </article>
             </div>
-            <div id="document">
+            <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work3">
                     <h3>文書二巻</h3>
@@ -62,14 +62,16 @@
     section#work h2 {
         background-color: rgba(8, 8, 8, 0.521);
     }
-    div#document {
+    div.document {
         display:flex;
-        margin: 20px 0 20px
+        margin: 30px 0 30px;
+        padding: 10px;
+        background-color: rgba(8, 8, 8, 0.048);
     }
     div#contents {
         max-width: 960px;
         margin: 0 auto;
-        color: rgb(212, 211, 211);
+        color: rgb(3, 3, 3);
     }
     div#contents section#work article {
         width: 100%;
