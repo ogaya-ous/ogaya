@@ -31,15 +31,17 @@
 		height: 70px;
 		margin: 0 auto;
 		padding-top: 5px;
-		display: flex;
+		display: block;
 		align-items: center;
 		box-sizing: border-box;
 		justify-content: right;
-		background: none !important;
+		background-color: rgba(121, 121, 121, 0.219);
 	}
 
 	ul {
 		display: flex;
+		margin: 10px 0 0 auto;
+		float: right;
 	}
 
 	li {
@@ -74,7 +76,6 @@
 	.logo {
 		margin-left: 35px;
 		float: left;
-		position: fixed;
 	}
 
 	.logo img {
