@@ -33,9 +33,9 @@
         <ul class="example">
             <li class="pre">前へ</li>
             <li class="this">1</li>
-            <li><a href="/page2">2</a></li>
-            <li><a href="/page-3">3</a></li>
-            <li><a href="/page-2">次へ</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">次へ</a></li>
         </ul>
     </div>
 </main>
