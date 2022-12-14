@@ -5,7 +5,7 @@
 <main>
     <div id="contents" class="cf">
         <section id="work" class="cf">
-            <h2>文書一覧</h2>
+            <h2>　文書一覧</h2>
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work1">
@@ -113,6 +113,7 @@
         border: 1px #ccc solid;
         color:#000053;
         border-radius: 5px / 5px;
+        margin: 2px;
     }
 
     .example li a{
