@@ -3,17 +3,25 @@
 </script>
 
 <main>
-    <div id="decipher">
-        <h2>　文書翻訳</h2>
+    <h2>　文書翻訳</h2>
+    <div class="decipher">
         <p class="paper vertical-text" contenteditable="true">
-            <span>草枕</span>
-            <span>山路を登りながら、こう考えた。</span>
-            <span>智に働けば角が立つ。情に掉させば流される。意地を通せば窮屈だ。とかくに人の世は住みにくい。</span>
-            <span>住みにくさが高じると、安いところへ引き越したくなる。どこへ越しても住みにくいと悟ったとき、詩が生れて、絵ができる。</span>
+           <span>草枕</span>
+            <span>牧野宗太は、こう考えた。</span>
+            <span>「明日は叔父の家に行こう。」</span>
+            <span>叔父ならこの事件について何か知っていると考えたためである。</span>
+            <span>しかし、叔父の家まではタクシーで３分もかかってしまう。</span>
+            <span>一刻を争うこのタイミングでは、時間が掛かりすぎる。</span>
+            <span>覚悟を決め宗太は異世界の門へ入っていくのであった。</span>
+            <span>第三章完</span>
+            <br>
+            <span>門を潜るとそこは一面の雪景色であった。</span>
+            <span>第四章完</span>
         </p>
-    </div>
-    <div id="docImage">
-        <img src={ img_path } width="313" height="269" alt="work1">
+    
+        <div id="docImage">
+            <img src={ img_path } width="313" height="269" alt="work1">
+        </div>
     </div>
 </main>
 
@@ -24,13 +32,17 @@
         box-sizing: border-box;
     }
 
+    .decipher {
+        justify-content: center;
+    }
+
     #docImage img{
-        width: 50%;
+        width: 45%;
         height: auto;
         margin-top: 10%;
     }
 
-    #decipher h2{
+    h2{
         margin: 10px;
         color: aliceblue;
         background-color: #7b7b7b;
@@ -38,7 +50,7 @@
 
     .paper {
         display: block;
-        width: 50%;
+        width: 45%;
         height: 80%;
         padding: 40px;
         -webkit-writing-mode: vertical-rl;
@@ -49,6 +61,7 @@
         overflow-x: scroll;
         border: solid;
         float: left;
+        margin-left: 3%;
     }
 
     .paper span {
