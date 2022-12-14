@@ -60,7 +60,7 @@
 
 @media only screen and (min-width: 961px) {
     section#work h2 {
-        color:rgba(235, 235, 235, 0.966);
+        color:rgba(255, 254, 254, 0.966);
         background-color: rgba(8, 8, 8, 0.521);
     }
     div.document {
