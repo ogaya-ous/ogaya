@@ -14,7 +14,6 @@ const connection_doc = mysql.createConnection({
   database: 'document_db'
 });
 
-
 connection_doc.connect((err) => {
   if (err) {
     // エラーが発生した場合は、エラーを表示
@@ -35,6 +34,7 @@ const storage = multer.diskStorage({
 
 // 画像をアップロードするためのミドルウェア
 const upload = multer({ storage: storage });
+
 
 // ファイルアップロード用のルーティングを設定する
 app.post('/api/upload', upload.single('image'), (req, res) => {
@@ -83,7 +83,7 @@ app.post('/api/decode', upload.single('decode'), (req, res) => {
   }
 
   // bodyの解読文を取得
-  const commant = req.body.decode;
+  let commant = req.body.decode;
 
   // データベースに接続し，SQLを実行
   connection_doc.query(
@@ -99,6 +99,26 @@ app.post('/api/decode', upload.single('decode'), (req, res) => {
     }
   );
 })
+
+app.get('/api/document/:page', (req, res) => {
+  // 1ページに表示する枚数
+  const dispCount = 5;
+
+  // 開始位置
+  let start_to = (req.params.page - 1) * 5;
+  connection_doc.query(
+    "SELECT * FROM document ORDER BY document.document_id DESC LIMIT ?, ?",
+    [start_to, dispCount],
+    function(error, results, fields) {
+      // エラー
+      if (error) {
+        console.log(error);
+        return;
+      }
+      res.status(200).send(results);
+    }
+  );
+});
 
 // Webサーバーを起動する
 app.listen(8000, function() {
