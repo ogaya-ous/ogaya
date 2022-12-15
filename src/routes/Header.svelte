@@ -10,6 +10,7 @@
 	<nav>
 		<ul>
 			<li><a href="/">Home</a></li>
+			<li><a href="/news">News</a></li>
 			<li><a href="/document">Document</a></li>
 			<li><a href="#">History</a></li>
 			<li><a href="#">Contact</a></li>
@@ -49,7 +50,7 @@
 	}
 
 	a {
-		font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', 'YuGothic', 'Yu Gothic', 'メイリオ', 'Meiryo', 'MS Pゴシック', 'MS PGothic';
+		font-family: 'Noto Sans JP', sans-serif;
 		padding: 10px 0px;
 		display: block;
 		text-decoration: none;

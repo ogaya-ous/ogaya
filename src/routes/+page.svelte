@@ -20,14 +20,67 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="news_list">
+		<h2>News</h2>
+		<ul>
+			<li class="item">
+				<a href="#">
+					<p class="date">2022/12/14</p>
+					<p class="category"><span>お知らせ</span></p>
+					<p class="title">位置をleftにしました。位置をleftにしました。</p>
+				</a>
+			</li>
+			<li class="item">
+				<a href="#">
+					<p class="date">2022/12/14</p>
+					<p class="category"><span>お知らせ</span></p>
+					<p class="title">みんな元気に研究をしました2。</p>
+				</a>
+			</li>
+			<li class="item">
+				<a href="#">
+					<p class="date">2022/12/14</p>
+					<p class="category"><span>お知らせ</span></p>
+					<p class="title">みんな元気に研究をしました3。</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="intro">
+		<div class="title">
+			<h2>
+				<span>Introduction</span>
+				<div class="intro_copy">
+					<p>
+						訪れてほしい、大茅地区に<br>感じてほしい、源流の大自然
+					</p>
+				</div>
+			</h2>
+		</div>
+		<div class="ogaya">
+			<p>ここに大茅地区に関する紹介が入ります。</p>
+		</div>
+	</div>
+
+	<div id="about">
+		<h2>About</h2>
+		<div class="content">
+			<p>ここには区有文書に関する説明が入ります。</p>
+		</div>
+	</div>
 </main>
 
 <style>
+	/* リセットCSS */
 	* {
     	margin: 0;
     	padding: 0;
 	}
 
+
+	/* ファーストビューのCSS */
 	#first_view {
 		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view.jpg);
 		background-position: center center;
@@ -35,6 +88,7 @@
 		background-attachment: fixed;
   		background-size: cover;
   		height: calc(100vh - 70px);
+		width: auto;
 	}
 
 	#first_view .content {
@@ -101,5 +155,85 @@
 	
 	.join_btn a:hover:after {
 		right: 1.4rem;
+	}
+
+	/* お知らせ欄のCSS */
+	#news_list {
+		width: 600px;
+		margin: 0 auto;
+		text-align: center;
+		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+	}
+
+	#news_list h2 {
+		font-size: 45px;
+		margin: 10px 0;
+	}
+
+	#news_list .item {
+		margin: 0;
+	}	
+
+	#news_list .item a {
+		display: flex;
+		justify-content: left;
+		padding: 20px 20px;
+		text-decoration: none;
+		border-bottom: 1px solid #CCC;
+	}
+
+	#news_list .item:first-child a {
+  		border-top: 1px solid #CCC;
+	}
+
+	#news_list li {
+		list-style: none;
+	}
+
+	#news_list .item .date {
+		margin: 0;
+		padding: 0 20px 0 0;
+	}
+
+	#news_list .item .category {
+		margin: 0;
+		padding: 0 20px 0 0;
+	}
+
+	#news_list .item p {
+		display: inline;
+	}
+
+	/* 大茅地区の紹介CSS */
+	#intro {
+		margin-top: 80px;
+		margin-left: 10px;
+	}
+
+	#intro .title h2 span {
+		display: block;
+		margin-bottom: 10px;
+		font-size: 16px;
+		font-family: 'Roboto Condensed', sans-serif;
+		letter-spacing: 5px;
+	}
+
+	#intro .title h2 .intro_copy {
+		font-size: 35px;
+		/*font-family: 'Noto Sans JP', serif;*/
+		font-family: serif;
+		line-height: 1.8;
+		letter-spacing: 3px;
+	}
+
+	#intro .ogaya {
+		margin: 10px 0;
+	}
+
+	/* 区有文書の説明CSS */
+	#about h2 {
+		font-size: 45px;
+		margin: 10px 0;
+		text-align: center;
 	}
 </style>
