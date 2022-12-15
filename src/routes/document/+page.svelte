@@ -1,23 +1,33 @@
 <script>
-	import img_path from '$lib/images/img_doc1.jpg';
+    import img_path from '$lib/images/img_doc1.jpg';
+    import axios from 'axios';
+
+    async function getDocument(page){
+		const url = 'http://localhost:8000';
+		return await axios.get(url + '/api/document/' + page);
+    }
 </script>
 
+
 <main>
+    {#await getDocument(1)}
+    <h3>ロード中...</h3>
+    {:then documentData}
     <div id="contents" class="cf">
         <section id="work" class="cf">
-            <h2>　文書一覧</h2>
+            <h2>文書一覧</h2>
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work1">
-                    <h3>文書一巻</h3>
-                    <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
+                    <h3>{documentData.data[0].document_name}</h3>
+                    <p>{documentData.data[0].document_explain}</p>
                 </article>
             </div>
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work2">
-                    <h3>文書二巻</h3>
-                    <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
+                    <h3>{documentData.data[1].document_name}</h3>
+                    <p>{documentData.data[1].document_explain}</p>
                 </article>
             </div>
             <div class="document">
@@ -33,11 +43,12 @@
         <ul class="example">
             <li class="pre">前へ</li>
             <li class="this">1</li>
-            <li><a href="/page2">2</a></li>
-            <li><a href="/page-3">3</a></li>
-            <li><a href="/page-2">次へ</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">次へ</a></li>
         </ul>
     </div>
+    {/await}
 </main>
 
 <style>

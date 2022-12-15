@@ -76,7 +76,7 @@
 
 	.logo {
 		margin-left: 35px;
-		float: left;
+		position: fixed;
 	}
 
 	.logo img {
