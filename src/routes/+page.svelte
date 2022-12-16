@@ -20,7 +20,7 @@
 			</div>
 		</div>
 	</div>
-
+<!--
 	<div id="news_list">
 		<h2>News</h2>
 		<ul>
@@ -47,29 +47,21 @@
 			</li>
 		</ul>
 	</div>
-<!--
+-->
 	<div id="intro">
-		<div class="title">
-			<h2>
+		<div class="text">
+			<h2 class="title">
 				<span>Introduction</span>
-				<div class="intro_copy">
-					<p>
+					<p class="intro_copy">
 						訪れてほしい、大茅地区に<br>感じてほしい、源流の大自然
 					</p>
-				</div>
 			</h2>
-		</div>
-		<div class="ogaya">
-			<p>
+			<p class="ogaya">
 				大茅地区は、春になると15000株の芝桜があたり一面に広がる<br>
 				岡山県北部の限界集落です。
 			</p>
-		</div>
--->
-		<!-- 文章は仮 -->
-<!--
-		<div class="ogaya_detail">
-			<p>
+			<!-- 文章は仮 -->
+			<p class="ogaya_detail">
 				世界的なスノーリゾート・白馬のお隣にあって、<br>
 				地味なイメージがあるかもしれない信濃大町ですが、<br>
 				実は、黒部ダムの長野県側の玄関口があるだけでなく、<br>
@@ -78,9 +70,7 @@
 				パウダースノーのスキー場、心安らぐ温泉などなど、<br>
 				旅心を満たすコンテンツが満載です。
 			</p>
-		</div>
-		<div class="yotte_ogaya">
-			<p>
+			<p class="yotte_ogaya">
 				「よってたかって大茅地区」では、<br>
 				春夏秋冬、とりどりに変わる大茅地区の自然の魅力と、<br>
 				その魅力を五感で感じられるあんなこと、こんなことを、映像でご紹介。<br>
@@ -89,50 +79,14 @@
 			</p>
 		</div>
 		<div class="ogaya_img">
-			<img src={ img_path }>
+			<img src={ img_path } alt="">
 		</div>
 	</div>
--->
-
-<div id="intro">
-	<div class="text">
-		<h2 class="title">
-			<span>Introduction</span>
-				<p class="intro_copy">
-					訪れてほしい、大茅地区に<br>感じてほしい、源流の大自然
-				</p>
-		</h2>
-		<p class="ogaya">
-			大茅地区は、春になると15000株の芝桜があたり一面に広がる<br>
-			岡山県北部の限界集落です。
-		</p>
-		<!-- 文章は仮 -->
-		<p class="ogaya_detail">
-			世界的なスノーリゾート・白馬のお隣にあって、<br>
-			地味なイメージがあるかもしれない信濃大町ですが、<br>
-			実は、黒部ダムの長野県側の玄関口があるだけでなく、<br>
-			周囲の山並みを水鏡に映す仁科三湖、<br>
-			長い歳月を経て人々が築き上げてきた美しい田園風景や町並み、<br>
-			パウダースノーのスキー場、心安らぐ温泉などなど、<br>
-			旅心を満たすコンテンツが満載です。
-		</p>
-		<p class="yotte_ogaya">
-			「よってたかって大茅地区」では、<br>
-			春夏秋冬、とりどりに変わる大茅地区の自然の魅力と、<br>
-			その魅力を五感で感じられるあんなこと、こんなことを、映像でご紹介。<br>
-			めちゃくちゃ　限界集落。<br>
-			あした行ってみたくなる、大茅地区です。
-		</p>
-	</div>
-	<div class="ogaya_img">
-		<img src={ img_path } alt="">
-	</div>
-</div>
 
 	<div id="about">
 		<h2>About</h2>
 		<div class="content">
-			<p>ここには区有文書に関する説明が入ります。</p>
+			<p>ここには区有文書に関する説明が入ります。</p><br>
 		</div>
 	</div>
 </main>
@@ -223,6 +177,7 @@
 	}
 
 	/* お知らせ欄のCSS */
+/*
 	#news_list {
 		width: 600px;
 		margin: 0 auto;
@@ -270,7 +225,7 @@
 		color: black;
 		
 	}
-
+*/
 	/* 大茅地区の紹介CSS */
 	#intro {
 		margin-top: 80px;
