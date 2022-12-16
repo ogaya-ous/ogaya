@@ -20,34 +20,61 @@
 			</div>
 		</div>
 	</div>
-<!--
-	<div id="news_list">
-		<h2>News</h2>
-		<ul>
-			<li class="item">
-				<a href="#">
-					<p class="date">2022/12/14</p>
-					<p class="category"><span>お知らせ</span></p>
-					<p class="title">位置をleftにしました。位置をleftにしました。</p>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<p class="date">2022/12/14</p>
-					<p class="category"><span>お知らせ</span></p>
-					<p class="title">みんな元気に研究をしました2。</p>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<p class="date">2022/12/14</p>
-					<p class="category"><span>お知らせ</span></p>
-					<p class="title">みんな元気に研究をしました3。</p>
-				</a>
-			</li>
-		</ul>
+
+	<div id="news_card">
+		<div class="news_card_wrapper news_card_radius">
+			<article class="card">
+				<div class="card_header">
+					<p class="card_title">お知らせのタイトル1</p>
+					<img src={ img_path } alt="" class="card_image">
+				</div>
+				<div class="card_body">
+					<p class="card_text">
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+					</p>
+				</div>
+			</article>
+		</div>
+		<div class="news_card_wrapper news_card_radius">
+			<article class="card">
+				<div class="card_header">
+					<p class="card_title">お知らせのタイトル2</p>
+					<img src={ img_path } alt="" class="card_image">
+				</div>
+				<div class="card_body">
+					<p class="card_text">
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+					</p>
+				</div>
+			</article>
+		</div>
+		<div class="news_card_wrapper news_card_radius">
+			<article class="card">
+				<div class="card_header">
+					<p class="card_title">お知らせのタイトル3</p>
+					<img src={ img_path } alt="" class="card_image">
+				</div>
+				<div class="card_body">
+					<p class="card_text">
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+						お知らせの内容が入力されます。
+					</p>
+				</div>
+			</article>
+		</div>
 	</div>
--->
+
 	<div id="intro">
 		<div class="text">
 			<h2 class="title">
@@ -177,55 +204,59 @@
 	}
 
 	/* お知らせ欄のCSS */
-/*
-	#news_list {
-		width: 600px;
-		margin: 0 auto;
-		text-align: center;
-		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
-	}
-
-	#news_list h2 {
-		font-size: 45px;
-		margin: 10px 0;
-	}
-
-	#news_list .item {
-		margin: 0;
-	}	
-
-	#news_list .item a {
+	#news_card {
+		margin: 80px 80px 0;
 		display: flex;
-		justify-content: left;
-		padding: 20px 20px;
+	}
+
+	#news_card .news_card_wrapper {
+		margin: 1rem auto;
+		width: 380px;
+	}
+
+	#news_card .news_card_radius {
+		overflow: hidden;
+		border-radius: 8px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+	}
+
+	#news_card .card {
+		background-color: #fff;
+		box-shadow: 0 0 0px rgba(0, 0, 0, .16);
+		color: #212121;
 		text-decoration: none;
-		border-bottom: 1px solid #CCC;
 	}
 
-	#news_list .item:first-child a {
-  		border-top: 1px solid #CCC;
+	#news_card .card_header {
+		display: flex;
+		flex-wrap: wrap;
 	}
 
-	#news_list li {
-		list-style: none;
+	#news_card .card_title {
+		padding: 1rem 1.5rem 0;
+		font-size: 1.6rem;
+		order: 1;
+		font-weight: bold;
+		text-decoration: none;
+		border-bottom: solid 3px black;
 	}
 
-	#news_list .item .date {
-		margin: 0;
-		padding: 0 20px 0 0;
+	#news_card .card_image {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
 	}
 
-	#news_list .item .category {
-		margin: 0;
-		padding: 0 20px 0 0;
+	#news_card .card_body {
+		padding: 0.5rem 1.5rem;
 	}
 
-	#news_list .item p {
-		display: inline;
-		color: black;
-		
+	#news_card .card_text {
+		font-size: .8rem;
+		margin-top: 0;
+		text-decoration: none;
 	}
-*/
+
 	/* 大茅地区の紹介CSS */
 	#intro {
 		margin-top: 80px;
