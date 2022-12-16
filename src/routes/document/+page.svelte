@@ -8,7 +8,10 @@
 		return await axios.get(url + '/api/document/' + page_num);
     }
 
-    let page_num = $page.url.searchParams.get('page');
+    // 文書一覧のページ番号
+    $: page_num = $page.url.searchParams.get('page');
+    $: next_page = Number(page_num) + 1;
+    $: prev_page = Number(page_num) - 1;
 </script>
 
 
@@ -68,11 +71,22 @@
     </div>
     <div id="paging">
         <ul class="example">
-            <li class="pre">前へ</li>
+            {#if prev_page == '0'}
+            <li class="non">前へ</li>
+            {:else}
+            <li><a href="?page={Number(page_num) - 1}">前へ</a></li>
+            {/if}
+            {#if page_num == 1}
             <li class="this">1</li>
             <li><a href="?page=2">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">次へ</a></li>
+            <li><a href="?page=3">3</a></li>
+            {:else}
+            <li><a href="?page={prev_page}">{prev_page}</a></li>
+            <li class="this">{page_num}</li>
+            <li><a href="?page={next_page}">{next_page}</a></li>
+            {/if}
+
+            <li><a href="?page={Number(page_num) + 1}">次へ</a></li>
         </ul>
     </div>
     {/await}
@@ -165,7 +179,7 @@
         background-color: #003396;
     }
 
-    .example .pre {
+    .example .non {
         background-color: #ccc;
         color:#333;
     }

@@ -1,5 +1,4 @@
 <script>
-	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
 </script>
 
@@ -11,7 +10,7 @@
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/news">News</a></li>
-			<li><a href="/document">Document</a></li>
+			<li><a href="/document?page=1">Document</a></li>
 			<li><a href="#">History</a></li>
 			<li><a href="#">Contact</a></li>
 			<li class="login_btn"><a href="/login">Login</a></li>
