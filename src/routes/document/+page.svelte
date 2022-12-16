@@ -2,10 +2,15 @@
     import img_path from '$lib/images/img_doc1.jpg';
     import axios from 'axios';
 
-    async function getDocument(page){
+    async function getDocument(page_num){
 		const url = 'http://localhost:8000';
-		return await axios.get(url + '/api/document/' + page);
+		return await axios.get(url + '/api/document/' + page_num);
     }
+
+    let prev_page = '1';
+    let next_page = '';
+    let current_page = '';
+
 </script>
 
 
@@ -16,27 +21,51 @@
     <div id="contents" class="cf">
         <section id="work" class="cf">
             <h2>文書一覧</h2>
+            {#if documentData.data[0]}
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work1">
-                    <h3>{documentData.data[0].document_name}</h3>
-                    <p>{documentData.data[0].document_explain}</p>
+                    <h3>{ documentData.data[0].document_name }</h3>
+                    <p>{ documentData.data[0].document_explain }</p>
                 </article>
             </div>
+            {/if}
+            {#if documentData.data[1]}
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work2">
-                    <h3>{documentData.data[1].document_name}</h3>
-                    <p>{documentData.data[1].document_explain}</p>
+                    <h3>{ documentData.data[1].document_name }</h3>
+                    <p>{ documentData.data[1].document_explain }</p>
                 </article>
             </div>
+            {/if}
+            {#if documentData.data[2]}
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work3">
-                    <h3>文書二巻</h3>
-                    <p>この文書は、大正時代に起こったたたら爆発の事件について記載されている。</p>
+                    <h3>{ documentData.data[2].document_name }</h3>
+                    <p>{ documentData.data[2].document_explain }</p>
                 </article>
             </div>
+            {/if}
+            {#if documentData.data[3]}
+            <div class="document">
+                <article>
+                    <img src={ img_path } width="313" height="269" alt="work4">
+                    <h3>{ documentData.data[3].document_name }</h3>
+                    <p>{ documentData.data[3].document_explain }</p>
+                </article>
+            </div>
+            {/if}
+            {#if documentData.data[4]}
+            <div class="document">
+                <article>
+                    <img src={ img_path } width="313" height="269" alt="work5">
+                    <h3>{ documentData.data[4].document_name }</h3>
+                    <p>{ documentData.data[4].document_explain }</p>
+                </article>
+            </div>
+            {/if}
         </section>
     </div>
     <div id="paging">
