@@ -1,4 +1,5 @@
 <script>
+    import { page } from '$app/stores';
     import img_path from '$lib/images/img_doc1.jpg';
     import axios from 'axios';
 
@@ -7,15 +8,12 @@
 		return await axios.get(url + '/api/document/' + page_num);
     }
 
-    let prev_page = '1';
-    let next_page = '';
-    let current_page = '';
-
+    let page_num = $page.url.searchParams.get('page');
 </script>
 
 
 <main>
-    {#await getDocument(1)}
+    {#await getDocument(page_num)}
     <h3>ロード中...</h3>
     {:then documentData}
     <div id="contents" class="cf">
@@ -72,7 +70,7 @@
         <ul class="example">
             <li class="pre">前へ</li>
             <li class="this">1</li>
-            <li><a href="#">2</a></li>
+            <li><a href="?page=2">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">次へ</a></li>
         </ul>
@@ -175,7 +173,7 @@
     .example .this {
         background-color: #777;
         color: #fff;
-    }    
+    }
 }
 
 </style>
