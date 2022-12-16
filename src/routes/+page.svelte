@@ -1,5 +1,5 @@
 <script>
-	
+	import img_path from '$lib/images/sample.jpg'
 </script>
 
 <svelte:head>
@@ -47,7 +47,7 @@
 			</li>
 		</ul>
 	</div>
-
+<!--
 	<div id="intro">
 		<div class="title">
 			<h2>
@@ -60,9 +60,74 @@
 			</h2>
 		</div>
 		<div class="ogaya">
-			<p>ここに大茅地区に関する紹介が入ります。</p>
+			<p>
+				大茅地区は、春になると15000株の芝桜があたり一面に広がる<br>
+				岡山県北部の限界集落です。
+			</p>
+		</div>
+-->
+		<!-- 文章は仮 -->
+<!--
+		<div class="ogaya_detail">
+			<p>
+				世界的なスノーリゾート・白馬のお隣にあって、<br>
+				地味なイメージがあるかもしれない信濃大町ですが、<br>
+				実は、黒部ダムの長野県側の玄関口があるだけでなく、<br>
+				周囲の山並みを水鏡に映す仁科三湖、<br>
+				長い歳月を経て人々が築き上げてきた美しい田園風景や町並み、<br>
+				パウダースノーのスキー場、心安らぐ温泉などなど、<br>
+				旅心を満たすコンテンツが満載です。
+			</p>
+		</div>
+		<div class="yotte_ogaya">
+			<p>
+				「よってたかって大茅地区」では、<br>
+				春夏秋冬、とりどりに変わる大茅地区の自然の魅力と、<br>
+				その魅力を五感で感じられるあんなこと、こんなことを、映像でご紹介。<br>
+				めちゃくちゃ　限界集落。<br>
+				あした行ってみたくなる、大茅地区です。
+			</p>
+		</div>
+		<div class="ogaya_img">
+			<img src={ img_path }>
 		</div>
 	</div>
+-->
+
+<div id="intro">
+	<div class="text">
+		<h2 class="title">
+			<span>Introduction</span>
+				<p class="intro_copy">
+					訪れてほしい、大茅地区に<br>感じてほしい、源流の大自然
+				</p>
+		</h2>
+		<p class="ogaya">
+			大茅地区は、春になると15000株の芝桜があたり一面に広がる<br>
+			岡山県北部の限界集落です。
+		</p>
+		<!-- 文章は仮 -->
+		<p class="ogaya_detail">
+			世界的なスノーリゾート・白馬のお隣にあって、<br>
+			地味なイメージがあるかもしれない信濃大町ですが、<br>
+			実は、黒部ダムの長野県側の玄関口があるだけでなく、<br>
+			周囲の山並みを水鏡に映す仁科三湖、<br>
+			長い歳月を経て人々が築き上げてきた美しい田園風景や町並み、<br>
+			パウダースノーのスキー場、心安らぐ温泉などなど、<br>
+			旅心を満たすコンテンツが満載です。
+		</p>
+		<p class="yotte_ogaya">
+			「よってたかって大茅地区」では、<br>
+			春夏秋冬、とりどりに変わる大茅地区の自然の魅力と、<br>
+			その魅力を五感で感じられるあんなこと、こんなことを、映像でご紹介。<br>
+			めちゃくちゃ　限界集落。<br>
+			あした行ってみたくなる、大茅地区です。
+		</p>
+	</div>
+	<div class="ogaya_img">
+		<img src={ img_path } alt="">
+	</div>
+</div>
 
 	<div id="about">
 		<h2>About</h2>
@@ -92,22 +157,22 @@
 	}
 
 	#first_view .content {
-		padding-top: 50px;
+		padding-top: 4%;
 	}
 
 	#first_view h1 {
 		color: white;
 		font-size: 100px;
 		line-height: 1;
-		margin-top: 50px;
-		margin-left: 10px;
+		margin-top: 10%;
+		margin-left: 60px;
 		margin-bottom: 50px;
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 	}
 
 	#first_view p {
 		color: white;
-		margin-left: 20px;
+		margin-left: 70px;
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 	}
 
@@ -120,7 +185,7 @@
 		align-items: center;
 		margin-top: 2%;
 		margin-right: 0;
-		margin-left: 20px;
+		margin-left: 70px;
 		margin-bottom: 0;
 		max-width: 280px;
 		padding: 10px 25px;
@@ -202,15 +267,20 @@
 
 	#news_list .item p {
 		display: inline;
+		color: black;
+		
 	}
 
 	/* 大茅地区の紹介CSS */
 	#intro {
 		margin-top: 80px;
-		margin-left: 10px;
+		margin-right: 160px;
+		margin-left: 160px;
+		display: flex;
+		justify-content: space-between;
 	}
 
-	#intro .title h2 span {
+	#intro .text h2.title span {
 		display: block;
 		margin-bottom: 10px;
 		font-size: 16px;
@@ -218,16 +288,24 @@
 		letter-spacing: 5px;
 	}
 
-	#intro .title h2 .intro_copy {
+	#intro .text h2.title p.intro_copy {
 		font-size: 35px;
-		/*font-family: 'Noto Sans JP', serif;*/
 		font-family: serif;
 		line-height: 1.8;
 		letter-spacing: 3px;
 	}
 
-	#intro .ogaya {
-		margin: 10px 0;
+	#intro .text p.ogaya, #intro .text p.ogaya_detail, #intro .text p.yotte_ogaya {
+		margin: 40px 0;
+		font-family: serif;
+		line-height: 2;
+		letter-spacing: 3px;
+		font-weight: bold;
+	}
+
+	#intro .ogaya_img img {
+		height: 750px;
+		width: auto;
 	}
 
 	/* 区有文書の説明CSS */
