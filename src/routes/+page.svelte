@@ -1,5 +1,6 @@
 <script>
 	import img_path from '$lib/images/sample.jpg'
+	import document_img from '$lib/images/document_img.jpg'
 </script>
 
 <svelte:head>
@@ -111,9 +112,32 @@
 	</div>
 
 	<div id="about">
-		<h2>About</h2>
-		<div class="content">
-			<p>ここには区有文書に関する説明が入ります。</p><br>
+		<div class="document_img">
+			<img src={ document_img } alt="">
+		</div>
+		<div class="text">
+			<h2 class="title">
+				<span>About</span>
+				<p class="about_copy">区有文書から<br>大茅地区の歴史を辿る</p>
+			</h2>
+			<p class="document">
+				大茅区有文書は、元禄8年(1695年)より戦後1960年までの<br>
+				各時代の方々の継続した努力で大茅地区に残された<br>
+				2000タイトルにも及ぶ文章の総称です。
+			</p>
+			<p class="document_detail">
+				20年以上前に解読できる方2人で数年かけて目録を作成しました。<br>
+				現在、この目録がある事でどの様な古文書が存在するのか<br>
+				判断が可能な状態になっております。<br>
+				しかし、目録を作成された恩師たちも９０歳を過ぎ、<br>
+				大茅区有文書の理解のある方も少なくなっています。
+			</p>
+			<p class="document_outlook">
+				大茅地区の祖先の人達知り、後世に残して行くためにも<br>
+				区有文書の内容を伝える必要が有ると感じています。<br>
+				よってたかって大茅地区を通して皆様の力をお借りし、<br>
+				永年温めて来ました、解読が出来ればと期待しています。<br>
+			</p>
 		</div>
 	</div>
 </main>
@@ -124,7 +148,6 @@
     	margin: 0;
     	padding: 0;
 	}
-
 
 	/* ファーストビューのCSS */
 	#first_view {
@@ -257,8 +280,8 @@
 		text-decoration: none;
 	}
 
-	/* 大茅地区の紹介CSS */
-	#intro {
+	/* 大茅地区の紹介・区有文書の説明CSS */
+	#intro, #about {
 		margin-top: 80px;
 		margin-right: 160px;
 		margin-left: 160px;
@@ -266,7 +289,7 @@
 		justify-content: space-between;
 	}
 
-	#intro .text h2.title span {
+	#intro .text h2.title span, #about .text h2.title span {
 		display: block;
 		margin-bottom: 10px;
 		font-size: 16px;
@@ -274,14 +297,15 @@
 		letter-spacing: 5px;
 	}
 
-	#intro .text h2.title p.intro_copy {
+	#intro .text h2.title p.intro_copy, #about .text h2.title p.about_copy {
 		font-size: 35px;
 		font-family: serif;
 		line-height: 1.8;
 		letter-spacing: 3px;
 	}
 
-	#intro .text p.ogaya, #intro .text p.ogaya_detail, #intro .text p.yotte_ogaya {
+	#intro .text p.ogaya, #intro .text p.ogaya_detail, #intro .text p.yotte_ogaya,
+	#about .text p.document, #about .text p.document_detail, #about .text p.document_outlook {
 		margin: 40px 0;
 		font-family: serif;
 		line-height: 2;
@@ -295,9 +319,15 @@
 	}
 
 	/* 区有文書の説明CSS */
-	#about h2 {
-		font-size: 45px;
-		margin: 10px 0;
-		text-align: center;
+	#about .document_img {	
+		display: block;
+		height: 500px;
+		width: auto;
+		overflow: hidden;
+	}
+
+	#about .document_img img {
+		height: 100%;
+		width: auto;
 	}
 </style>
