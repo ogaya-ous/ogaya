@@ -72,7 +72,7 @@
 
     footer {
         color: white;
-        background-color: #696969;
+        background-color: #303030;
         font-family: 'Noto Serif JP', serif;
         font-weight: 300;
     }

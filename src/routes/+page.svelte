@@ -107,7 +107,9 @@
 			</p>
 		</div>
 		<div class="ogaya_img">
-			<img src={ img_path } alt="">
+			<div class="inner">
+				<img src={ img_path } alt="">
+			</div>
 		</div>
 	</div>
 
@@ -121,7 +123,7 @@
 				<p class="about_copy">区有文書から<br>大茅地区の歴史を辿る</p>
 			</h2>
 			<p class="document">
-				大茅区有文書は、元禄8年(1695年)より戦後1960年までの<br>
+				大茅区有文書は、1695年より戦後1960年までの<br>
 				各時代の方々の継続した努力で大茅地区に残された<br>
 				2000タイトルにも及ぶ文章の総称です。
 			</p>
@@ -280,8 +282,8 @@
 		text-decoration: none;
 	}
 
-	/* 大茅地区の紹介・区有文書の説明CSS */
-	#intro, #about {
+	/* 大茅地区の紹介 */
+	#intro {
 		margin-top: 80px;
 		margin-right: 160px;
 		margin-left: 160px;
@@ -289,7 +291,7 @@
 		justify-content: space-between;
 	}
 
-	#intro .text h2.title span, #about .text h2.title span {
+	#intro .text h2.title span {
 		display: block;
 		margin-bottom: 10px;
 		font-size: 16px;
@@ -297,15 +299,14 @@
 		letter-spacing: 5px;
 	}
 
-	#intro .text h2.title p.intro_copy, #about .text h2.title p.about_copy {
+	#intro .text h2.title p.intro_copy {
 		font-size: 35px;
 		font-family: serif;
 		line-height: 1.8;
 		letter-spacing: 3px;
 	}
 
-	#intro .text p.ogaya, #intro .text p.ogaya_detail, #intro .text p.yotte_ogaya,
-	#about .text p.document, #about .text p.document_detail, #about .text p.document_outlook {
+	#intro .text p.ogaya, #intro .text p.ogaya_detail, #intro .text p.yotte_ogaya {
 		margin: 40px 0;
 		font-family: serif;
 		line-height: 2;
@@ -319,15 +320,57 @@
 	}
 
 	/* 区有文書の説明CSS */
-	#about .document_img {	
-		display: block;
-		height: 500px;
+	#about {
+		display: flex;
+		/* align-item: stretch; 子要素の高さが伸縮する指定 */
+		align-items: stretch;
+		justify-content: left;
+		width: 100%;
+		height: 700px;
+		/* flexboxの高さ確認 */
+		background-color: #e7e7e7;
+	}
+
+	
+	#about .text {
+		/* width: 38.50%; */
 		width: auto;
+		margin-left: 4.65%;
+		padding: 20px 0;
+	}
+
+	#about .text h2.title span {
+		display: block;
+		margin-bottom: 10px;
+		font-size: 16px;
+		font-family: 'Roboto Condensed', sans-serif;
+		letter-spacing: 5px;
+	}
+
+	#about .text h2.title p.about_copy {
+		font-size: 35px;
+		font-family: serif;
+		line-height: 1.8;
+		letter-spacing: 3px;
+	}
+
+	#about .text p.document,
+	#about .text p.document_detail,
+	#about .text p.document_outlook {
+		margin: 40px 0;
+		font-family: serif;
+		line-height: 2;
+		letter-spacing: 3px;
+		font-weight: bold;
+	}
+
+	#about .document_img {	
+		width: 55.50%;
 		overflow: hidden;
 	}
 
 	#about .document_img img {
+		width: 100%;
 		height: 100%;
-		width: auto;
 	}
 </style>
