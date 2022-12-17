@@ -3,25 +3,35 @@
 </script>
 
 <header>
-	<div class="logo">
-		<a href="/"><img src={ logo }></a>
+	<div class="navigation">
+		<div class="logo">
+			<a href="/"><img src={ logo }></a>
+		</div>
+		<div class="menu_list">
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/news">News</a></li>
+					<li><a href="/document?page=1">Document</a></li>
+					<li><a href="#">History</a></li>
+					<li><a href="#">Contact</a></li>
+					<li class="login_btn"><a href="/login">Login</a></li>
+				</ul>
+			</nav>
+		</div>
 	</div>
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/news">News</a></li>
-			<li><a href="/document?page=1">Document</a></li>
-			<li><a href="#">History</a></li>
-			<li><a href="#">Contact</a></li>
-			<li class="login_btn"><a href="/login">Login</a></li>
-		</ul>
-	</nav>
 </header>
 
 <style>
 	* {
 		margin: 0;
 		padding: 0;
+	}
+
+	.navigation {
+		display: flex;
+		justify-content: space-between;
+		background-color: rgba(121, 121, 121, 0.082);
 	}
 
 	nav {
@@ -35,7 +45,6 @@
 		align-items: center;
 		box-sizing: border-box;
 		justify-content: right;
-		background-color: rgba(121, 121, 121, 0.082);
 	}
 
 	ul {
@@ -75,7 +84,6 @@
 
 	.logo {
 		margin-left: 35px;
-		position: fixed;
 	}
 
 	.logo img {
