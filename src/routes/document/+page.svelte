@@ -74,9 +74,9 @@
             {#if prev_page == '0'}
             <li class="non">前へ</li>
             {:else}
-            <li><a href="?page={Number(page_num) - 1}">前へ</a></li>
+            <li><a href="?page={ Number(page_num) - 1 }">前へ</a></li>
             {/if}
-            <!--1ページ目のページネーションの条件分岐(コード汚い)-->
+            <!--1ページ目のページネーションの条件分岐(コード汚いから誰か直して)-->
             {#if page_num == 1 && Number(documentData.data[0].document_id) > 10}
             <li class="this">1</li>
             <li><a href="?page=2">2</a></li>
@@ -88,16 +88,16 @@
             <li class="this">1</li>
             <!--2ページ目以降-->
             {:else if Number(documentData.data[0].document_id) / (Number(page_num) * 5) >= 1}
-            <li><a href="?page={prev_page}">{prev_page}</a></li>
-            <li class="this">{page_num}</li>
-            <li><a href="?page={next_page}">{next_page}</a></li>
+            <li><a href="?page={ prev_page }">{ prev_page }</a></li>
+            <li class="this">{ page_num }</li>
+            <li><a href="?page={next_page}">{ next_page }</a></li>
             {:else}
-            <li><a href="?page={prev_page}">{prev_page}</a></li>
+            <li><a href="?page={ prev_page }">{ prev_page }</a></li>
             <li class="this">{page_num}</li>
             {/if}
             <!--次へのボタンを表示するかの条件分岐-->
             {#if Number(documentData.data[0].document_id) / (Number(page_num) * 5) >= 1}
-            <li><a href="?page={Number(page_num) + 1}">次へ</a></li>
+            <li><a href="?page={ next_page }">次へ</a></li>
             {:else}
             <li class="non">次へ</li>
             {/if}
