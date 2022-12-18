@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import fs from 'fs';
 import multer from 'multer';
@@ -5,6 +6,7 @@ import mysql from 'mysql2';
 
 
 const app = express();
+app.use(cors());
 
 // MySQLとの接続情報を定義 (document_db)
 const connection_doc = mysql.createConnection({
