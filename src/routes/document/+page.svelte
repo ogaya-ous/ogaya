@@ -16,7 +16,7 @@
 
 
 <main>
-    {#await getDocument(page_num)}
+    {#await getDocument( page_num )}
     <h3>ロード中...</h3>
     {:then documentData}
     <div id="contents" class="cf">
@@ -26,7 +26,7 @@
             <div class="document">
                 <article>
                     <img src={ img_path } width="313" height="269" alt="work1">
-                    <h3>{ documentData.data[0].document_name }</h3>
+                    <h3 >{ documentData.data[0].document_name }</h3>
                     <p>{ documentData.data[0].document_explain }</p>
                 </article>
             </div>
@@ -90,10 +90,10 @@
             {:else if Number(documentData.data[0].document_id) / (Number(page_num) * 5) >= 1}
             <li><a href="?page={ prev_page }">{ prev_page }</a></li>
             <li class="this">{ page_num }</li>
-            <li><a href="?page={next_page}">{ next_page }</a></li>
+            <li><a href="?page={ next_page }">{ next_page }</a></li>
             {:else}
             <li><a href="?page={ prev_page }">{ prev_page }</a></li>
-            <li class="this">{page_num}</li>
+            <li class="this">{ page_num }</li>
             {/if}
             <!--次へのボタンを表示するかの条件分岐-->
             {#if Number(documentData.data[0].document_id) / (Number(page_num) * 5) >= 1}
@@ -134,6 +134,9 @@
         margin: 30px 0 30px;
         padding: 10px;
         background-color: rgba(8, 8, 8, 0.048);
+    }
+    .document a {
+        text-decoration: none;
     }
     div#contents {
         max-width: 960px;

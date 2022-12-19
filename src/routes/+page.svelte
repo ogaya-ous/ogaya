@@ -1,6 +1,6 @@
 <script>
-	import img_path from '$lib/images/sample.jpg'
-	import document_img from '$lib/images/document_img.jpg'
+	import document_img from '$lib/images/document_img.jpg';
+	import img_path from '$lib/images/sample.jpg';
 </script>
 
 <svelte:head>
@@ -145,8 +145,8 @@
 <style>
 	/* リセットCSS */
 	* {
-    	margin: 0;
-    	padding: 0;
+		margin: 0;
+		padding: 0;
 	}
 
 	/* ファーストビューのCSS */
@@ -155,8 +155,8 @@
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-  		background-size: cover;
-  		height: calc(100vh - 70px);
+		background-size: cover;
+		height: calc(100vh - 70px);
 		width: auto;
 	}
 
@@ -216,12 +216,12 @@
 		border-right: solid 2px currentColor;
 		transform: translateY(-50%) rotate(45deg);
 	}
-		
+
 	.join_btn a:hover {
 		background: #6bb6ff;
 		color: #FFF;
 	}
-	
+
 	.join_btn a:hover:after {
 		right: 1.4rem;
 	}
@@ -348,7 +348,7 @@
 		/* background-color: #e7e7e7; */
 	}
 
-	
+
 	#about .text {
 		width: 38.50%;
 		/* width: auto; */
