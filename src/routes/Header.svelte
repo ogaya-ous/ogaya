@@ -67,7 +67,8 @@
 	}
 
 	a:hover {
-		text-decoration: underline #113285;
+		text-decoration: none;
+		color: #0aa284;
 	}
 
 	li.login_btn a {

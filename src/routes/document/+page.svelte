@@ -182,7 +182,7 @@
 
     div#document_list section#work article a:hover {
         text-decoration: none;
-        color:#33CC00;
+        color:#0aa284;
     }
     div#document_list section#work article p{
         line-height: 3.0em;
