@@ -226,6 +226,11 @@
 		right: 1.4rem;
 	}
 
+	.news_card_wrapper:hover {
+		transform: scale(1.1,1.1); /*画像の拡大*/
+		cursor: pointer; /*カーソルをポインターにする*/
+	}
+
 	/* お知らせ欄のCSS */
 	#news_card {
 		/* margin: 80px 80px 0; */
