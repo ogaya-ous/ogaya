@@ -182,7 +182,7 @@
 
     div#document_list section#work article .added_date {
         display: block;
-        /* width: 600px;s */
+        width: 600px;
     }
 
     #document_list .document {
