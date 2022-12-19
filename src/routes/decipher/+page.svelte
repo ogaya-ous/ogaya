@@ -51,7 +51,7 @@
     .paper {
         display: block;
         width: 45%;
-        height: 80%;
+        height: 83%;
         padding: 40px;
         -webkit-writing-mode: vertical-rl;
         -ms-writing-mode: tb-rl;
