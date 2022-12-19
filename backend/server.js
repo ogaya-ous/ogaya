@@ -135,11 +135,11 @@ app.listen(8000, function() {
 CREATE TABLE document (
   document_id INT NOT NULL AUTO_INCREMENT,
   document_name VARCHAR(255) NOT NULL,
-  owner VARCHAR(255) NOT NULL,
-  collection_site VARCHAR(255) NOT NULL,
+  document_path VARCHAR(255) NOT NULL,
   discovery_year INT NOT NULL,
-  discovery_location VARCHAR(255) NOT NULL,
-  content VARCHAR(255) NOT NULL,
+  owned_location VARCHAR(255) NOT NULL,
+  document_explain VARCHAR(255) NOT NULL,
+  decode_page VARCHAR(255) NOT NULL,
   PRIMARY KEY (document_id)
   );
 
