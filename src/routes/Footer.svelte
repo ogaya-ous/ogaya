@@ -10,7 +10,7 @@
         <div class="left">
             <ul class="list_style">
                 <li class="title">よってたかって大茅地区</li>
-                <li class="catch_copy">源流集落の歴史を紐解く</li>
+                <li class="catch_copy">源流集落の歴史をひも解く</li>
                 <div class="sns_icon">
                     <li><a href="https://m.facebook.com/profile.php?id=100064525219339"><img src={ facebook_icon } alt=""></a></li>
                     <li><a href="#"><img src={ instagram_icon } alt=""></a></li>
@@ -105,7 +105,7 @@
     }
 
     footer .wrap .left .sns_icon li {
-        margin-right: 20px;
+        margin-right: 25px;
     }
 
     footer .wrap .center {

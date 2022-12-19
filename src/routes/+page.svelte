@@ -107,9 +107,7 @@
 			</p>
 		</div>
 		<div class="ogaya_img">
-			<div class="inner">
-				<img src={ img_path } alt="">
-			</div>
+			<img src={ img_path } alt="">
 		</div>
 	</div>
 
@@ -120,7 +118,7 @@
 		<div class="text">
 			<h2 class="title">
 				<span>About</span>
-				<p class="about_copy">区有文書から<br>大茅地区の歴史を辿る</p>
+				<p class="about_copy">区有文書から<br>大茅地区の歴史をひも解く</p>
 			</h2>
 			<p class="document">
 				大茅区有文書は、1695年より戦後1960年までの<br>
@@ -230,7 +228,8 @@
 
 	/* お知らせ欄のCSS */
 	#news_card {
-		margin: 80px 80px 0;
+		/* margin: 80px 80px 0; */
+		margin: 20px 80px;
 		display: flex;
 	}
 
@@ -284,11 +283,21 @@
 
 	/* 大茅地区の紹介 */
 	#intro {
-		margin-top: 80px;
-		margin-right: 160px;
-		margin-left: 160px;
 		display: flex;
-		justify-content: space-between;
+		/* align-item: stretch; 子要素の高さが伸縮する指定 */
+		align-items: stretch;
+		justify-content: left;
+		width: 100%;
+		height: 750px;
+		/* flexboxの高さ確認 */
+		/* background-color: #e7e7e7; */
+	}
+
+	#intro .text {
+		width: 36.50%;
+		/* width: auto; */
+		margin-left: 4.65%;
+		padding: 20px 0;
 	}
 
 	#intro .text h2.title span {
@@ -306,7 +315,9 @@
 		letter-spacing: 3px;
 	}
 
-	#intro .text p.ogaya, #intro .text p.ogaya_detail, #intro .text p.yotte_ogaya {
+	#intro .text p.ogaya,
+	#intro .text p.ogaya_detail,
+	#intro .text p.yotte_ogaya {
 		margin: 40px 0;
 		font-family: serif;
 		line-height: 2;
@@ -314,9 +325,15 @@
 		font-weight: bold;
 	}
 
+	#intro .ogaya_img {
+		margin-left: 4.65%;
+		width: 55.50%;
+		overflow: hidden;
+	}
+
 	#intro .ogaya_img img {
-		height: 750px;
-		width: auto;
+		width: 100%;
+		height: auto;
 	}
 
 	/* 区有文書の説明CSS */
@@ -328,13 +345,13 @@
 		width: 100%;
 		height: 700px;
 		/* flexboxの高さ確認 */
-		background-color: #e7e7e7;
+		/* background-color: #e7e7e7; */
 	}
 
 	
 	#about .text {
-		/* width: 38.50%; */
-		width: auto;
+		width: 38.50%;
+		/* width: auto; */
 		margin-left: 4.65%;
 		padding: 20px 0;
 	}
