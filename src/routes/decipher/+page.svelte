@@ -46,7 +46,7 @@
         </div>
         <div class="decipher-item" id="docImage">
             <div class="dicipher-item-image">
-                <img src={ test2img_path } alt="work1">
+                <img src={ testimg_path } alt="work1">
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         background-color: rgb(228, 227, 178);
     }
 
