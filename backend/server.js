@@ -55,15 +55,19 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   let documentPath = req.file.path;
   // bodyのタイトルを取得する
   let documentName = req.body.name;
-  // bodyのdiscovery_yearを取得
-  let discoveryYear = req.body.year;
-  // bodyのowned_locationを取得
-  let ownedLocation = req.body.location;
+  // bodyの文書の説明を取得する
+  let documentExplain = req.body.document_explain;
+
+  const date = new Date();
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth() + 1;
+  const currentYear = date.getFullYear();
+  console.log('aaaaa');
 
   // データベースに接続し、SQLを実行
   connection_doc.query(
-    "INSERT INTO document (document_name, document_path, discovery_year, owned_location) VALUES ((?), (?), (?), (?))",
-    [documentName, documentPath, discoveryYear, ownedLocation],
+    "INSERT INTO document (document_name, document_path, document_explain, added_year, added_month, added_day) VALUES ((?), (?), (?), (?), (?), (?))",
+    [documentName, documentPath, documentExplain, currentYear, currentMonth, currentDay],
     function(error, results, fields) {
       // エラー
       if (error) {
