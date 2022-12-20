@@ -13,7 +13,7 @@
 		<div class="content">
 			<h1>源流集落の<br>歴史をひも解く。</h1>
 			<p>
-				よってたかって大茅地区は、岡山県北部にある西粟倉村大茅地区の区有文書解読を目的とした古文書翻訳サイトです。<br>
+				よってたかって大茅地区は、<br class="br_tab_hidden">岡山県北部にある西粟倉村大茅地区の<br class="br_pc_hidden">区有文書解読を目的とした古文書翻訳サイトです。<br>
 				大茅地区にあるすべての区有文書の解読を目指します。
 			</p>
 			<div class="join_btn">
@@ -21,61 +21,98 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="news_card">
-		<div class="news_card_wrapper news_card_radius">
-			<article class="card">
-				<div class="card_header">
-					<p class="card_title">お知らせのタイトル1</p>
-					<img src={ img_path } alt="" class="card_image">
-				</div>
-				<div class="card_body">
-					<p class="card_text">
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-					</p>
-				</div>
-			</article>
-		</div>
-		<div class="news_card_wrapper news_card_radius">
-			<article class="card">
-				<div class="card_header">
-					<p class="card_title">お知らせのタイトル2</p>
-					<img src={ img_path } alt="" class="card_image">
-				</div>
-				<div class="card_body">
-					<p class="card_text">
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-					</p>
-				</div>
-			</article>
-		</div>
-		<div class="news_card_wrapper news_card_radius">
-			<article class="card">
-				<div class="card_header">
-					<p class="card_title">お知らせのタイトル3</p>
-					<img src={ img_path } alt="" class="card_image">
-				</div>
-				<div class="card_body">
-					<p class="card_text">
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-						お知らせの内容が入力されます。
-					</p>
-				</div>
-			</article>
+	<div class="sp_news">
+		<h2 class="news_header">
+			<span>お知らせ</span>
+		</h2>
+		<div class="news_list">
+			<ul>
+				<li class="news_area">
+					<div class="news_image">
+						<img src={ img_path } alt="">
+					</div>
+					<span class="news_title">お知らせタイトル1</span>
+					<a href="#">
+						<p class="news_text">お知らせの内容が入力されます。</p>
+					</a>
+				</li>
+				<li class="news_area">
+					<div class="news_image">
+						<img src={ img_path } alt="">
+					</div>
+					<span class="news_title">お知らせタイトル2</span>
+					<a href="#">
+						<p class="news_text">お知らせの内容が入力されます。</p>
+					</a>
+				</li>
+				<li class="news_area">
+					<div class="news_image">
+						<img src={ img_path } alt="">
+					</div>
+					<span class="news_title">お知らせタイトル3</span>
+					<a href="#">
+						<p class="news_text">お知らせの内容が入力されます。</p>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
-
+	<div class="pc_news">
+		<div id="news_card">
+			<div class="news_card_wrapper news_card_radius">
+				<article class="card">
+					<div class="card_header">
+						<p class="card_title">お知らせのタイトル1</p>
+						<img src={ img_path } alt="" class="card_image">
+					</div>
+					<div class="card_body">
+						<p class="card_text">
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+						</p>
+					</div>
+				</article>
+			</div>
+			<div class="news_card_wrapper news_card_radius">
+				<article class="card">
+					<div class="card_header">
+						<p class="card_title">お知らせのタイトル2</p>
+						<img src={ img_path } alt="" class="card_image">
+					</div>
+					<div class="card_body">
+						<p class="card_text">
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+						</p>
+					</div>
+				</article>
+			</div>
+			<div class="news_card_wrapper news_card_radius">
+				<article class="card">
+					<div class="card_header">
+						<p class="card_title">お知らせのタイトル3</p>
+						<img src={ img_path } alt="" class="card_image">
+					</div>
+					<div class="card_body">
+						<p class="card_text">
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+							お知らせの内容が入力されます。
+						</p>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+<!--
 	<div id="intro">
 		<div class="text">
 			<h2 class="title">
@@ -88,7 +125,6 @@
 				大茅地区は、春になると15000株の芝桜があたり一面に広がる<br>
 				岡山県北部の限界集落です。
 			</p>
-			<!-- 文章は仮 -->
 			<p class="ogaya_detail">
 				世界的なスノーリゾート・白馬のお隣にあって、<br>
 				地味なイメージがあるかもしれない信濃大町ですが、<br>
@@ -110,7 +146,8 @@
 			<img src={ img_path } alt="">
 		</div>
 	</div>
-
+-->
+<!--
 	<div id="about">
 		<div class="document_img">
 			<img src={ document_img } alt="">
@@ -140,6 +177,7 @@
 			</p>
 		</div>
 	</div>
+-->
 </main>
 
 <style>
@@ -149,8 +187,257 @@
 		padding: 0;
 	}
 
-	/* ファーストビューのCSS */
+	/* レスポンシブ化 (記述: モバイルファースト) */
+	/* ファーストビュー */
 	#first_view {
+		position: relative;
+		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view.jpg);
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		height: calc(100vh - 55px);
+		width: auto;
+	}
+
+	#first_view .content {
+		position: absolute;
+		padding-top: 4%;
+		top: 20vh;
+	}
+
+	#first_view h1 {
+		color: white;
+		font-size: 45px;
+		line-height: 1.5;
+		margin-top: 10px;
+		margin-left: 20px;
+		margin-bottom: 10px;
+		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+	}
+
+	#first_view p {
+		color: white;
+		margin-top: 10px;
+		margin-left: 16px;
+		margin-bottom: 10px;
+		font-family: serif;
+	}
+	
+	.join_btn a {
+		background: white;
+		border-radius: 3px;
+		position: relative;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 20px;
+		margin-left: 15px;
+		max-width: 280px;
+		padding: 10px 25px;
+		color: #313131;
+		transition: 0.3s ease-in-out;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.join_btn a:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		bottom: 0;
+		right: 2rem;
+		font-size: 90%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: right 0.3s;
+		width: 6px;
+		height: 6px;
+		border-top: solid 2px currentColor;
+		border-right: solid 2px currentColor;
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	/* お知らせ */
+	.pc_news {
+		display: none;
+	}
+
+	.sp_news {
+		padding: 0 20px;
+		/* 確認用背景 */
+		background-color: #e4e4e4;
+	}
+
+	.sp_news .news_header {
+		padding: 10px 0;
+	}
+
+	.sp_news a {
+		text-decoration: none;
+	}
+
+	.sp_news .news_area {
+		display: grid;
+		list-style: none;
+		padding: 15px 0 15px 15px;
+		grid-template-rows: 30px 20px;
+		grid-template-columns: 50px 1fr;
+	}
+
+	.sp_news .news_image {
+		width: 100%;
+		height: 100%;
+		grid-row: 1 / 3;
+		grid-column: 1 / 2;
+	}
+
+	.sp_news img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.sp_news .news_title {
+		grid-row: 1 / 2;
+		grid-column: 2 / 3;
+	}
+
+	.sp_news .news_text {
+		grid-row: 2 / 3;
+		grid-column: 2 / 3;
+	}
+ 
+	@media screen and (min-width:480px) { 
+		#first_view .content {
+			position: absolute;
+			padding-top: 0;
+			top: 25vh;
+		}
+	}
+	
+	@media screen and (min-width:768px) and ( max-width:1024px) {
+		.br_tab_hidden {
+			display: none;
+		}
+	}
+
+	@media screen and (min-width:1024px) {
+		.br_tab_hidden{
+			display: none;
+		}
+		
+		.br_pc_hidden {
+			display: none;
+		}
+
+		#first_view {
+			height: calc(100vh - 70px);
+		}
+
+		#first_view .content {
+			padding-top: 4%;
+		}
+
+		#first_view h1 {
+			font-size: 100px;
+			line-height: 1;
+			margin-top: 10%;
+			margin-left: 60px;
+			margin-bottom: 50px;
+			font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+		}
+
+		#first_view p {
+			margin-left: 70px;
+		}
+
+		.join_btn a {
+			margin-top: 2%;
+			margin-right: 0;
+			margin-left: 70px;
+			margin-bottom: 0;
+		}
+
+		.join_btn a:hover {
+			background: #6bb6ff;
+			color: #FFF;
+		}
+
+		.join_btn a:hover:after {
+			right: 1.4rem;
+		}
+
+		.sp_news {
+			display: none;
+		}
+
+		.pc_news {
+			display: block;
+		}
+
+		.pc_news .news_card_wrapper:hover {
+			transform: scale(1.1,1.1);
+			cursor: pointer;
+		}
+
+		.pc_news #news_card {
+			margin: 20px 80px;
+			display: flex;
+		}
+
+		.pc_news #news_card .news_card_wrapper {
+			margin: 1rem auto;
+			width: 380px;
+		}
+
+		.pc_news #news_card .news_card_radius {
+			overflow: hidden;
+			border-radius: 8px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+		}
+
+		.pc_news #news_card .card {
+			background-color: #fff;
+			box-shadow: 0 0 0px rgba(0, 0, 0, .16);
+			color: #212121;
+			text-decoration: none;
+		}
+
+		.pc_news #news_card .card_header {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.pc_news #news_card .card_title {
+			padding: 1rem 1.5rem 0;
+			font-size: 1.6rem;
+			order: 1;
+			font-weight: bold;
+			text-decoration: none;
+			border-bottom: solid 3px black;
+		}
+
+		.pc_news #news_card .card_image {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.pc_news #news_card .card_body {
+			padding: 0.5rem 1.5rem;
+		}
+
+		.pc_news #news_card .card_text {
+			font-size: .8rem;
+			margin-top: 0;
+			text-decoration: none;
+		}
+	}
+
+
+	/* ファーストビューのCSS */
+	/* #first_view {
 		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view.jpg);
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -226,14 +513,13 @@
 		right: 1.4rem;
 	}
 
-	.news_card_wrapper:hover {
-		transform: scale(1.1,1.1); /*画像の拡大*/
-		cursor: pointer; /*カーソルをポインターにする*/
-	}
-
 	/* お知らせ欄のCSS */
-	#news_card {
-		/* margin: 80px 80px 0; */
+	/* .news_card_wrapper:hover {
+		transform: scale(1.1,1.1);
+		cursor: pointer;
+	} */
+
+	/* #news_card {
 		margin: 20px 80px;
 		display: flex;
 	}
@@ -284,23 +570,19 @@
 		font-size: .8rem;
 		margin-top: 0;
 		text-decoration: none;
-	}
+	} */
 
 	/* 大茅地区の紹介 */
-	#intro {
+	/* #intro {
 		display: flex;
-		/* align-item: stretch; 子要素の高さが伸縮する指定 */
 		align-items: stretch;
 		justify-content: left;
 		width: 100%;
 		height: 750px;
-		/* flexboxの高さ確認 */
-		/* background-color: #e7e7e7; */
 	}
 
 	#intro .text {
 		width: 36.50%;
-		/* width: auto; */
 		margin-left: 4.65%;
 		padding: 20px 0;
 	}
@@ -339,24 +621,20 @@
 	#intro .ogaya_img img {
 		width: 100%;
 		height: auto;
-	}
+	} */
 
 	/* 区有文書の説明CSS */
-	#about {
+	/* #about {
 		display: flex;
-		/* align-item: stretch; 子要素の高さが伸縮する指定 */
 		align-items: stretch;
 		justify-content: left;
 		width: 100%;
 		height: 700px;
-		/* flexboxの高さ確認 */
-		/* background-color: #e7e7e7; */
 	}
 
 
 	#about .text {
 		width: 38.50%;
-		/* width: auto; */
 		margin-left: 4.65%;
 		padding: 20px 0;
 	}
@@ -394,5 +672,5 @@
 	#about .document_img img {
 		width: 100%;
 		height: 100%;
-	}
+	} */
 </style>
