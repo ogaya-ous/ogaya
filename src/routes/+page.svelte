@@ -1,6 +1,7 @@
 <script>
 	import document_img from '$lib/images/document_img.jpg';
 	import img_path from '$lib/images/sample.jpg';
+	import arrow from '$lib/images/arrow.png'
 </script>
 
 <svelte:head>
@@ -14,13 +15,14 @@
 			<h1>源流集落の<br>歴史をひも解く。</h1>
 			<p>
 				よってたかって大茅地区は、<br class="br_tab_hidden">岡山県北部にある西粟倉村大茅地区の<br class="br_pc_hidden">区有文書解読を目的とした古文書翻訳サイトです。<br>
-				大茅地区にあるすべての区有文書の解読を目指します。
+				大茅地区すべての区有文書の解読を目指します。
 			</p>
 			<div class="join_btn">
 				<a href="/register">参加する</a>
 			</div>
 		</div>
 	</div>
+
 	<div class="sp_news">
 		<h2 class="news_header">
 			<span>お知らせ</span>
@@ -28,35 +30,36 @@
 		<div class="news_list">
 			<ul>
 				<li class="news_area">
-					<div class="news_image">
-						<img src={ img_path } alt="">
-					</div>
 					<span class="news_title">お知らせタイトル1</span>
 					<a href="#">
 						<p class="news_text">お知らせの内容が入力されます。</p>
 					</a>
+					<div class="news_image">
+						<img src={ arrow } alt="">
+					</div>
 				</li>
 				<li class="news_area">
-					<div class="news_image">
-						<img src={ img_path } alt="">
-					</div>
 					<span class="news_title">お知らせタイトル2</span>
 					<a href="#">
 						<p class="news_text">お知らせの内容が入力されます。</p>
 					</a>
+					<div class="news_image">
+						<img src={ arrow } alt="">
+					</div>
 				</li>
 				<li class="news_area">
-					<div class="news_image">
-						<img src={ img_path } alt="">
-					</div>
 					<span class="news_title">お知らせタイトル3</span>
 					<a href="#">
 						<p class="news_text">お知らせの内容が入力されます。</p>
 					</a>
+					<div class="news_image">
+						<img src={ arrow } alt="">
+					</div>
 				</li>
 			</ul>
 		</div>
 	</div>
+
 	<div class="pc_news">
 		<div id="news_card">
 			<div class="news_card_wrapper news_card_radius">
@@ -112,8 +115,11 @@
 			</div>
 		</div>
 	</div>
-<!--
+
 	<div id="intro">
+		<div class="sp_ogaya_img">
+			<img src={ img_path } alt="">
+		</div>
 		<div class="text">
 			<h2 class="title">
 				<span>Introduction</span>
@@ -122,35 +128,40 @@
 					</p>
 			</h2>
 			<p class="ogaya">
-				大茅地区は、春になると15000株の芝桜があたり一面に広がる<br>
-				岡山県北部の限界集落です。
+				大茅地区は、春になると15000株の<br>
+				芝桜があたり一面に広がる岡山県北部の<br>
+				限界集落です。
 			</p>
-			<p class="ogaya_detail">
-				世界的なスノーリゾート・白馬のお隣にあって、<br>
-				地味なイメージがあるかもしれない信濃大町ですが、<br>
-				実は、黒部ダムの長野県側の玄関口があるだけでなく、<br>
-				周囲の山並みを水鏡に映す仁科三湖、<br>
-				長い歳月を経て人々が築き上げてきた美しい田園風景や町並み、<br>
-				パウダースノーのスキー場、心安らぐ温泉などなど、<br>
-				旅心を満たすコンテンツが満載です。
-			</p>
+			<!-- <p class="ogaya_detail">
+				説明テキスト説明テキスト説明テキスト<br>
+				説明テキスト説明テキスト説明テキスト<br>
+				説明テキスト説明テキスト説明テキスト<br>
+				説明テキスト説明テキスト説明テキスト<br>
+				説明テキスト説明テキスト説明テキスト<br>
+				説明テキスト説明テキスト説明テキスト<br>
+				説明テキスト説明テキスト説明テキスト
+			</p> -->
 			<p class="yotte_ogaya">
 				「よってたかって大茅地区」では、<br>
-				春夏秋冬、とりどりに変わる大茅地区の自然の魅力と、<br>
-				その魅力を五感で感じられるあんなこと、こんなことを、映像でご紹介。<br>
+				春夏秋冬、とりどりに変わる大茅地区の<br>
+				自然の魅力と、その魅力を五感で感じる<br>
+				あんなこと、こんなことを、ご紹介。<br>
 				めちゃくちゃ　限界集落。<br>
 				あした行ってみたくなる、大茅地区です。
 			</p>
 		</div>
 		<div class="ogaya_img">
-			<img src={ img_path } alt="">
+			<div class="inner">
+				<img src={ img_path } alt="">
+			</div>
 		</div>
 	</div>
--->
-<!--
+
 	<div id="about">
 		<div class="document_img">
-			<img src={ document_img } alt="">
+			<div class="inner">
+				<img src={ document_img } alt="">
+			</div>
 		</div>
 		<div class="text">
 			<h2 class="title">
@@ -159,25 +170,31 @@
 			</h2>
 			<p class="document">
 				大茅区有文書は、1695年より戦後1960年までの<br>
-				各時代の方々の継続した努力で大茅地区に残された<br>
-				2000タイトルにも及ぶ文章の総称です。
+				各時代の方々の継続した努力で大茅地区に<br>
+				残された2000タイトルにも及ぶ文章の総称です。
 			</p>
 			<p class="document_detail">
-				20年以上前に解読できる方2人で数年かけて目録を作成しました。<br>
-				現在、この目録がある事でどの様な古文書が存在するのか<br>
+				20年以上前に解読できる方2人で数年かけて<br>
+				目録を作成しました。<br>
+				現在、この目録がある事で<br>
+				どの様な古文書が存在するのか<br>
 				判断が可能な状態になっております。<br>
-				しかし、目録を作成された恩師たちも９０歳を過ぎ、<br>
-				大茅区有文書の理解のある方も少なくなっています。
+				しかし、目録を作成された恩師たちも<br>
+				９０歳を過ぎ、大茅区有文書の理解のある方も<br>
+				少なくなっています。
 			</p>
 			<p class="document_outlook">
-				大茅地区の祖先の人達知り、後世に残して行くためにも<br>
-				区有文書の内容を伝える必要が有ると感じています。<br>
-				よってたかって大茅地区を通して皆様の力をお借りし、<br>
-				永年温めて来ました、解読が出来ればと期待しています。<br>
+				大茅地区の祖先の人達知り、<br>
+				後世に残して行くためにも<br>
+				区有文書の内容を伝える必要が有ると<br>
+				感じています。<br>
+				よってたかって大茅地区を通して<br>
+				皆様の力をお借りし、<br>
+				永年温めて来ました、<br>
+				解読が出来ればと期待しています。<br>
 			</p>
 		</div>
 	</div>
--->
 </main>
 
 <style>
@@ -265,64 +282,195 @@
 	}
 
 	.sp_news {
-		padding: 0 20px;
-		/* 確認用背景 */
-		background-color: #e4e4e4;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		padding: 0 5.13%;
 	}
 
 	.sp_news .news_header {
-		padding: 10px 0;
+		padding-bottom: 20px;
+		 font-family: 'Noto Serif JP', serif;
 	}
 
 	.sp_news a {
+		color: black;
 		text-decoration: none;
 	}
 
 	.sp_news .news_area {
 		display: grid;
 		list-style: none;
-		padding: 15px 0 15px 15px;
+		align-items: center;
+		padding: 4.29% 0 4.29% 4.29%;
 		grid-template-rows: 30px 20px;
-		grid-template-columns: 50px 1fr;
+		grid-template-columns: 285px 50px;
+		border-bottom: 1px solid #e4e4e4;
+	}
+
+	.sp_news .news_area:nth-child(1) {
+		border-top: 1px solid #e4e4e4;
+	}
+
+	.sp_news .news_title {
+		grid-row: 1 / 2;
+		grid-column: 1 / 2;
+		font-size: 18px;
+		font-weight: bold;
+		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+	}
+
+	.sp_news .news_text {
+		grid-row: 2 / 3;
+		grid-column: 1 / 3;
+		font-family: serif;
 	}
 
 	.sp_news .news_image {
 		width: 100%;
 		height: 100%;
 		grid-row: 1 / 3;
-		grid-column: 1 / 2;
+		grid-column: 2 / 3;
 	}
 
 	.sp_news img {
+		width: 40%;
+		height: 40%;
+		transform: translateY(80%);
+	}
+
+	/* 大茅地区の紹介 */
+	.ogaya_img {
+		display: none;		
+	}
+	
+	#intro .sp_ogaya_img {
+		width: 100%;
+		height: 254.344px;
+		overflow: hidden;
+	}
+
+	#intro .sp_ogaya_img img {
 		width: 100%;
 		height: 100%;
+		object-fit: cover;
 	}
 
-	.sp_news .news_title {
-		grid-row: 1 / 2;
-		grid-column: 2 / 3;
+	#intro .text {
+		text-align: center;
 	}
 
-	.sp_news .news_text {
-		grid-row: 2 / 3;
-		grid-column: 2 / 3;
+	#intro .text h2.title span {
+		display: block;
+		margin: 10px 0 10px;
+		font-size: 12px;
+		font-family: 'Roboto Condensed', sans-serif;
+		letter-spacing: 5px;
+	}
+
+	#intro .text h2.title p.intro_copy {
+		font-size: 20px;
+		font-family: serif;
+		line-height: 1.8;
+		letter-spacing: 3px;
+	}
+
+	#intro .text p.ogaya,
+	#intro .text p.ogaya_detail,
+	#intro .text p.yotte_ogaya {
+		margin: 40px 0;
+		font-family: serif;
+		font-size: 14px;
+		line-height: 2;
+		letter-spacing: 3px;
+		font-weight: bold;
+	}
+
+	/* 区有文書 */
+	#about .document_img {
+		width: 100%;
+		height: 254.344px;
+		overflow: hidden;
+	}
+
+	#about .document_img img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	#about .text {
+		text-align: center;
+	}
+
+	#about .text h2.title span {
+		display: block;
+		margin: 10px 0 10px;
+		font-size: 12px;
+		font-family: 'Roboto Condensed', sans-serif;
+		letter-spacing: 5px;
+	}
+
+	#about .text h2.title p.about_copy {
+		font-size: 20px;
+		font-family: serif;
+		line-height: 1.8;
+		letter-spacing: 3px;
+	}
+
+	#about .text p.document,
+	#about .text p.document_detail,
+	#about .text p.document_outlook {
+		margin: 40px 0;
+		font-family: serif;
+		font-size: 14px;
+		line-height: 2;
+		letter-spacing: 3px;
+		font-weight: bold;
 	}
  
 	@media screen and (min-width:480px) { 
+		/* ファーストビュー */
 		#first_view .content {
 			position: absolute;
 			padding-top: 0;
 			top: 25vh;
 		}
+
+		/* お知らせ */
+		.sp_news {
+			padding: 0 30px;
+		}
+
+		.sp_news .news_area {
+			padding: 8.27% 0 8.27% 8.27%;
+		}
 	}
 	
 	@media screen and (min-width:768px) and ( max-width:1024px) {
+		/* ファーストビュー */
 		.br_tab_hidden {
 			display: none;
+		}
+
+		/* お知らせ */
+		.sp_news {
+			padding: 0 13.02%;
+		}
+
+		.sp_news .news_area {
+			grid-template-rows: 30px 20px;
+			grid-template-columns: 400px 50px;
+		}
+
+		.sp_news img {
+			width: 40%;
+			height: 40%;
+			transform: translateY(80%);
 		}
 	}
 
 	@media screen and (min-width:1024px) {
+		/* ファーストビュー */
 		.br_tab_hidden{
 			display: none;
 		}
@@ -336,6 +484,7 @@
 		}
 
 		#first_view .content {
+			top: 0;
 			padding-top: 4%;
 		}
 
@@ -368,6 +517,7 @@
 			right: 1.4rem;
 		}
 
+		/* お知らせ */
 		.sp_news {
 			display: none;
 		}
@@ -433,244 +583,114 @@
 			margin-top: 0;
 			text-decoration: none;
 		}
+
+		/* 大茅地区 */
+		.sp_ogaya_img {
+			display: none;
+		}
+
+		.ogaya_img {
+			display: block;
+		}
+
+		#intro {
+			display: flex;
+			align-items: stretch;
+			width: 100%;
+			height: 100%;
+		}
+
+		#intro .text {
+			text-align: left;
+			margin-left: 4.65%;
+			width: 558.437px;
+			padding: 20px 0 0;
+		}
+
+		#intro .text h2.title span {
+			margin: 0 0 10px;
+			font-size: 16px;
+		}
+
+		#intro .text h2.title p.intro_copy {
+			font-size: 36px;
+		}
+
+		#intro .text p.ogaya,
+		#intro .text p.ogaya_detail,
+		#intro .text p.yotte_ogaya {
+			font-size: 16px;
+		}
+
+		#intro .ogaya_img {
+			margin-left: 4.65%;
+			position: relative;
+			width: calc(100% - 558.437px);
+			height: auto;
+			object-fit: cover;
+			overflow: hidden;
+		}
+
+		#intro .ogaya_img .inner {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+
+		#intro .ogaya_img .inner img {
+			width: 100%;
+			height: 100%;
+		}
+
+		/* 区有文書 */
+		#about {
+			display: flex;
+			align-items: stretch;
+			width: 100%;
+			height: 100%;
+		}
+
+		#about .text {
+			text-align: left;
+			margin-left: 4.65%;
+			margin-right: 4.65%;
+			width: 558.437px;
+			padding: 20px 0 0;
+		}
+
+		#about .text h2.title span {
+			margin: 0 0 10px;
+			font-size: 16px;
+		}
+
+		#about .text h2.title p.about_copy {
+			font-size: 36px;
+		}
+
+		#about .text p.document,
+		#about .text p.document_detail,
+		#about .text p.document_outlook {
+			font-size: 16px;
+		}
+
+		#about .document_img {
+			margin-left: 0;
+			position: relative;
+			width: calc(100% - 558.437px);
+			height: auto;
+			object-fit: cover;
+			overflow: hidden;
+		}
+
+		#about .document_img .inner {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+
+		#about .document_img .inner img {
+			width: 100%;
+			height: 100%;
+		}
 	}
-
-
-	/* ファーストビューのCSS */
-	/* #first_view {
-		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view.jpg);
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: cover;
-		height: calc(100vh - 70px);
-		width: auto;
-	}
-
-	#first_view .content {
-		padding-top: 4%;
-	}
-
-	#first_view h1 {
-		color: white;
-		font-size: 100px;
-		line-height: 1;
-		margin-top: 10%;
-		margin-left: 60px;
-		margin-bottom: 50px;
-		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
-	}
-
-	#first_view p {
-		color: white;
-		margin-left: 70px;
-		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
-	}
-
-	.join_btn a {
-		background: white;
-		border-radius: 3px;
-		position: relative;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		margin-top: 2%;
-		margin-right: 0;
-		margin-left: 70px;
-		margin-bottom: 0;
-		max-width: 280px;
-		padding: 10px 25px;
-		color: #313131;
-		transition: 0.3s ease-in-out;
-		font-weight: 500;
-		text-decoration: none;
-	}
-
-	.join_btn a:after {
-		content: "";
-		position: absolute;
-		top: 50%;
-		bottom: 0;
-		right: 2rem;
-		font-size: 90%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transition: right 0.3s;
-		width: 6px;
-		height: 6px;
-		border-top: solid 2px currentColor;
-		border-right: solid 2px currentColor;
-		transform: translateY(-50%) rotate(45deg);
-	}
-
-	.join_btn a:hover {
-		background: #6bb6ff;
-		color: #FFF;
-	}
-
-	.join_btn a:hover:after {
-		right: 1.4rem;
-	}
-
-	/* お知らせ欄のCSS */
-	/* .news_card_wrapper:hover {
-		transform: scale(1.1,1.1);
-		cursor: pointer;
-	} */
-
-	/* #news_card {
-		margin: 20px 80px;
-		display: flex;
-	}
-
-	#news_card .news_card_wrapper {
-		margin: 1rem auto;
-		width: 380px;
-	}
-
-	#news_card .news_card_radius {
-		overflow: hidden;
-		border-radius: 8px;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
-	}
-
-	#news_card .card {
-		background-color: #fff;
-		box-shadow: 0 0 0px rgba(0, 0, 0, .16);
-		color: #212121;
-		text-decoration: none;
-	}
-
-	#news_card .card_header {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	#news_card .card_title {
-		padding: 1rem 1.5rem 0;
-		font-size: 1.6rem;
-		order: 1;
-		font-weight: bold;
-		text-decoration: none;
-		border-bottom: solid 3px black;
-	}
-
-	#news_card .card_image {
-		width: 100%;
-		height: 200px;
-		object-fit: cover;
-	}
-
-	#news_card .card_body {
-		padding: 0.5rem 1.5rem;
-	}
-
-	#news_card .card_text {
-		font-size: .8rem;
-		margin-top: 0;
-		text-decoration: none;
-	} */
-
-	/* 大茅地区の紹介 */
-	/* #intro {
-		display: flex;
-		align-items: stretch;
-		justify-content: left;
-		width: 100%;
-		height: 750px;
-	}
-
-	#intro .text {
-		width: 36.50%;
-		margin-left: 4.65%;
-		padding: 20px 0;
-	}
-
-	#intro .text h2.title span {
-		display: block;
-		margin-bottom: 10px;
-		font-size: 16px;
-		font-family: 'Roboto Condensed', sans-serif;
-		letter-spacing: 5px;
-	}
-
-	#intro .text h2.title p.intro_copy {
-		font-size: 35px;
-		font-family: serif;
-		line-height: 1.8;
-		letter-spacing: 3px;
-	}
-
-	#intro .text p.ogaya,
-	#intro .text p.ogaya_detail,
-	#intro .text p.yotte_ogaya {
-		margin: 40px 0;
-		font-family: serif;
-		line-height: 2;
-		letter-spacing: 3px;
-		font-weight: bold;
-	}
-
-	#intro .ogaya_img {
-		margin-left: 4.65%;
-		width: 55.50%;
-		overflow: hidden;
-	}
-
-	#intro .ogaya_img img {
-		width: 100%;
-		height: auto;
-	} */
-
-	/* 区有文書の説明CSS */
-	/* #about {
-		display: flex;
-		align-items: stretch;
-		justify-content: left;
-		width: 100%;
-		height: 700px;
-	}
-
-
-	#about .text {
-		width: 38.50%;
-		margin-left: 4.65%;
-		padding: 20px 0;
-	}
-
-	#about .text h2.title span {
-		display: block;
-		margin-bottom: 10px;
-		font-size: 16px;
-		font-family: 'Roboto Condensed', sans-serif;
-		letter-spacing: 5px;
-	}
-
-	#about .text h2.title p.about_copy {
-		font-size: 35px;
-		font-family: serif;
-		line-height: 1.8;
-		letter-spacing: 3px;
-	}
-
-	#about .text p.document,
-	#about .text p.document_detail,
-	#about .text p.document_outlook {
-		margin: 40px 0;
-		font-family: serif;
-		line-height: 2;
-		letter-spacing: 3px;
-		font-weight: bold;
-	}
-
-	#about .document_img {	
-		width: 55.50%;
-		overflow: hidden;
-	}
-
-	#about .document_img img {
-		width: 100%;
-		height: 100%;
-	} */
 </style>
