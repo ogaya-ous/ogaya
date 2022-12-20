@@ -75,6 +75,7 @@
         background-color: #303030;
         font-family: 'Noto Serif JP', serif;
         font-weight: 300;
+        clear:both;
     }
 
     .list_style {
