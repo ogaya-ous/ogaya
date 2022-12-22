@@ -1,6 +1,9 @@
 <script>
-	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
+	import { onMount } from 'svelte';
+	import { closeModal, Modals, modals, openModal } from 'svelte-modals';
+	import Modal from './Modal.svelte';
 
 	// header ハンバーガーメニューの制御
 	let root;
@@ -19,7 +22,24 @@
 			hamburger = false;
 		}
 	});
+	function handleOpen() {
+		openModal(Modal, {
+			title: `Alert #${$modals.length + 1}`,
+			message: "This is an alert",
+			onOpenAnother: () => {
+				handleOpen()
+			}
+		})
+	}
 </script>
+
+<Modals>
+  <div
+    slot="backdrop"
+    class="backdrop"
+    on:click={closeModal}
+  />
+</Modals>
 
 <header>
 	<div bind:this={ root }>
@@ -67,7 +87,14 @@
 								<li><a href="/document?page=1">Document</a></li>
 								<li><a href="#">History</a></li>
 								<li><a href="#">Contact</a></li>
-								<li class="login_btn"><a href="/login">Login</a></li>
+								{#if Object.keys($page.data.session || {}).length}
+									{#if $page.data.session.user.image}
+										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar" /></li>
+									{/if}
+								{:else}
+									<li class="login_btn"><a href="javascript:void(0)" on:click={ handleOpen }>Login</a></li>
+								{/if}
+								<!-- <li class="login_btn"><button on:click={ handleOpen }>Login</button></li> -->
 							</ul>
 						</div>
 					</nav>
@@ -167,6 +194,15 @@
 		border-radius: 4px;
 	}
 
+	.backdrop {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: rgba(0,0,0,0.50)
+	}
+
 	.sp_nav .toggle-btn span:nth-child(1) {
 		top: 4px;
 	}
@@ -216,7 +252,7 @@
 		.sp_nav nav .inner {
 			padding: 10px 50px;
 		}
-		
+
 		.sp_nav .hamburger nav {
 			overflow: scroll;
 		}
@@ -227,7 +263,7 @@
 		.sp_nav nav {
 		left: -1000px;
 	}
-	
+
 	}
 
 	@media screen and (min-width:1024px) {
@@ -300,6 +336,15 @@
 		.pc_nav .logo img {
 			width: auto;
 			height: 50px;
+		}
+		.avatar {
+			border-radius: 2rem;
+			float: left;
+			height: 2.8rem;
+			width: 2.8rem;
+			background-color: white;
+			background-size: cover;
+			background-repeat: no-repeat;
 		}
 	}
 </style>
