@@ -25,6 +25,7 @@
 </script>
 
 <main>
+    <h2> 大茅区有文書のアップロード</h2>
     <form on:submit|preventDefault={handleSubmit}>
         <label for="name">タイトル:</label><br>
         <input type="text" id="name" name="name"><br>
@@ -35,3 +36,12 @@
         <input type="submit" value="送信">
     </form>
 </main>
+
+<style>
+    h2{
+        margin: 5px;
+        color: aliceblue;
+        background-color: #7b7b7b;
+    }
+
+</style>
