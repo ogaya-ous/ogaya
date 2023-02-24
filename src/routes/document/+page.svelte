@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores';
-    import img_path from '$lib/images/img_doc1.jpg';
+    // import img_path from '$lib/images/img_doc1.jpg';
     import axios from 'axios';
 
     async function getDocument(page_num){
@@ -12,6 +12,7 @@
     $: page_num = $page.url.searchParams.get('page');
     $: next_page = Number(page_num) + 1;
     $: prev_page = Number(page_num) - 1;
+    let img_url = 'http://localhost:8000/'
 </script>
 
 
@@ -25,7 +26,7 @@
             {#if documentData.data[0]}
             <div class="document">
                 <article>
-                    <img src={ img_path } width="313" height="269" alt="work1">
+                    <img src={ img_url+documentData.data[0].document_path } width="313" height="269" alt="work1">
                     <div class="added_date">
                         <time>{ documentData.data[0].added_year }年{ documentData.data[0].added_month }月{ documentData.data[0].added_day }日</time>
                     </div>
@@ -37,7 +38,7 @@
             {#if documentData.data[1]}
             <div class="document">
                 <article>
-                    <img src={ img_path } width="313" height="269" alt="work2">
+                    <img src={ img_url+documentData.data[1].document_path } width="313" height="269" alt="work2">
                     <div class="added_date">
                         <time>{ documentData.data[1].added_year }年{ documentData.data[1].added_month }月{ documentData.data[1].added_day }日</time>
                     </div>
@@ -49,7 +50,7 @@
             {#if documentData.data[2]}
             <div class="document">
                 <article>
-                    <img src={ img_path } width="313" height="269" alt="work3">
+                    <img src={ img_url+documentData.data[2].document_path } width="313" height="269" alt="work3">
                     <div class="added_date">
                         <time>{ documentData.data[2].added_year }年{ documentData.data[2].added_month }月{ documentData.data[2].added_day }日</time>
                     </div>
@@ -61,7 +62,7 @@
             {#if documentData.data[3]}
             <div class="document">
                 <article>
-                    <img src={ img_path } width="313" height="269" alt="work4">
+                    <img src={ img_url+documentData.data[3].document_path } width="313" height="269" alt="work4">
                     <div class="added_date">
                         <time>{ documentData.data[3].added_year }年{ documentData.data[3].added_month }月{ documentData.data[3].added_day }日</time>
                     </div>
@@ -73,7 +74,7 @@
             {#if documentData.data[4]}
             <div class="document">
                 <article>
-                    <img src={ img_path } width="313" height="269" alt="work5">
+                    <img src={ img_url+documentData.data[4].document_path } width="313" height="269" alt="work5">
                     <div class="added_date">
                         <time>{ documentData.data[4].added_year }年{ documentData.data[4].added_month }月{ documentData.data[4].added_day }日</time>
                     </div>

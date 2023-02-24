@@ -7,6 +7,7 @@ import mysql from 'mysql2';
 
 const app = express();
 app.use(cors());
+app.use(express.static('public'));
 
 // MySQLとの接続情報を定義 (document_db)
 const connection_doc = mysql.createConnection({
@@ -41,6 +42,7 @@ const upload = multer({ storage: storage });
 // ファイルアップロード用のルーティングを設定する
 app.post('/api/upload', upload.single('image'), (req, res) => {
   // アップロードされた画像が存在しない場合は、処理を中断する
+  console.log('画像きた')
   if (!req.file) {
     res.status(400).send('画像が選択されていません');
     return;
@@ -53,6 +55,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 
   // アップロードされた画像のパスを取得する
   let documentPath = req.file.path;
+  documentPath = documentPath.slice(7, documentPath.length)
   // bodyのタイトルを取得する
   let documentName = req.body.name;
   // bodyの文書の説明を取得する
