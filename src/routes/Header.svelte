@@ -57,7 +57,7 @@
 								<li class:nav_click={ nav_click }><a href="/">Home</a></li>
 								<li class:nav_click={ nav_click }><a href="/news">News</a></li>
 								<li class:nav_click={ nav_click }><a href="/document?page=1">Document</a></li>
-								<li class:nav_click={ nav_click }><a href="#">History</a></li>
+								<li class:nav_click={ nav_click }><a href="/history">History</a></li>
 								<li class:nav_click={ nav_click }><a href="#">Contact</a></li>
 								<li class:nav_click={ nav_click }><a href="/login">Login</a></li>
 							</ul>
@@ -85,7 +85,7 @@
 								<li><a href="/">Home</a></li>
 								<li><a href="/news">News</a></li>
 								<li><a href="/document?page=1">Document</a></li>
-								<li><a href="#">History</a></li>
+								<li><a href="/history">History</a></li>
 								<li><a href="#">Contact</a></li>
 								{#if Object.keys($page.data.session || {}).length}
 									{#if $page.data.session.user.image}
