@@ -2,10 +2,7 @@
 	import document_img from '$lib/images/document_img.jpg';
 	import img_path from '$lib/images/sample.jpg';
 	import arrow from '$lib/images/arrow.png';
-<<<<<<< HEAD
 	import intro_img from '$lib/images/intro_img.jpg';
-=======
->>>>>>> bccf1999bb63582b26944bf6b72f70b13195495a
 </script>
 
 <svelte:head>
