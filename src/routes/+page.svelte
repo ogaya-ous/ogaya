@@ -1,7 +1,8 @@
 <script>
 	import document_img from '$lib/images/document_img.jpg';
 	import img_path from '$lib/images/sample.jpg';
-	import arrow from '$lib/images/arrow.png'
+	import arrow from '$lib/images/arrow.png';
+	import intro_img from '$lib/images/intro_img.jpg';
 </script>
 
 <svelte:head>
@@ -118,7 +119,7 @@
 
 	<div id="intro">
 		<div class="sp_ogaya_img">
-			<img src={ img_path } alt="">
+			<img src={ intro_img } alt="">
 		</div>
 		<div class="text">
 			<h2 class="title">
@@ -152,7 +153,7 @@
 		</div>
 		<div class="ogaya_img">
 			<div class="inner">
-				<img src={ img_path } alt="">
+				<img src={ intro_img } alt="">
 			</div>
 		</div>
 	</div>
@@ -613,6 +614,7 @@
 		}
 
 		#intro .text h2.title p.intro_copy {
+			width: 510px;
 			font-size: 36px;
 		}
 
