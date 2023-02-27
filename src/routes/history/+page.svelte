@@ -1,19 +1,5 @@
 <script>
-    import { page } from '$app/stores';
-    // import img_path from '$lib/images/img_doc1.jpg';
-    import axios from 'axios';
-
-    async function getDocument(page_num){
-		const url = 'http://localhost:8000';
-		return await axios.get(url + '/api/document/' + page_num);
-    }
-
-    // 文書一覧のページ番号
-    $: page_num = $page.url.searchParams.get('page');
-    $: next_page = Number(page_num) + 1;
-    $: prev_page = Number(page_num) - 1;
-    let img_url = 'http://localhost:8000/'
-
+    import doc from '$lib/images/document_img.jpg';
 </script>
 
 <main>
@@ -21,23 +7,34 @@
     <div id="cardlayout-wrap"><!-- カードレイアウトをラッピング -->
         <section class="card-list">
             <a class="card-link" href="#">
-                <figure class="card-figure"><img src="/images/demo.png"></figure>
-                <h2 class="card-title">カードレイアウト1</h2>
-                <p class="card-text-tax">Flexboxとcale()を使ってかんたんにレスポンシブ対応カードレイアウトをつくる手順のご紹介</p>
+                <figure class="card-figure"><img src={doc}></figure>
+                <h4 class="card-user">ユーザーネーム</h4>
+                <h2 class="card-title">文書の名前</h2>
+                <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
         </section>
         <section class="card-list">
             <a class="card-link" href="#">
-                <figure class="card-figure"><img src="/images/demo.png"></figure>
-                <h2 class="card-title">カードレイアウト2</h2>
-                <p class="card-text-tax">Flexboxとcale()を使ってかんたんにレスポンシブ対応カードレイアウトをつくる手順のご紹介</p>
+                <figure class="card-figure"><img src={doc}></figure>
+                <h4 class="card-user">ユーザーネーム</h4>
+                <h2 class="card-title">文書の名前</h2>
+                <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
         </section>
         <section class="card-list">
             <a class="card-link" href="#">
-                <figure class="card-figure"><img src="/images/demo.png"></figure>
-                <h2 class="card-title">カードレイアウト3</h2>
-                <p class="card-text-tax">Flexboxとcale()を使ってかんたんにレスポンシブ対応カードレイアウトをつくる手順のご紹介</p>
+                <figure class="card-figure"><img src={doc}></figure>
+                <h4 class="card-user">ユーザーネーム</h4>
+                <h2 class="card-title">文書の名前</h2>
+                <p class="card-text-tax">冒頭の翻訳文</p>
+            </a>
+        </section>
+        <section class="card-list">
+            <a class="card-link" href="#">
+                <figure class="card-figure"><img src={doc}></figure>
+                <h4 class="card-user">ユーザーネーム</h4>
+                <h2 class="card-title">文書の名前</h2>
+                <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
         </section>
     </div><!-- カードレイアウトをラッピング -->
@@ -50,7 +47,6 @@
         color: aliceblue;
         background-color: #7b7b7b;
     }
-
     /* カードレイアウト部分をラッピングし、
     Flexboxを指定"space-between"で各アイテムを均等に配置し、
     最初と最後のアイテムを端に寄せます。*/
@@ -94,6 +90,11 @@
         font-size: 1.8em;
     }
 
+    /* カードレイアウトのユーザー名部分 */
+    .card-user {
+        margin: 0.6em 0 0;
+    }
+
     /* カードレイアウトの説明文部分 */
     .card-text-tax {
         margin: 0;
@@ -107,8 +108,51 @@
         padding: 0;
         width: 96%;
         background: #f0f0f0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
+
+    /* カードレイアウトの文書の写真部分のアニメーション */
+    .card-list:hover .card-figure::before {
+        opacity: 1;
+    }
+
+    .card-list:hover .card-figure::after {
+        content: "解読文を読む";
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        opacity: 1;
+    }
+
+    .card-figure::before, .card-figure::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #fafafa;
+        background-color: rgba(0, 0, 0, 0.4);
+        font-size: 2rem;
+        -webkit-transition: opacity .5s;
+        transition: opacity .5s;
+        opacity: 0;
+    }
+
+    .card-figure {
+        position: relative;
+
+        overflow: hidden;
+
+    }
+    
 
     /* 画面幅768px以上の場合カードレイアウトを2カラムで配置 */
     @media all and (min-width: 768px) {

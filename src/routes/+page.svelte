@@ -1,7 +1,7 @@
 <script>
 	import document_img from '$lib/images/document_img.jpg';
 	import img_path from '$lib/images/sample.jpg';
-	import arrow from '$lib/images/arrow.png'
+	import arrow from '$lib/images/arrow.png';
 </script>
 
 <svelte:head>

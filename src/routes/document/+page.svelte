@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     // import img_path from '$lib/images/img_doc1.jpg';
     import axios from 'axios';
+    import { loop_guard } from 'svelte/internal';
 
     async function getDocument(page_num){
 		const url = 'http://localhost:8000';
