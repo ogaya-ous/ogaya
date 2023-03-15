@@ -30,17 +30,18 @@
         <div class="decipher-item">
             <div class="decipher-item-text">
                 <p class="paper vertical-text" contenteditable="true">
-                    <span>草枕</span>
-                    <span>牧野宗太は、こう考えた。</span>
-                    <span>「明日は叔父の家に行こう。」</span>
-                    <span>叔父ならこの事件について何か知っていると考えたためである。</span>
-                    <span>しかし、叔父の家まではタクシーで３分もかかってしまう。</span>
-                    <span>一刻を争うこのタイミングでは、時間が掛かりすぎる。</span>
-                    <span>覚悟を決め宗太は異世界の門へ入っていくのであった。</span>
-                    <span>第三章完</span>
+                    <span>恐れながら書付にてお訴え申し上げます</span>
+                    <span>　　　　　土屋保三郎領分</span>
+                    <span>　　　　　　作州吉田郡坂根村惣代</span>
+                    <span>　　　　　　　訴訟人　庄屋　源太郎</span>
+                    <span>　　　　　　　訴訟人　問屋　源四郎</span>
+                    <span>あきない荷物宿次の件での争い</span>
+                    <span>　　　　　当御支払所</span>
+                    <span>　　　　　　　相手　庄屋　甚兵衛</span>
+                    <span>　　　　　　　相手　年寄　傅四郎</span>
                     <br>
-                    <span>門を潜るとそこは一面の雪景色であった。</span>
-                    <span>第四章完</span>
+                    <span>右の訴訟人源太郎、源四郎が申し上げます。</span><br>
+                    <span>坂根村は昔より、</span>
                 </p>
             </div>
         </div>
