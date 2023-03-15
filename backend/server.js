@@ -20,8 +20,11 @@ const connection_doc = mysql.createConnection({
 connection_doc.connect((err) => {
   if (err) {
     // エラーが発生した場合は、エラーを表示
+    console.log('connect failed');
     console.error(err.message);
     return;
+  } else {
+    console.log('connect clear!');
   }
 });
 
@@ -65,7 +68,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   const currentDay = date.getDate();
   const currentMonth = date.getMonth() + 1;
   const currentYear = date.getFullYear();
-  console.log('aaaaa');
+  console.log('aaaaatest');
 
   // データベースに接続し、SQLを実行
   connection_doc.query(
@@ -74,7 +77,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
     function(error, results, fields) {
       // エラー
       if (error) {
-        console.log(error);
+        console.log("error");
         return;
       }
       console.log('画像のパスを格納しました');

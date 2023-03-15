@@ -166,6 +166,8 @@
         max-width: 305px;
         margin-right: 20px;
         cursor: pointer;
+        object-fit: cover;
+        object-position: right top;
     }
     div#document_list section#work article h3 {
         border-left: 5px solid #000;

@@ -141,8 +141,8 @@
 				<br>
 				冬は、あらゆるものが雪で覆い尽くされ一面の銀世界が広がる<br>
 				<br>
-				など大茅地区は、<br>
-				四季折々、うつろいゆく美しい自然が楽しめます。<br>
+				など大茅地区は、四季折々、<br>
+				うつろいゆく美しい自然が楽しめます。<br>
 				<br>
 				ぜひ足を運んでみてください。
 			</p>
@@ -205,7 +205,7 @@
 	/* ファーストビュー */
 	#first_view {
 		position: relative;
-		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view.jpg);
+		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../lib/images/first_view_v3.jpg);
 		background-position: right center;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
