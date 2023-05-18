@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
+	import { signOut } from "@auth/sveltekit/client";
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
@@ -9,6 +10,8 @@
 	let root;
 	let nav_click;
 	let hamburger = false;
+
+	console.log($page)
 
 	onMount(() => {
 		let btn = root.querySelector(".toggle-btn");
@@ -82,10 +85,10 @@
 								<li><a href="#">Contact</a></li>
 								{#if Object.keys($page.data.session || {}).length}
 									{#if $page.data.session.user.image}
-										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar" /></li>
+										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar"><a href="#" on:click={ signOut }></a></li>
 									{/if}
 								{:else}
-									<li class="login_btn"><a href="javascript:void(0)" on:click={ handleOpen }>Login</a></li>
+									<li class="login_btn"><a href="#" on:click={ handleOpen }>Login</a></li>
 								{/if}
 							</ul>
 						</div>
