@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
 	import { onMount } from 'svelte';
-	import { closeModal, Modals, modals, openModal } from 'svelte-modals';
+	import { closeModal, Modals, openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
 
 	// header ハンバーガーメニューの制御
@@ -24,7 +24,7 @@
 	});
 	function handleOpen() {
 		openModal(Modal, {
-			title: `Alert #${$modals.length + 1}`,
+			title: "ログイン",
 			message: "This is an alert",
 			onOpenAnother: () => {
 				handleOpen()
@@ -94,7 +94,6 @@
 								{:else}
 									<li class="login_btn"><a href="javascript:void(0)" on:click={ handleOpen }>Login</a></li>
 								{/if}
-								<!-- <li class="login_btn"><button on:click={ handleOpen }>Login</button></li> -->
 							</ul>
 						</div>
 					</nav>
