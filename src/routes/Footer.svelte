@@ -110,7 +110,7 @@
 	footer .wrap .left li.catch_copy {
 		font-size: 14px;
 	}
-	
+
 	footer .wrap .left .sns_icon {
 		display: flex;
 		margin-top: 10px;

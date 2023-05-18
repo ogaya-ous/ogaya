@@ -1,9 +1,18 @@
 <script>
-	import document_img from '$lib/images/document_img.jpg';
-	import img_path from '$lib/images/sample.jpg';
 	import arrow from '$lib/images/arrow.png';
+	import document_img from '$lib/images/document_img.jpg';
 	import intro_img from '$lib/images/intro_img.jpg';
+	import img_path from '$lib/images/sample.jpg';
+	import { closeModal, Modals } from 'svelte-modals';
 </script>
+
+<Modals>
+	<div
+		slot="backdrop"
+		class="backdrop"
+		on:click={closeModal}
+	/>
+</Modals>
 
 <svelte:head>
 	<title>よってたかって大茅地区</title>
@@ -237,7 +246,7 @@
 		margin-bottom: 10px;
 		font-family: serif;
 	}
-	
+
 	.join_btn a {
 		background: white;
 		border-radius: 3px;
@@ -286,7 +295,7 @@
 
 	.sp_news .news_header {
 		padding-bottom: 20px;
-		 font-family: 'Noto Serif JP', serif;
+		font-family: 'Noto Serif JP', serif;
 	}
 
 	.sp_news a {
@@ -337,9 +346,9 @@
 
 	/* 大茅地区の紹介 */
 	.ogaya_img {
-		display: none;		
+		display: none;
 	}
-	
+
 	#intro .sp_ogaya_img {
 		width: 100%;
 		height: 254.344px;
@@ -424,7 +433,17 @@
 		letter-spacing: 3px;
 		font-weight: bold;
 	}
- 
+
+	.backdrop {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: rgba(0,0,0,0.50);
+		z-index: 3
+	}
+
 	@media screen and (min-width:480px) { 
 		/* ファーストビュー */
 		#first_view .content {
@@ -442,7 +461,7 @@
 			padding: 8.27% 0 8.27% 8.27%;
 		}
 	}
-	
+
 	@media screen and (min-width:768px) and ( max-width:1024px) {
 		/* ファーストビュー */
 		.br_tab_hidden {
@@ -471,7 +490,7 @@
 		.br_tab_hidden{
 			display: none;
 		}
-		
+
 		.br_pc_hidden {
 			display: none;
 		}

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
 	import { onMount } from 'svelte';
-	import { closeModal, Modals, openModal } from 'svelte-modals';
+	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
 
 	// header ハンバーガーメニューの制御
@@ -33,13 +33,6 @@
 	}
 </script>
 
-<Modals>
-  <div
-    slot="backdrop"
-    class="backdrop"
-    on:click={closeModal}
-  />
-</Modals>
 
 <header>
 	<div bind:this={ root }>
@@ -191,15 +184,6 @@
 		background-color: #333;
 		transition: all 0.5s;
 		border-radius: 4px;
-	}
-
-	.backdrop {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		background: rgba(0,0,0,0.50)
 	}
 
 	.sp_nav .toggle-btn span:nth-child(1) {

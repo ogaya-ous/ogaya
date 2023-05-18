@@ -14,39 +14,29 @@
 </script>
 
 {#if isOpen}
-    <div class="modal-overlay">
-        <div role="dialog" class="modal">
-            <div class="contents">
-                <h2>{title}</h2>
-                    <div class="button-container">
-                        <button class="sign-in-button" on:click={ () => signIn("Google") }>
-                            <img src={google_icon} alt="google_icon" class=google-icon>
-                            <b>Googleでログイン</b>
-                        </button>
-                        <button class="sign-in-button" on:click={ () => signIn("Google") }>
-                            <img src={facebook_icon} alt="facebook_icon" class="facebook-icon">
-                            <b>FaceBookでログイン</b>
-                        </button>
-                    </div>
-                <label>
-                    <input type="checkbox" bind:checked={agree} class="checkbox" />
-                    <a href="利用規約のURL">利用規約</a>および<a href="プライバシーポリシーのURL">プライバシーポリシー</a>に同意します
-                </label>
-            </div>
+    <div role="dialog" class="modal">
+        <div class="contents">
+            <h2>{title}</h2>
+                <div class="button-container">
+                    <button class="sign-in-button" on:click={ () => signIn("Google") }>
+                        <img src={google_icon} alt="google_icon" class=google-icon>
+                        <b>Googleでログイン</b>
+                    </button>
+                    <button class="sign-in-button" on:click={ () => signIn("Google") }>
+                        <img src={facebook_icon} alt="facebook_icon" class="facebook-icon">
+                        <b>FaceBookでログイン</b>
+                    </button>
+                </div>
+            <label>
+                <input type="checkbox" bind:checked={agree} class="checkbox" />
+                <a href="利用規約のURL">利用規約</a>および<a href="プライバシーポリシーのURL">プライバシーポリシー</a>に同意します
+            </label>
         </div>
     </div>
+
 {/if}
 
 <style>
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.1);
-        z-index: 9999;
-    }
     .modal {
         position: fixed;
         top: 0;
