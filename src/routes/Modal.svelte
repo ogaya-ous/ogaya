@@ -1,32 +1,52 @@
 <script>
     import { signIn } from "@auth/sveltekit/client";
-    import { closeModal, modals } from 'svelte-modals';
+    import { modals } from 'svelte-modals';
 
+    import facebook_icon from '$lib/images/sns_icon/f_logo_RGB-Blue_512.png';
+    import google_icon from '$lib/images/sns_icon/logo_google.png';
 
 
     export let isOpen
     export let title
-    export let message
-    export let onOpenAnother
+    export let agree
 
     let stackIndex = modals.length
 </script>
 
 {#if isOpen}
-    <div role="dialog" class="modal">
-        <div class="contents">
-            <div class="actions">
-                <button on:click={closeModal}>Close</button>
-                <button id="googleSignIn" on:click={ () => signIn("Google") }>
-                    <!-- <svg aria-hidden="true" class="native svg-icon iconGoogle" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z" fill="#4285F4"></path><path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z" fill="#34A853"></path><path d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z" fill="#FBBC05"></path><path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.3z" fill="#EA4335"></path></svg> -->
-                    Log in with Google
-                </button>
+    <div class="modal-overlay">
+        <div role="dialog" class="modal">
+            <div class="contents">
+                <h2>{title}</h2>
+                    <div class="button-container">
+                        <button class="sign-in-button" on:click={ () => signIn("Google") }>
+                            <img src={google_icon} alt="google_icon" class=google-icon>
+                            <b>Googleでログイン</b>
+                        </button>
+                        <button class="sign-in-button" on:click={ () => signIn("Google") }>
+                            <img src={facebook_icon} alt="facebook_icon" class="facebook-icon">
+                            <b>FaceBookでログイン</b>
+                        </button>
+                    </div>
+                <label>
+                    <input type="checkbox" bind:checked={agree} class="checkbox" />
+                    <a href="利用規約のURL">利用規約</a>および<a href="プライバシーポリシーのURL">プライバシーポリシー</a>に同意します
+                </label>
             </div>
         </div>
     </div>
 {/if}
 
 <style>
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
     .modal {
         position: fixed;
         top: 0;
@@ -35,8 +55,8 @@
         left: 0;
         display: flex;
         justify-content: center;
+        box-shadow: 0 2px 4px gray;
         align-items: center;
-      /* allow click-through to backdrop */
         pointer-events: none;
         z-index: 5;
     }
@@ -57,16 +77,44 @@
         font-size: 24px;
     }
 
-    p {
-        text-align: center;
-        margin-top: 16px;
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
     }
 
-    .actions {
-        margin-top: 32px;
-        display: flex;
-        justify-content: space-between;
-        gap: 8px;
+    .facebook-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+    .google-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+    .sign-in-button {
+        background-color: white;
+        color: black;
+        border: none;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        width: 300px;
+        height: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+    }
+
+    .sign-in-button:hover {
+    background-color: #3367D6;
     }
 
 </style>
