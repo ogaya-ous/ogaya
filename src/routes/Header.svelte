@@ -23,7 +23,7 @@
 			hamburger = false;
 		}
 	});
-	function handleOpen() {
+	export function handleOpen() {
 		openModal(Modal, {
 			title: "ログイン",
 			message: "This is an alert",

@@ -1,35 +1,24 @@
 <script>
-	import Login from './login.svelte';
+    export let form;
 </script>
 
-<svelte:head>
-	<title>よってたかって大茅地区</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-
-<div id="login">
-	<section>
-		<Login />
-	</section>
-</div>
-
-<style>
-	* {
-    	margin: 0;
-    	padding: 0;
-	}
-
-	#login {
-		height: calc(100vh - 70px);
-		background-color: #e7e7e7;
-	}
-
-	#login section {
-		padding-top: 12%;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-</style>
+<h2>ログイン</h2>
+{#if form?.success}
+    <p>入力されたメールアドレスにログインリンクを送信しました。</p>
+{:else}
+<form method="post">
+    <p>
+        <label for="email">メールアドレス</label>
+        <input type="text"name="email"id="email"value={form?.email??''}/>
+        {#if form?.error==='missing'}
+        <div style:color="red">メールアドレスを入力してください。</div>
+        {/if}
+        {#if form?.error==='invalid_format'}
+        <div style:color="red">メールアドレスに@がありません。</div>
+        {/if}
+    </p>
+    <p>
+        <button type="submit">ログイン</button>
+    </p>
+</form>
+{/if}

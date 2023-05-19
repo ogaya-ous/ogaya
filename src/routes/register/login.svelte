@@ -1,6 +1,8 @@
 <script>
 	let username = '';
-	let password = '';
+	let email_address = '';
+  let check1 = false;
+  let check2 = false;
 
 	function handleLogin() {
     if (username === "admin" && password === "admin") {
@@ -11,6 +13,7 @@
       alert("ログイン失敗");
     }
   }
+
 </script>
 
 <style>
@@ -36,7 +39,7 @@
   }
 
   .login-form input[type="text"],
-  .login-form input[type="password"] {
+  .login-form input[type="email"] {
     width: 93%;
     height: 40px;
     margin-bottom: 20px;
@@ -57,12 +60,15 @@
 </style>
 
 <form class="login-form">
-  <h1>ログイン</h1>
+  <h1>会員登録</h1>
   <input type="text" placeholder="ユーザー名" bind:value={username} />
   <input
-    type="password"
-    placeholder="パスワード"
-    bind:value={password}
+    type="email"
+    placeholder="メールアドレス"
+    bind:value={email_address}
   />
-  <input type="submit" value="ログイン" on:click={handleLogin} />
+  <input type="checkbox" id="terms" bind:checked={check1}>利用規約に同意する<br>
+  <input type="checkbox" id="privacy" bind:checked={check2}>プライバシーポリシーに同意する<br>
+  <br>
+  <input type="submit" value="登録する" on:click={handleLogin} disabled={!check1&!check2} />
 </form>

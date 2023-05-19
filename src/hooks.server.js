@@ -1,11 +1,7 @@
-import Google from '@auth/core/providers/google';
-import SvelteKitAuth from "@auth/sveltekit";
-import * as dotenv from "dotenv";
-dotenv.config();
+import { findSession } from '$lib/server/session';
 
-export const handle = SvelteKitAuth({
-    providers: [
-        Google({ clientId: process.env.GOOGLE_OAUTH_CLIENT_ID, clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET}),
-    ],
-    secret: process.env.NEXT_AUTH_SECRET,
-});
+export async function handle({ event, resolve }) {
+	const sessionId = event.cookies.get('svelte_ec_session');
+	event.locals.currentUser = await findSession(sessionId);
+	return await resolve(event);
+}
