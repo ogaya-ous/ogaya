@@ -27,7 +27,7 @@
 		"multer": "^1.4.5-lts.1",
 		"mysql": "^2.18.1",
 		"mysql2": "^2.3.3",
-		"sk-auth": "^0.4.1",
-		"svelte-modals": "^1.2.0"
+		"svelte-modals": "^1.2.0",
+		"typescript": "^5.0.4"
 	}
 }

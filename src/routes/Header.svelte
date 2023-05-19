@@ -11,8 +11,6 @@
 	let nav_click;
 	let hamburger = false;
 
-	console.log($page)
-
 	onMount(() => {
 		let btn = root.querySelector(".toggle-btn");
 		let nav_click = root.querySelector("nav_click");

@@ -1,32 +1,42 @@
 <script>
-    import { signIn } from "@auth/sveltekit/client";
-    import { modals } from 'svelte-modals';
-
-    import facebook_icon from '$lib/images/sns_icon/f_logo_RGB-Blue_512.png';
-    import google_icon from '$lib/images/sns_icon/logo_google.png';
-
-
-    export let isOpen
-    export let title
-    export let agree
-
-    let stackIndex = modals.length
+    export let form;
+    export let isOpen;
+    export let title;
+    export let agree;
 </script>
 
 {#if isOpen}
     <div role="dialog" class="modal">
         <div class="contents">
             <h2>{title}</h2>
-                <div class="button-container">
-                    <button class="sign-in-button" on:click={ () => signIn("Google") }>
-                        <img src={google_icon} alt="google_icon" class=google-icon>
-                        <b>Googleでログイン</b>
-                    </button>
-                    <button class="sign-in-button" on:click={ () => signIn("Google") }>
-                        <img src={facebook_icon} alt="facebook_icon" class="facebook-icon">
-                        <b>FaceBookでログイン</b>
-                    </button>
-                </div>
+            {#if form?.success}
+                <p>入力されたメールアドレスにログインURLを送信しました。</p>
+            {:else}
+                <form method="post">
+                    <div class="email-form">
+                        {#if form?.error === 'missing'}
+                            <div class="form-missing">
+                                <input
+                                    class="email-input"
+                                    type="email"
+                                    name="email"
+                                    placeholder="メールアドレスを入力してください"
+                                    id="email"
+                                />
+                            </div>
+                        {:else}
+                            <input
+                                class="email-input"
+                                type="email"
+                                name="email"
+                                placeholder="メールアドレスを入力してください"
+                                id="email"
+                            />
+                        {/if}
+                        <button class="submit-button" type="submit">ログイン</button>
+                    </div>
+                </form>
+            {/if}
             <label>
                 <input type="checkbox" bind:checked={agree} class="checkbox" />
                 <a href="利用規約のURL">利用規約</a>および<a href="プライバシーポリシーのURL">プライバシーポリシー</a>に同意します
@@ -67,44 +77,44 @@
         font-size: 24px;
     }
 
-    .button-container {
+    .email-form {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        margin-bottom: 20px;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
-    .facebook-icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 8px;
-        vertical-align: middle;
+    .email-input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-size: 16px;
     }
 
-    .google-icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 8px;
-        vertical-align: middle;
-    }
-
-    .sign-in-button {
-        background-color: white;
-        color: black;
+    .submit-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
         border: none;
         border-radius: 4px;
-        margin-bottom: 12px;
-        width: 300px;
-        height: 50px;
         font-size: 16px;
         cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3);
-        transition: background-color 0.3s ease;
+        margin-bottom: 25px;
     }
 
-    .sign-in-button:hover {
-    background-color: #3367D6;
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    .form-missing {
+        position: absolute;
+        pointer-events: none;
+        padding: 10px;
+        font-size: 16px;
+        color: rgba(255, 0, 0, 0.5); /* 薄い赤色 */
+        transition: opacity 0.3s ease;
+        opacity: 0.5;
     }
 
 </style>
