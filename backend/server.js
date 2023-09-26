@@ -1,32 +1,15 @@
+import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
 import fs from 'fs';
 import multer from 'multer';
-import mysql from 'mysql2';
 
 
 const app = express();
 app.use(cors());
 app.use(express.static('public'));
 
-// MySQLとの接続情報を定義 (document_db)
-const connection_doc = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: '',
-  database: 'document_db'
-});
-
-connection_doc.connect((err) => {
-  if (err) {
-    // エラーが発生した場合は、エラーを表示
-    console.log('connect failed');
-    console.error(err.message);
-    return;
-  } else {
-    console.log('connect clear!');
-  }
-});
+const prisma = new PrismaClient();
 
 // 画像を保存するためのストレージ
 const storage = multer.diskStorage({
@@ -45,7 +28,7 @@ const upload = multer({ storage: storage });
 // ファイルアップロード用のルーティングを設定する
 app.post('/api/upload', upload.single('image'), (req, res) => {
   // アップロードされた画像が存在しない場合は、処理を中断する
-  console.log('画像きた')
+  console.log('access to /api/upload')
   if (!req.file) {
     res.status(400).send('画像が選択されていません');
     return;
@@ -68,22 +51,23 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   const currentDay = date.getDate();
   const currentMonth = date.getMonth() + 1;
   const currentYear = date.getFullYear();
-  console.log('aaaaatest');
 
-  // データベースに接続し、SQLを実行
-  connection_doc.query(
-    "INSERT INTO document (document_name, document_path, document_explain, added_year, added_month, added_day) VALUES ((?), (?), (?), (?), (?), (?))",
-    [documentName, documentPath, documentExplain, currentYear, currentMonth, currentDay],
-    function(error, results, fields) {
-      // エラー
-      if (error) {
-        console.log("error");
-        return;
-      }
-      console.log('画像のパスを格納しました');
-      res.status(200).send('画像をアップロードしました');
+  // prisma
+  prisma.document.create({
+    data: {
+      document_name: documentName,
+      document_path: documentPath,
+      document_explain: documentExplain,
+      added_year: currentYear,
+      added_month: currentMonth,
+      added_day: currentDay
     }
-  );
+  }).then((results) => {
+    console.log('画像のパスを格納しました');
+    res.status(200).send('画像をアップロードしました');
+  }).catch((error) => {
+    console.log(error);
+  });
 });
 
 
@@ -97,40 +81,42 @@ app.post('/api/decode', upload.single('decode'), (req, res) => {
   // bodyの解読文を取得
   let commant = req.body.decode;
 
-  // データベースに接続し，SQLを実行
-  connection_doc.query(
-    "INSERT INTO DECODER VALUES ,",
-    function(error, results, fields) {
-      // エラー
-      if (error) {
-        console.log(error);
-        return;
-      }
-      console.log('解読テキストを保存しました．');
-      res.status(200).send('テキストをアップロードしました．');
+  // prisma用のコードに変更
+  prisma.decoder.create({
+    data: {
+      decoding_content: commant
     }
-  );
+  }).then((results) => {
+    console.log('解読テキストを保存しました．');
+    res.status(200).send('テキストをアップロードしました．');
+  }).catch((error) => {
+    console.log(error);
+  });
 })
 
+
 app.get('/api/document/:page', (req, res) => {
+  console.log('access to /api/document/:page')
   // 1ページに表示する枚数
   const dispCount = 5;
 
   // 開始位置
   let start_to = (req.params.page - 1) * 5;
-  connection_doc.query(
-    "SELECT * FROM document ORDER BY document.document_id DESC LIMIT ?, ?",
-    [start_to, dispCount],
-    function(error, results, fields) {
-      // エラー
-      if (error) {
-        console.log(error);
-        return;
-      }
-      res.status(200).send(results);
+
+  // prisma用のコードに変更
+  prisma.document.findMany({
+    skip: start_to,
+    take: dispCount,
+    orderBy: {
+      document_id: 'desc'
     }
-  );
+  }).then((results) => {
+    res.status(200).send(results);
+  }).catch((error) => {
+    console.log(error);
+  });
 });
+
 
 // Webサーバーを起動する
 app.listen(8000, function() {
@@ -138,37 +124,37 @@ app.listen(8000, function() {
 });
 
 
+
 /*
 
-テーブル作成例メモ
+prismaのschema.prisma
 
-CREATE TABLE document (
-  document_id INT NOT NULL AUTO_INCREMENT,
-  document_name VARCHAR(255) NOT NULL,
-  document_path VARCHAR(255) NOT NULL,
-  discovery_year INT NOT NULL,
-  owned_location VARCHAR(255) NOT NULL,
-  document_explain VARCHAR(255) NOT NULL,
-  decode_page VARCHAR(255) NOT NULL,
-  PRIMARY KEY (document_id)
-  );
+model document {
+  document_id     Int       @id @default(autoincrement())
+  document_name   String
+  document_path   String
+  document_explain String
+  added_year      Int
+  added_month     Int
+  added_day       Int
+}
 
-  CREATE TABLE decoder (
-  decoder_id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
-  affiliation VARCHAR(255) NOT NULL,
-  specialty VARCHAR(255) NOT NULL,
-  PRIMARY KEY (decoder_id)
-  );
+model decoder {
+  decoder_id  Int      @id @default(autoincrement())
+  name        String
+  affiliation String
+  specialty   String
+  history     history[]
+}
 
-  CREATE TABLE history (
-  history_id INT NOT NULL AUTO_INCREMENT,
-  document_id INT NOT NULL,
-  decoder_id INT NOT NULL,
-  decoding_datetime DATETIME NOT NULL,
-  decoding_content VARCHAR(255) NOT NULL,
-  PRIMARY KEY (history_id),
-  FOREIGN KEY (document_id) REFERENCES document (document_id),
-  FOREIGN KEY (decoder_id) REFERENCES decoder (decoder_id)
-  );
+model history {
+  history_id         Int       @id @default(autoincrement())
+  document_id        Int
+  decoder_id         Int
+  decoding_datetime  DateTime
+  decoding_content   String
+  document           document  @relation(fields: [document_id], references: [document_id])
+  decoder            decoder   @relation(fields: [decoder_id], references: [decoder_id])
+}
+
 */

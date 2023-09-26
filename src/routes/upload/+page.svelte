@@ -22,8 +22,10 @@
             }
         }).then(res => {
             console.log(res.data);
+            alert("アップロードが完了しました。");
         }).catch(error => {
             console.log(error);
+            alert("アップロードに失敗しました。");
         })
     }
 
@@ -47,15 +49,15 @@
     <h2 class="input-title"> 大茅区有文書のアップロード</h2>
         <form on:submit|preventDefault={handleSubmit}>
             <table class="input-table">
-                <tr>                
+                <tr>
                     <th class="input-item"><label for="name">タイトル</label></th>
                     <td class="input-body"><input type="text" id="name" name="name" class="form-text"></td>
                 </tr>
-                <tr>                
+                <tr>
                     <th class="input-item"><label for="document_explain">説明</label></th>
                     <td class="input-body"><textarea id="document_explain" name="document_explain" class="form-textarea"></textarea></td>
                 </tr>
-                <tr>                
+                <tr>
                     <th class="input-item"><label for="image">画像</label></th>
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
@@ -66,7 +68,6 @@
                     {/if}
                     </td>
                 </tr>
-                
             </table>
 
             <input type="submit" value="送信" class="input-submit">
@@ -99,7 +100,7 @@
         border-collapse: collapse;
     }
 
-    .input-item, 
+    .input-item,
     .input-body{
         padding: 20px;
         border: 1px solid #ccc;

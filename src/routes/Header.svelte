@@ -48,12 +48,11 @@
 						<div class="inner">
 							<img src={ logo } alt="">
 							<ul>
-								<li class:nav_click={ nav_click }><a href="/">Home</a></li>
-								<li class:nav_click={ nav_click }><a href="/news">News</a></li>
-								<li class:nav_click={ nav_click }><a href="/document?page=1">Document</a></li>
-								<li class:nav_click={ nav_click }><a href="/history">History</a></li>
-								<li class:nav_click={ nav_click }><a href="#">Contact</a></li>
-								<li class:nav_click={ nav_click }><a href="/login">Login</a></li>
+								<li class:nav_click={ nav_click }><a href="/">ホーム</a></li>
+								<li class:nav_click={ nav_click }><a href="/news">ニュース</a></li>
+								<li class:nav_click={ nav_click }><a href="/document?page=1">文書一覧</a></li>
+								<li class:nav_click={ nav_click }><a href="/upload">アップロード</a></li>
+								<li class:nav_click={ nav_click }><a href="/login">ログイン</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -76,17 +75,16 @@
 					<nav>
 						<div class="inner">
 							<ul>
-								<li><a href="/">Home</a></li>
-								<li><a href="/news">News</a></li>
-								<li><a href="/document?page=1">Document</a></li>
-								<li><a href="/history">History</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="/">ホーム</a></li>
+								<li><a href="/news">ニュース</a></li>
+								<li><a href="/document?page=1">文書一覧</a></li>
+								<li><a href="/upload">アップロード</a></li>
 								{#if Object.keys($page.data.session || {}).length}
 									{#if $page.data.session.user.image}
 										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar"><a href="#" on:click={ signOut }></a></li>
 									{/if}
 								{:else}
-									<li class="login_btn"><a href="#" on:click={ handleOpen }>Login</a></li>
+									<li class="login_btn"><a href="#" on:click={ handleOpen }>ログイン</a></li>
 								{/if}
 							</ul>
 						</div>
