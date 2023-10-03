@@ -4,8 +4,8 @@
 	import { signOut } from "@auth/sveltekit/client";
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
+	import authStore from '../store';
 	import Modal from './Modal.svelte';
-
 	// header ハンバーガーメニューの制御
 	let root;
 	let nav_click;
@@ -32,6 +32,8 @@
 			}
 		})
 	}
+	console.log('login')
+	console.log($authStore)
 </script>
 
 
