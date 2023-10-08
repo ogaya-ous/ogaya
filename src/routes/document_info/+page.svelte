@@ -82,7 +82,7 @@
     }
 
     .text h2 {
-    border-bottom: solid 3px skyblue;
+    border-bottom: solid 3px rgb(117, 117, 117);
     position: relative;
     }
 
@@ -107,14 +107,14 @@
         display: inline-block;
     }
     .box:before{
-        border-left: solid 1px #5767bf;
-        border-top: solid 1px #5767bf;
+        border-left: solid 1px rgb(117, 117, 117);
+        border-top: solid 1px rgb(117, 117, 117);
         top:0;
         left: 0;
     }
     .box:after{
-        border-right: solid 1px #5767bf;
-        border-bottom: solid 1px #5767bf;
+        border-right: solid 1px rgb(117, 117, 117);
+        border-bottom: solid 1px rgb(117, 117, 117);
         bottom:0;
         right: 0;
     }
