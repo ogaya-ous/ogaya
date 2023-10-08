@@ -3,7 +3,9 @@
 </script>
 
 <main>
+    <a href=document class="back-button">文書一覧へ戻る</a>
     <section class="wrapper">
+        
         <div class="container">
             <div class="content">
                 <div class="content-item">
@@ -46,6 +48,20 @@
 </main>
 
 <style>
+    /* 戻るボタンのスタイル */
+    .back-button {
+        position: absolute;
+        margin: 30px;
+        color: #383636;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .back-button:hover {
+        background-color: #555;
+    }
     /* container */
     .wrapper{
         width:100%;

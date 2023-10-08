@@ -24,7 +24,7 @@
                 </svg>
             </a>
         </li>
-        <a href="#" class="btn btn--orange">送信</a>
+        <a href="document_info" class="btn btn--orange">完了</a>
     </ul>
     <div class="decipher">
         <div class="decipher-item">
