@@ -14,11 +14,18 @@
                         <h2 class="heading">文書のタイトル</h2>
                         <p>アップロード日：〇月〇日</p>
                         <div class="box">
-                            <p>文書の情報または管理者のコメント～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～</p>
+                            <p>文書の情報または管理者のコメント～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～￣￣￣￣￣￣～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="decipher_bn">
+
+                <a href="decipher" class="btn_04">翻訳する</a>
+
+            </div>
+            
             <h2>翻訳履歴</h2>
             <div class="card-container">
                 <div class="card">
@@ -79,6 +86,31 @@
         font-size: 24px;
         font-weight: normal;
         text-align: center;
+    }
+
+    .decipher_bn {
+        margin: 50px;
+    }
+
+    a.btn_04 {
+        font-size: 130%;
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        width: 120px;
+        margin: auto;
+        padding: 1rem 4rem;
+        font-weight: bold;
+        border: 2px solid #d4c51e;
+        background: #d5c320;
+        color: #fff;
+        border-radius: 100vh;
+        transition: 0.5s;
+    }
+    a.btn_04:hover {
+        color: #5c5c5c;
+        background: #f9f6c8;
     }
 
     .text h2 {
