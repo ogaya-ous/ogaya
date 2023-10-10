@@ -1,10 +1,8 @@
-<script>
-	import { page } from '$app/stores';
+<!-- typescriptに変更 -->
+<script lang="ts">
 	import logo from '$lib/images/logo.png';
-	import { signOut } from "@auth/sveltekit/client";
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
-	import authStore from '../store';
 	import Modal from './Modal.svelte';
 	// header ハンバーガーメニューの制御
 	let root;
@@ -33,7 +31,6 @@
 		})
 	}
 	console.log('login')
-	console.log($authStore)
 </script>
 
 
@@ -81,13 +78,13 @@
 								<li><a href="/news">ニュース</a></li>
 								<li><a href="/document?page=1">文書一覧</a></li>
 								<li><a href="/upload">アップロード</a></li>
+								<!--
 								{#if Object.keys($page.data.session || {}).length}
 									{#if $page.data.session.user.image}
 										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar"><a href="#" on:click={ signOut }></a></li>
 									{/if}
-								{:else}
-									<li class="login_btn"><a href="#" on:click={ handleOpen }>ログイン</a></li>
-								{/if}
+								{:else} -->
+								<li class="login_btn"><a href="#" on:click={ handleOpen }>ログイン</a></li>
 							</ul>
 						</div>
 					</nav>
