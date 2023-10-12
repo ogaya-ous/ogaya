@@ -7,24 +7,46 @@
     <main id="information">
         <div class="wrapper">
           <h1>お知らせ</h1>
+
           <article id="part1">
-            <img src={doc}>
-            <p class="text_date"><time datetime="2021-04-12">2021.04.12</time></p>
-            <h2>お問い合わせページを追加しました。</h2>
-            <p class="text_content">お問い合わせページを追加しました。<br>当サイトについてのお問い合わせは、記載した電話番号、またはメールアドレスまでお寄せください。</p>
+            <ul>
+              <li>
+                <p class="text_date"><time datetime="2021-04-12">2021.04.12</time></p>
+                <img src={doc}>
+              </li>
+              <li>
+                <h2>お問い合わせページを追加しました。</h2>
+                <p class="text_content">お問い合わせページを追加しました。<br>当サイトについてのお問い合わせは、記載した電話番号、またはメールアドレスまでお寄せください。</p>
+              </li>
+            </ul>
           </article>
+
           <article id="part2">
-            <img src={doc}>
-            <p class="text_date"><time datetime="2021-04-05">2021.04.05</time></p>
-            <h2>プロフィールを更新しました。</h2>
-            <p class="text_content">プロフィールを更新しました。</p>
+            <ul>
+              <li>
+                <p class="text_date"><time datetime="2021-04-05">2021.04.05</time></p>
+                <img src={doc}>
+              </li>
+              <li>
+                <h2>プロフィールを更新しました。</h2>
+                <p class="text_content">プロフィールを更新しました。</p>
+              </li>
+            </ul>
           </article>
+
           <article id="part3">
-            <img src={doc}>
-            <p class="text_date"><time datetime="2021-04-01">2021.04.01</time></p>
-            <h2>PROFILEサイトを公開しました！</h2>
-            <p class="text_content">サイトを公開しました。<br>今後も更新ができるよう頑張ります。</p>
+            <ul>
+              <li>
+                <p class="text_date"><time datetime="2021-04-01">2021.04.01</time></p>
+                <img src={doc}>
+              </li>
+              <li>
+                <h2>PROFILEサイトを公開しました！</h2>
+                <p class="text_content">サイトを公開しました。<br>今後も更新ができるよう頑張ります。</p>
+              </li>
+            </ul> 
           </article>
+
         </div>
     </main>
 </main>
@@ -105,5 +127,26 @@
 
 .link_contact a:hover {
   background-color: #e89d19;
+}
+
+#part1 img {
+  width: 70%
+}
+
+#part2 img {
+  width: 70%
+}
+
+#part3 img {
+  width: 70%
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  width: 50%;
+  list-style-type:none;
 }
 </style>
