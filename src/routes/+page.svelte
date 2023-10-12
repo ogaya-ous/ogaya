@@ -3,6 +3,7 @@
 	import document_img from '$lib/images/document_img.jpg';
 	import intro_img from '$lib/images/intro_img.jpg';
 	import img_path from '$lib/images/sample.jpg';
+	import right_arrow from '$lib/images/right_arrow.png';
 	import { closeModal, Modals } from 'svelte-modals';
 </script>
 
@@ -123,6 +124,7 @@
 					</div>
 				</article>
 			</div>
+			<button type="button"><a href="/news" class="img_button"><img class="right_arrow_img" src={ right_arrow } alt="Read more."></a></button>
 		</div>
 	</div>
 
@@ -343,6 +345,31 @@
 		height: 40%;
 		transform: translateY(80%);
 	}
+
+	/* .right_arrow_img {
+		margin-top: 10%;
+		width: 5%;
+		height: 5%;
+	} */
+	
+
+	button {
+		padding: 0;
+		border: none;
+		background: transparent;
+	}
+	button img {
+		display: block;
+		width: 50%;
+	}
+	button :hover {
+		filter: brightness(10%);
+	}
+
+	.img_button {
+		display: inline-block;
+	}
+
 
 	/* 大茅地区の紹介 */
 	.ogaya_img {
@@ -599,6 +626,7 @@
 			margin-top: 0;
 			text-decoration: none;
 		}
+
 
 		/* 大茅地区 */
 		.sp_ogaya_img {
