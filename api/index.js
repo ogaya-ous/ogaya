@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
-// import multer from 'multer';
+import multer from 'multer';
 
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(express.static('public'));
 const prisma = new PrismaClient();
 
 // 画像を保存するためのストレージ
-/*
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/images')
@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 // 画像をアップロードするためのミドルウェア
 const upload = multer({ storage: storage });
-*/
+
 app.post('/api/test', (req, res) => {
   res.status(200).send('画像をアップロードしました');
 });
@@ -73,7 +73,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   });
 });
 
-/*
+
 app.post('/api/decode', upload.single('decode'), (req, res) => {
   //コメントが空の場合は，処理を中断する
   if (!req.body.comment) {
@@ -96,7 +96,7 @@ app.post('/api/decode', upload.single('decode'), (req, res) => {
     console.log(error);
   });
 })
-*/
+
 
 app.get('/api/document/:page', (req, res) => {
   console.log('access to /api/document/:page')
