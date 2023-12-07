@@ -13,4 +13,8 @@ app.get('/api/item/:slug', (req, res) => {
   res.end(`Item: ${slug}`);
 });
 
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Hello World' });
+});
+
 export default app;
