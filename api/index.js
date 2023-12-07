@@ -73,7 +73,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   });
 });
 
-
+/*
 app.post('/api/decode', upload.single('decode'), (req, res) => {
   //コメントが空の場合は，処理を中断する
   if (!req.body.comment) {
@@ -96,7 +96,7 @@ app.post('/api/decode', upload.single('decode'), (req, res) => {
     console.log(error);
   });
 })
-
+*/
 
 app.get('/api/document/:page', (req, res) => {
   console.log('access to /api/document/:page')
