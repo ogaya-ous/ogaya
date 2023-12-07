@@ -1,13 +1,13 @@
-import { PrismaClient } from '@prisma/client';
+//import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
-import multer from 'multer';
+//import multer from 'multer';
 
 
 const app = express();
 app.use(cors());
 app.use(express.static('public'));
-
+/*
 const prisma = new PrismaClient();
 
 // 画像を保存するためのストレージ
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 
 // 画像をアップロードするためのミドルウェア
 const upload = multer({ storage: storage });
-
+*/
 app.post('/api/test', (req, res) => {
   res.status(200).send('画像をアップロードしました');
 });
@@ -141,15 +141,15 @@ app.get('app/decipher', (req, res) => {
     console.log(error);
   });
 })
-*/
-module.exports = app;
+
 
 // Webサーバーを起動する
 
 app.listen(5000, function() {
   console.log('Example app listening on port 5000!');
 });
-
+*/
+module.exports = app;
 
 /*
 

@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
-import fs from 'fs';
 import multer from 'multer';
 
 
@@ -24,7 +23,10 @@ const storage = multer.diskStorage({
 // 画像をアップロードするためのミドルウェア
 const upload = multer({ storage: storage });
 
-
+app.post('/api/test', (req, res) => {
+  res.status(200).send('画像をアップロードしました');
+});
+/*
 // ファイルアップロード用のルーティングを設定する
 app.post('/api/upload', upload.single('image'), (req, res) => {
   // アップロードされた画像が存在しない場合は、処理を中断する
@@ -142,11 +144,12 @@ app.get('app/decipher', (req, res) => {
 
 
 // Webサーバーを起動する
-app.listen(8000, function() {
-  console.log('Example app listening on port 8000!');
+
+app.listen(5000, function() {
+  console.log('Example app listening on port 5000!');
 });
-
-
+*/
+module.exports = app;
 
 /*
 
