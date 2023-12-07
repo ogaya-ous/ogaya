@@ -70,6 +70,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
     res.status(200).send('画像をアップロードしました');
   }).catch((error) => {
     console.log(error);
+    res.status(400).send(error);
   });
 });
 
