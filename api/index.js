@@ -144,8 +144,8 @@ module.exports = app;
 
 // Webサーバーを起動する
 
-app.listen(8000, function() {
-  console.log('Example app listening on port 8000!');
+app.listen(5000, function() {
+  console.log('Example app listening on port 5000!');
 });
 
 
