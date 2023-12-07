@@ -12,6 +12,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (session) {
         // if session cookie is set, verify it is valid and set the user from it
         try {
+            console.log('verifying session cookie', session)
             const user = await auth.verifySessionCookie(session)
             locals.user = user
         } catch (err) {
