@@ -1,6 +1,6 @@
 import express from 'express';
 import { v4 } from 'uuid';
-app = express();
+const app = express();
 app.get('/api', (req, res) => {
   const path = `/api/item/${v4()}`;
   res.setHeader('Content-Type', 'text/html');
