@@ -6,7 +6,7 @@
     let show_image = false;
 
     async function handleSubmit(event) {
-        const url = "http://localhost:8000/api/upload"
+        const url = "http://oogaya.vercel.app/api/upload"
 
         const formData = new FormData(event.target);
         const data = {};
