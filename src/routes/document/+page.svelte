@@ -5,7 +5,7 @@
 
     async function getDocument(page_num){
 		// const url = 'http://localhost:8000';
-        const url = 'https://oogaya.vercel.app/'
+        const url = 'https://oogaya.vercel.app'
 		return await axios.get(url + '/api/document/' + page_num);
     }
 
@@ -14,7 +14,7 @@
     $: next_page = Number(page_num) + 1;
     $: prev_page = Number(page_num) - 1;
     // let img_url = 'http://localhost:8000/'
-    let img_url = 'https://oogaya.vercel.app/'
+    let img_url = 'https://oogaya.vercel.app'
 </script>
 
 
