@@ -14,7 +14,7 @@ app.get('/api/item/:slug', (req, res) => {
 });
 
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Hello World' });
+  res.status(200).send('Hello World');
 });
 
 export default app;
