@@ -1,11 +1,12 @@
 import { PrismaClient } from '@prisma/client';
+import cors from 'cors';
 import express from 'express';
 // import multer from 'multer';
 
 
 const app = express();
-// app.use(cors());
-// app.use(express.static('public'));
+app.use(cors());
+app.use(express.static('public'));
 
 const prisma = new PrismaClient();
 
@@ -23,7 +24,7 @@ const storage = multer.diskStorage({
 // 画像をアップロードするためのミドルウェア
 const upload = multer({ storage: storage });
 */
-app.post('/api/test', (req, res) => {
+app.get('/api/test', (req, res) => {
   res.status(200).send('画像をアップロードしました');
 });
 /*
