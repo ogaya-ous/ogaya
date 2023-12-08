@@ -100,6 +100,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 */
 
+/*
 app.post('/api/decode', upload.single('decode'), (req, res) => {
   //コメントが空の場合は，処理を中断する
   if (!req.body.comment) {
@@ -168,7 +169,7 @@ app.get('app/decipher', (req, res) => {
     console.log(error);
   });
 })
-
+*/
 export default app;
 
 /*
