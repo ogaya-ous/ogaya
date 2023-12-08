@@ -12,7 +12,9 @@ const prisma = new PrismaClient();
 
 
 app.post('/api/upload', async (req, res) => {
-  const filename = req.body.filename;
+  const { searchParams } = new URL(request.url);
+  const filename = searchParams.get('filename');
+
   const blob = await put(filename, req.body.data, {
     access: 'public',
   });
