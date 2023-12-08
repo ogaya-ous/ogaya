@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
-import multer from 'multer';
+const { put } = require('@vercel/blob');
 
 
 const app = express();
@@ -10,24 +10,49 @@ app.use(express.static('public'));
 
 const prisma = new PrismaClient();
 
-// 画像を保存するためのストレージ
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/images')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
+app.post('/api/upload', async (req, res) => {
+  const filename = req.body.filename;
+  const blob = await put(filename, req.body.data, {
+    access: 'public',
+  });
+
+  // アップロードされた画像のパスを取得する
+  let documentPath = req.file.path;
+  documentPath = documentPath.slice(7, documentPath.length)
+  // bodyのタイトルを取得する
+  let documentName = req.body.name;
+  // bodyの文書の説明を取得する
+  let documentExplain = req.body.document_explain;
+  const date = new Date();
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth() + 1;
+  const currentYear = date.getFullYear();
+
+  // prisma
+  prisma.document.create({
+    data: {
+      document_name: documentName,
+      document_path: documentPath,
+      document_explain: documentExplain,
+      added_year: currentYear,
+      added_month: currentMonth,
+      added_day: currentDay
+    }
+  }).then((results) => {
+    console.log('画像のパスを格納しました');
+    res.status(200).json(blob);
+  }).catch((error) => {
+    console.log(error);
+    res.status(400).send(error);
+  });
 });
-
-// 画像をアップロードするためのミドルウェア
-const upload = multer({ storage: storage });
 
 app.get('/api/test', (req, res) => {
   res.status(200).send('画像をアップロードしました');
 });
 
+/*
 // ファイルアップロード用のルーティングを設定する
 app.post('/api/upload', upload.single('image'), (req, res) => {
   // アップロードされた画像が存在しない場合は、処理を中断する
@@ -73,7 +98,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
     res.status(400).send(error);
   });
 });
-
+*/
 
 app.post('/api/decode', upload.single('decode'), (req, res) => {
   //コメントが空の場合は，処理を中断する
