@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
+import { put } from '@vercel/blob';
 import cors from 'cors';
 import express from 'express';
-const { put } = require('@vercel/blob');
 
 
 const app = express();
