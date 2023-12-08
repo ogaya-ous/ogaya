@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 
 
 app.post('/api/upload', async (req, res) => {
-  const { searchParams } = new URL(request.url);
+  const { searchParams } = new URL(req.url);
   const filename = searchParams.get('filename');
 
   const blob = await put(filename, req.body.data, {
