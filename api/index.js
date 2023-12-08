@@ -45,7 +45,7 @@ app.post('/api/upload', async (req, res) => {
     console.log('画像のパスを格納しました');
     res.status(200).json(blob);
   }).catch((error) => {
-    console.log(error);
+    console.log("えらーーーーーーーーーーー");
     res.status(400).send(error);
   });
 });
