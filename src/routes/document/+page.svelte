@@ -5,7 +5,7 @@
 
     async function getDocument(page_num){
 		// const url = 'http://localhost:8000';
-        const url = 'https://oogaya.vercel.app'
+        const url = 'https://oogaya.vercel.app';
 		return await axios.get(url + '/api/document/' + page_num);
     }
 
