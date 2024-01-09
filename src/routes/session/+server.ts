@@ -1,8 +1,6 @@
 import { dev } from '$app/environment'
 import { auth } from '$lib/admin.server'
-import type { Session } from '$lib/types'
 import { json } from '@sveltejs/kit'
-import type { DecodedIdToken } from 'firebase-admin/auth'
 import type { RequestHandler } from './$types'
 
 const WEEK_IN_SECONDS = 60 * 60 * 24 * 7
@@ -21,11 +19,12 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
 // クッキーを削除
 export const DELETE: RequestHandler = async ({ cookies }) => {
-    cookies.delete('session')
+    /* @migration task: add path argument */ /* @migration task: add path argument */ cookies.delete('session')
 
     return json(getSession(null))
 }
 
+/*
 export function getSession(user: DecodedIdToken | null): Session {
     if (user) {
         const { name, email, email_verified, uid } = user
@@ -33,3 +32,4 @@ export function getSession(user: DecodedIdToken | null): Session {
     }
     return { user }
 }
+*/
