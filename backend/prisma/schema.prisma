@@ -20,6 +20,7 @@ model document {
   added_month      Int
   added_day        Int
   history          history[]
+  deleted          Boolean   @default(false)
 }
 
 model decoder {

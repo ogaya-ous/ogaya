@@ -1,14 +1,15 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
 
-    let image;
     let show_image = false;
     export let form;
 
     let file: File | null = null
+    let title: string | null = null
+    let explain: string | null = null
 
     function onChange(
-    event: Event & { currentTarget: EventTarget & HTMLInputElement },
+        event: Event & { currentTarget: EventTarget & HTMLInputElement },
     ) {
         file = (event.target as HTMLInputElement)?.files?.[0] ?? null
     }
@@ -72,18 +73,18 @@
             <table class="input-table">
                 <tr>
                     <th class="input-item"><label for="name">タイトル</label></th>
-                    <td class="input-body"><input type="text" id="name" name="name" class="form-text"></td>
+                    <td class="input-body"><input type="text" id="name" name="name" class="form-text" bind:value={title}></td>
                 </tr>
                 <tr>
                     <th class="input-item"><label for="document_explain">説明</label></th>
-                    <td class="input-body"><textarea id="document_explain" name="document_explain" class="form-textarea"></textarea></td>
+                    <td class="input-body"><textarea id="document_explain" name="document_explain" class="form-textarea" bind:value={explain}></textarea></td>
                 </tr>
                 <tr>
                     <th class="input-item"><label for="image">画像</label></th>
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
                         <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
-                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange} />
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
                         {#if show_image}
                         <p>プレビュー</p>
                         <img id="preview" src="" alt="preview">
@@ -91,7 +92,24 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" value="送信" class="input-submit">
+            {#if !file || !title || !explain}
+                <button value="送信" class="input-submit-not-fill" disabled={true}>送信</button>
+            {:else}
+                <button type="submit" value="送信" class="input-submit" disabled={!file}>送信</button>
+            {/if}
+
+            {#if form && !file}
+                <div class="response">
+                    {title}をアップロードしました
+                    <a
+                        href={form.uploaded}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    {form.uploaded}
+                    </a>
+                </div>
+            {/if}
         </form>
     </div>
 </main>
@@ -174,6 +192,23 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         cursor: pointer;
+    }
+    .input-submit-not-fill {
+        width: 250px; /* 横幅指定 */
+        background-color: rgb(243 244 246); /* 背景色 */
+        color: rgb(156 163 175); /* 文字色 */
+        font-weight: bold; /* 文字の太さ */
+        display: block; /* インライン要素をブロック要素に変更 */
+        margin: 0 auto; /* 中央寄せ */
+        font-size: 16px; /* 文字の大きさ */
+        padding: 15px; /* 内側の余白 */
+        border-radius: 100vh; /* 角丸指定 */
+        border: rgb(229 231 235);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        pointer-events: none;
     }
 
 
