@@ -1,87 +1,87 @@
-<script>
+<script lang="ts">
     import { page } from '$app/stores';
+    import type { PageData } from "./$types";
     // import img_path from '$lib/images/img_doc1.jpg';
-    import axios from 'axios';
+    // import axios from 'axios';
 
+    /*
     async function getDocument(page_num){
 		// const url = 'http://localhost:8000';
         const url = 'https://oogaya.vercel.app';
 		return await axios.get(url + '/api/document/' + page_num);
     }
+    */
+    export let data: PageData;
+    export let document_start_id: number = Number(data.documents[0].document_id);
+    export let documentData = data.documents;
 
     // 文書一覧のページ番号
     $: page_num = $page.url.searchParams.get('page');
     $: next_page = Number(page_num) + 1;
     $: prev_page = Number(page_num) - 1;
-    // let img_url = 'http://localhost:8000/'
-    let img_url = 'https://oogaya.vercel.app'
 </script>
 
-
 <main>
-    {#await getDocument( page_num )}
-    <h3>ロード中...</h3>
-    {:then documentData}
     <div id="document_list" class="cf">
         <section id="work" class="cf">
             <h2>文書一覧</h2>
-            {#if documentData.data[0]}
+            {#if documentData[0]}
             <div class="document">
                 <article>
-                    <img src={ img_url+documentData.data[0].document_path } width="313" height="269" alt="work1">
+                    <img src={ documentData[0].document_path } width="313" height="269" alt="work1">
                     <div class="added_date">
-                        <time>{ documentData.data[0].added_year }年{ documentData.data[0].added_month }月{ documentData.data[0].added_day }日</time>
+                        <time>{ documentData[0].added_year }年{ documentData[0].added_month }月{ documentData[0].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData.data[0].document_name }</a></h3>
-                    <p>{ documentData.data[0].document_explain }</p>
+                    <h3><a href="#">{ documentData[0].document_name }</a></h3>
+                    <p>{ documentData[0].document_explain }</p>
                 </article>
             </div>
             {/if}
-            {#if documentData.data[1]}
+            {#if documentData[1]}
             <div class="document">
                 <article>
-                    <img src={ img_url+documentData.data[1].document_path } width="313" height="269" alt="work2">
+                    <img src={ documentData[1].document_path } width="313" height="269" alt="work2">
                     <div class="added_date">
-                        <time>{ documentData.data[1].added_year }年{ documentData.data[1].added_month }月{ documentData.data[1].added_day }日</time>
+                        <time>{ documentData[1].added_year }年{ documentData[1].added_month }月{ documentData[1].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData.data[1].document_name }</a></h3>
-                    <p>{ documentData.data[1].document_explain }</p>
+                    <h3><a href="#">{ documentData[1].document_name }</a></h3>
+                    <p>{ documentData[1].document_explain }</p>
                 </article>
             </div>
             {/if}
-            {#if documentData.data[2]}
+            {#if documentData[2]}
             <div class="document">
                 <article>
-                    <img src={ img_url+documentData.data[2].document_path } width="313" height="269" alt="work3">
+                    <img src={ documentData[2].document_path } width="313" height="269" alt="work3">
                     <div class="added_date">
-                        <time>{ documentData.data[2].added_year }年{ documentData.data[2].added_month }月{ documentData.data[2].added_day }日</time>
+                        <time>{ documentData[2].added_year }年{ documentData[2].added_month }月{ documentData[2].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData.data[2].document_name }</a></h3>
-                    <p>{ documentData.data[2].document_explain }</p>
+                    <h3><a href="#">{ documentData[2].document_name }</a></h3>
+                    <p>{ documentData[2].document_explain }</p>
                 </article>
             </div>
             {/if}
-            {#if documentData.data[3]}
+            {#if documentData[3]}
             <div class="document">
                 <article>
-                    <img src={ img_url+documentData.data[3].document_path } width="313" height="269" alt="work4">
+                    <img src={ documentData[3].document_path } width="313" height="269" alt="work4">
                     <div class="added_date">
-                        <time>{ documentData.data[3].added_year }年{ documentData.data[3].added_month }月{ documentData.data[3].added_day }日</time>
+                        <time>{ documentData[3].added_year }年{ documentData[3].added_month }月{ documentData[3].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData.data[3].document_name }</a></h3>
-                    <p>{ documentData.data[3].document_explain }</p>
+                    <h3><a href="#">{ documentData[3].document_name }</a></h3>
+                    <p>{ documentData[3].document_explain }</p>
                 </article>
             </div>
             {/if}
-            {#if documentData.data[4]}
+            {#if documentData[4]}
             <div class="document">
                 <article>
-                    <img src={ img_url+documentData.data[4].document_path } width="313" height="269" alt="work5">
+                    <img src={ documentData[4].document_path } width="313" height="269" alt="work5">
                     <div class="added_date">
-                        <time>{ documentData.data[4].added_year }年{ documentData.data[4].added_month }月{ documentData.data[4].added_day }日</time>
+                        <time>{ documentData[4].added_year }年{ documentData[4].added_month }月{ documentData[4].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData.data[4].document_name }</a></h3>
-                    <p>{ documentData.data[4].document_explain }</p>
+                    <h3><a href="#">{ documentData[4].document_name }</a></h3>
+                    <p>{ documentData[4].document_explain }</p>
                 </article>
             </div>
             {/if}
@@ -89,23 +89,23 @@
     </div>
     <div id="paging">
         <ul class="example">
-            {#if prev_page == '0'}
+            {#if prev_page == 0}
             <li class="non">前へ</li>
             {:else}
             <li><a href="?page={ Number(page_num) - 1 }">前へ</a></li>
             {/if}
             <!--1ページ目のページネーションの条件分岐(コード汚いから誰か直して)-->
-            {#if page_num == 1 && Number(documentData.data[0].document_id) > 10}
+            {#if page_num == 1 && document_start_id > 10}
             <li class="this">1</li>
             <li><a href="?page=2">2</a></li>
             <li><a href="?page=3">3</a></li>
-            {:else if page_num == 1 && Number(documentData.data[0].document_id) > 5}
+            {:else if page_num == 1 && document_start_id > 5}
             <li class="this">1</li>
             <li><a href="?page=2">2</a></li>
-            {:else if page_num == 1 && Number(documentData.data[0].document_id) <= 5}
+            {:else if page_num == 1 && document_start_id <= 5}
             <li class="this">1</li>
             <!--2ページ目以降-->
-            {:else if Number(documentData.data[0].document_id) / (Number(page_num) * 5) >= 1}
+            {:else if document_start_id / (Number(page_num) * 5) >= 1}
             <li><a href="?page={ prev_page }">{ prev_page }</a></li>
             <li class="this">{ page_num }</li>
             <li><a href="?page={ next_page }">{ next_page }</a></li>
@@ -114,14 +114,13 @@
             <li class="this">{ page_num }</li>
             {/if}
             <!--次へのボタンを表示するかの条件分岐-->
-            {#if Number(documentData.data[0].document_id) / (Number(page_num) * 5) >= 1}
+            {#if document_start_id / (Number(page_num) * 5) >= 1}
             <li><a href="?page={ next_page }">次へ</a></li>
             {:else}
             <li class="non">次へ</li>
             {/if}
         </ul>
     </div>
-    {/await}
 </main>
 
 <style>
