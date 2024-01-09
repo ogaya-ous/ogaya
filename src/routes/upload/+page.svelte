@@ -1,12 +1,21 @@
-<script>
-    import axios from "axios";
+<script lang="ts">
+    import { enhance } from '$app/forms';
 
     let image;
-    let input;
     let show_image = false;
+    export let form;
 
+    let file: File | null = null
+
+    function onChange(
+    event: Event & { currentTarget: EventTarget & HTMLInputElement },
+    ) {
+        file = (event.target as HTMLInputElement)?.files?.[0] ?? null
+    }
+
+    /*
     async function handleSubmit(event) {
-        const url = "https://oogaya.vercel.app/api/upload"
+        const url = "https://oogaya.vercel.app/api/upload";
 
         const formData = new FormData(event.target);
         const data = {};
@@ -28,6 +37,9 @@
             alert("アップロードに失敗しました。");
         })
     }
+    */
+
+
 
     function previewFile(){
         console.log('clear');
@@ -37,7 +49,7 @@
             //プレビュー表示している
             document.getElementById('preview').src = fileData.result;
         });
-        fileData.readAsDataURL(input.files[0]);
+        fileData.readAsDataURL(file.files[0]);
         show_image = true;
         return;
     }
@@ -45,8 +57,18 @@
 
 <main>
     <div class="input">
-    <h2 class="input-title"> 大茅区有文書のアップロード</h2>
-        <form on:submit|preventDefault={handleSubmit}>
+        <h2 class="input-title"> 大茅区有文書のアップロード</h2>
+        <form
+            action="?/upload"
+            method="POST"
+            enctype="multipart/form-data"
+            use:enhance={() => {
+                return async ({ update }) => {
+                    file = null
+                    update({ reset: true })
+                }
+            }}
+        >
             <table class="input-table">
                 <tr>
                     <th class="input-item"><label for="name">タイトル</label></th>
@@ -60,15 +82,15 @@
                     <th class="input-item"><label for="image">画像</label></th>
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
-                        <input accept="image/*" multiple type="file" id="image" name="image" bind:this={input} on:change={previewFile}>
+                        <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange} />
                         {#if show_image}
                         <p>プレビュー</p>
                         <img id="preview" src="" alt="preview">
-                    {/if}
+                        {/if}
                     </td>
                 </tr>
             </table>
-
             <input type="submit" value="送信" class="input-submit">
         </form>
     </div>
