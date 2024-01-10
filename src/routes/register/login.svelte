@@ -1,6 +1,5 @@
 <script>
-	let username = '';
-	let email_address = '';
+	export let username = '';
   let check1 = false;
   let check2 = false;
 
@@ -62,11 +61,6 @@
 <form class="login-form">
   <h1>会員登録</h1>
   <input type="text" placeholder="ユーザー名" bind:value={username} />
-  <input
-    type="email"
-    placeholder="メールアドレス"
-    bind:value={email_address}
-  />
   <input type="checkbox" id="terms" bind:checked={check1}>利用規約に同意する<br>
   <input type="checkbox" id="privacy" bind:checked={check2}>プライバシーポリシーに同意する<br>
   <br>

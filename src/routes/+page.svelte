@@ -2,8 +2,8 @@
 	import arrow from '$lib/images/arrow.png';
 	import document_img from '$lib/images/document_img.jpg';
 	import intro_img from '$lib/images/intro_img.jpg';
-	import img_path from '$lib/images/sample.jpg';
 	import right_arrow from '$lib/images/right_arrow.png';
+	import img_path from '$lib/images/sample.jpg';
 	import { closeModal, Modals } from 'svelte-modals';
 </script>
 

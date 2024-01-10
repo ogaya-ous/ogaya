@@ -19,23 +19,26 @@ model document {
   added_year       Int
   added_month      Int
   added_day        Int
+  delete_flag      Boolean   @default(false)
   history          history[]
 }
 
-model decoder {
-  decoder_id  Int       @id @default(autoincrement())
-  name        String
-  affiliation String
-  specialty   String
-  history     history[]
+model user {
+  user_id       Int       @id @default(autoincrement())
+  google_id     String
+  name          String
+  login_method  String
+  admin         Boolean   @default(false)
+  delete_flag          Boolean   @default(false)
+  history       history[]
 }
 
 model history {
   history_id        Int      @id @default(autoincrement())
   document_id       Int
-  decoder_id        Int
+  user_id           Int
   decoding_datetime DateTime
   decoding_content  String
   document          document @relation(fields: [document_id], references: [document_id])
-  decoder           decoder  @relation(fields: [decoder_id], references: [decoder_id])
+  user              user  @relation(fields: [user_id], references: [user_id])
 }

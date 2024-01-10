@@ -1,13 +1,17 @@
-<!-- typescriptに変更 -->
 <script lang="ts">
+	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
+	import { signOut } from '@auth/sveltekit/client';
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
+
 	// header ハンバーガーメニューの制御
 	let root;
 	let nav_click;
 	let hamburger = false;
+
+	console.log($page.data);
 
 	onMount(() => {
 		let btn = root.querySelector(".toggle-btn");
@@ -30,7 +34,6 @@
 			}
 		})
 	}
-	console.log('login')
 </script>
 
 
@@ -86,7 +89,14 @@
 										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar"><a href="#" on:click={ signOut }></a></li>
 									{/if}
 								{:else} -->
-								<li class="login_btn"><a href="#" on:click={ handleOpen }>ログイン</a></li>
+								{#if $page.data.session}
+									{#if $page.data.session.user.image}
+										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar"></span></li>
+										<li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li>
+									{/if}
+								{:else}
+									<li><button class="login_btn" on:click={ handleOpen }>ログイン</button></li>
+								{/if}
 							</ul>
 						</div>
 					</nav>
@@ -300,14 +310,17 @@
 			color: #0aa284;
 		}
 
-		.pc_nav li.login_btn a {
+		.login_btn {
 			color: white;
 			padding: 10px 30px;
 			border-radius: 10px;
 			background-color: #0F4C3A;
+			margin-right: 35px;
+			font-size: 16px;
+			border: none;
 		}
 
-		.pc_nav li.login_btn a:hover {
+		.login_btn:hover {
 			text-decoration: none;
 			background-color: #197157;
 		}
@@ -328,6 +341,7 @@
 			background-color: white;
 			background-size: cover;
 			background-repeat: no-repeat;
+			margin-right: 35px;
 		}
 	}
 </style>

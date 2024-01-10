@@ -7,7 +7,10 @@ export const load: PageServerLoad = async ({ url }) => {
     const page_num = url.searchParams.get('page') - 1;
     const documents = await prisma.document.findMany({
         skip: page_num * 5,
-        take: 5
+        take: 5,
+        orderBy: {
+            document_id: 'desc'
+        }
     });
     console.log({ documents})
     return { documents };
