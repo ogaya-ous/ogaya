@@ -42,3 +42,14 @@ model history {
   document          document @relation(fields: [document_id], references: [document_id])
   user              user  @relation(fields: [user_id], references: [user_id])
 }
+
+model news {
+  news_id      Int       @id @default(autoincrement())
+  news_name    String
+  news_path    String
+  news_explain String
+  added_year       Int
+  added_month      Int
+  added_day        Int
+  delete_flag      Boolean   @default(false)
+}
