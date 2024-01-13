@@ -32,7 +32,7 @@
                     <div class="added_date">
                         <time>{ documentData[0].added_year }年{ documentData[0].added_month }月{ documentData[0].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData[0].document_name }</a></h3>
+                    <h3><a href="document_info?document_id={ documentData[0].document_id }">{ documentData[0].document_name }</a></h3>
                     <p>{ documentData[0].document_explain }</p>
                 </article>
             </div>
@@ -44,7 +44,7 @@
                     <div class="added_date">
                         <time>{ documentData[1].added_year }年{ documentData[1].added_month }月{ documentData[1].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData[1].document_name }</a></h3>
+                    <h3><a href="document_info?document_id={ documentData[1].document_id }">{ documentData[1].document_name }</a></h3>
                     <p>{ documentData[1].document_explain }</p>
                 </article>
             </div>
@@ -56,7 +56,7 @@
                     <div class="added_date">
                         <time>{ documentData[2].added_year }年{ documentData[2].added_month }月{ documentData[2].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData[2].document_name }</a></h3>
+                    <h3><a href="document_info?document_id={ documentData[2].document_id }">{ documentData[2].document_name }</a></h3>
                     <p>{ documentData[2].document_explain }</p>
                 </article>
             </div>
@@ -68,7 +68,7 @@
                     <div class="added_date">
                         <time>{ documentData[3].added_year }年{ documentData[3].added_month }月{ documentData[3].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData[3].document_name }</a></h3>
+                    <h3><a href="document_info?document_id={ documentData[3].document_id }">{ documentData[3].document_name }</a></h3>
                     <p>{ documentData[3].document_explain }</p>
                 </article>
             </div>
@@ -80,7 +80,7 @@
                     <div class="added_date">
                         <time>{ documentData[4].added_year }年{ documentData[4].added_month }月{ documentData[4].added_day }日</time>
                     </div>
-                    <h3><a href="#">{ documentData[4].document_name }</a></h3>
+                    <h3><a href="document_info?document_id={ documentData[4].document_id }">{ documentData[4].document_name }</a></h3>
                     <p>{ documentData[4].document_explain }</p>
                 </article>
             </div>

@@ -1,22 +1,29 @@
-<script>
-    import doc from '$lib/images/document_img.jpg';
+<script lang="ts">
+    import type { PageData } from "./$types";
+
+    export let data: PageData;
+    export const document_name: string = data.document.document_name;
+    export const document_path: string = data.document.document_path;
+    export const document_explain: string = data.document.document_explain;
+    export const document_added_year: number = data.document.added_year;
+    export const document_added_month: number = data.document.added_month;
+    export const document_added_day: number = data.document.added_day;
 </script>
 
 <main>
-    <a href=document class="back-button">文書一覧へ戻る</a>
+    <a href="document?page=1" class="back-button">文書一覧へ戻る</a>
     <section class="wrapper">
-        
         <div class="container">
             <div class="content">
                 <div class="content-item">
-                    <img src={doc} class="image">
-                </div>    
+                    <img src={ document_path } class="image">
+                </div>
                 <div class="content-item">
                     <div class="text">
-                        <h2 class="heading">文書のタイトル</h2>
-                        <p>アップロード日：〇月〇日</p>
+                        <h2 class="heading">{document_name}</h2>
+                        <p>アップロード日：{ document_added_year }年{ document_added_month }月{ document_added_day }日</p>
                         <div class="box">
-                            <p>文書の情報または管理者のコメント～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～￣￣￣￣￣￣～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～</p>
+                            <p>{ document_explain }</p>
                         </div>
                     </div>
                 </div>
@@ -27,7 +34,6 @@
                 <a href="decipher" class="btn_04">翻訳する</a>
 
             </div>
-            
             <h2>翻訳履歴</h2>
             <div class="card-container">
                 <div class="card">

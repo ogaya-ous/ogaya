@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
-	import { signOut } from '@auth/sveltekit/client';
+	import { signOut } from "@auth/sveltekit/client";
+	import { Dropdown, DropdownItem } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
@@ -91,8 +92,16 @@
 								{:else} -->
 								{#if $page.data.session}
 									{#if $page.data.session.user.image}
-										<li><span style="background-image: url('{$page.data.session.user.image}')" class="avatar"></span></li>
-										<li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li>
+										<li>
+											<button style="background-image: url('{$page.data.session.user.image}')" class="avatar"></button>
+											<Dropdown style="position: relative z-index: 114514810">
+												<DropdownItem>Dashboard</DropdownItem>
+												<DropdownItem>Settings</DropdownItem>
+												<DropdownItem>Earnings</DropdownItem>
+												<DropdownItem on:click={() => signOut()}>Sign out</DropdownItem>
+											</Dropdown>
+										</li>
+										<!-- <li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li> -->
 									{/if}
 								{:else}
 									<li><button class="login_btn" on:click={ handleOpen }>ログイン</button></li>
@@ -334,7 +343,7 @@
 			height: 50px;
 		}
 		.avatar {
-			border-radius: 2rem;
+			border-radius: 50%;
 			float: left;
 			height: 2.8rem;
 			width: 2.8rem;
@@ -342,6 +351,35 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 			margin-right: 35px;
+			border: none;
+			border-radius: 50%;
+		}
+
+		.avatar:hover {
+			border-radius: 50%;
+			float: left;
+			height: 2.8rem;
+			width: 2.8rem;
+			background-color: white;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.5;
+			transition: 0.2s;
+			margin-right: 35px;
+			border: none;
+			border-radius: 50%;
+		}
+
+		.dropmenu {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transition: 0.2s;
 		}
 	}
 </style>
