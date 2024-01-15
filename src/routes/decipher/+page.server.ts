@@ -9,13 +9,15 @@ const dt = new Date();
 const currentDay = dt.getDate();
 const currentMonth = dt.getMonth() + 1;
 const currentYear = dt.getFullYear();
+let session = null;
 
 export const load: PageServerLoad = async (event) => {
-  const session = await event.locals.getSession();
+  session = await event.locals.getSession();
   document_id = Number(event.url.searchParams.get('document_id'));
   if (session) {
     user_id = session.user.id;
   }
+  return { session };
 }
 
 export const actions = {
@@ -25,6 +27,10 @@ export const actions = {
 
     if (!form_text) {
       error(400, { message: 'No text of decipher' })
+    }
+
+    if (!session) {
+      error(400, { message: 'No session' })
     }
 
     console.log(form_text)

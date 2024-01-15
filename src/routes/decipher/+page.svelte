@@ -2,10 +2,13 @@
     import { enhance } from '$app/forms';
     import testimg_path from '$lib/images/first_view.jpg';
     import { onMount } from 'svelte';
-
+    import Toast from '../Toast.svelte';
+    import { notifications } from "../notifications";
+    import type { PageData } from "./$types";
 
     let decipher_text: HTMLElement | null = null;
     let FormData: string | null = null;
+    export let data: PageData;
 
     onMount(() => {
         FormData = document.getElementById('text-form')?.innerText ?? null;
@@ -38,7 +41,11 @@
                 </svg>
             </a>
         </li>
-        <button type="submit" class="btn btn--orange" form="decipher-form">完了</button>
+        { #if data.session }
+            <button type="submit" class="btn btn--orange" form="decipher-form">完了</button>
+        {:else}
+            <button class="btn btn--orange" on:click={() => notifications.warning("ログインしてください", 5000)}>完了</button>
+        {/if}
     </ul>
     <div class="decipher">
         <div class="decipher-item">
@@ -81,6 +88,7 @@
         </div>
     </div>
 </main>
+<Toast />
 
 <style>
     * {
