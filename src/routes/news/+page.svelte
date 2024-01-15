@@ -1,27 +1,46 @@
-<script>
-    import img_path from '$lib/images/news.jpg';
-    import doc from '$lib/images/document_img.jpg';
+<script lang='ts'>
+    import { page } from '$app/stores';
+    import type { PageData } from "./$types";
+
+    export let data: PageData;
+    export let newsDatas = data.news;
 </script>
 
 <main>
     <main id="information">
         <div class="wrapper">
           <h1>お知らせ</h1>
-
+          {#each newsDatas as newsData}
           <article id="part1">
             <ul>
               <li>
-                <p class="text_date"><time datetime="2021-04-12">2021.04.12</time></p>
-                <img src={doc}>
+                <p class="text_date"><time>{ newsData.added_year }年{ newsData.added_month }月{ newsData.added_day }</time></p>
+                <img src={ newsData.news_path } alt="work1">
               </li>
               <li>
-                <h2>お問い合わせページを追加しました。</h2>
-                <p class="text_content">お問い合わせページを追加しました。<br>当サイトについてのお問い合わせは、記載した電話番号、またはメールアドレスまでお寄せください。</p>
+                <h2>{ newsData.news_name }</h2>
+                <p class="text_content">{ newsData.news_explain }</p>
               </li>
             </ul>
           </article>
+          {/each}
 
-          <article id="part2">
+          <!-- {#if newsData[0]}
+          <article id="part1">
+            <ul>
+              <li>
+                <p class="text_date"><time>{ newsData[0].added_year }年{ newsData[0].added_month }月{ newsData[0].added_day }</time></p>
+                <img src={ newsData[0].news_path } alt="work1">
+              </li>
+              <li>
+                <h2>{ newsData[0].news_name }</h2>
+                <p class="text_content">{ newsData[0].news_explain }</p>
+              </li>
+            </ul>
+          </article>
+          {/if} -->
+
+          <!-- <article id="part2">
             <ul>
               <li>
                 <p class="text_date"><time datetime="2021-04-05">2021.04.05</time></p>
@@ -45,7 +64,7 @@
                 <p class="text_content">サイトを公開しました。<br>今後も更新ができるよう頑張ります。</p>
               </li>
             </ul> 
-          </article>
+          </article> -->
 
         </div>
     </main>

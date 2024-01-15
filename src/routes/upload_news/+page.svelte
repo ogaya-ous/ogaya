@@ -1,33 +1,51 @@
-<script>
+<script lang="ts">
+    import { enhance } from '$app/forms';
     import axios from "axios";
 
-    let image;
-    let input;
     let show_image = false;
+    export let form;
 
-    async function handleSubmit(event) {
-        const url = "http://localhost:8000/api/upload"
+    let file: File | null = null
+    let title: string | null = null
+    let explain: string | null = null
+    let added_year: string | null = null
+    let added_month: string | null = null
+    let added_day: string | null = null
 
-        const formData = new FormData(event.target);
-        const data = {};
-        for (let field of formData) {
-            const [key, value] = field;
-            data[key] = value;
-        }
-        console.log(data)
-
-        await axios.post(url, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then(res => {
-            console.log(res.data);
-            alert("アップロードが完了しました。");
-        }).catch(error => {
-            console.log(error);
-            alert("アップロードに失敗しました。");
-        })
+    function onChange(
+        event: Event & { currentTarget: EventTarget & HTMLInputElement },
+    ) {
+        file = (event.target as HTMLInputElement)?.files?.[0] ?? null
     }
+
+
+
+    // let image;
+    // let input;
+    // let show_image = false;
+    // async function handleSubmit(event) {
+    //     const url = "http://localhost:8000/api/upload"
+
+    //     const formData = new FormData(event.target);
+    //     const data = {};
+    //     for (let field of formData) {
+    //         const [key, value] = field;
+    //         data[key] = value;
+    //     }
+    //     console.log(data)
+
+    //     await axios.post(url, formData, {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //         }
+    //     }).then(res => {
+    //         console.log(res.data);
+    //         alert("アップロードが完了しました。");
+    //     }).catch(error => {
+    //         console.log(error);
+    //         alert("アップロードに失敗しました。");
+    //     })
+    // }
 
     function previewFile(){
         console.log('clear');
@@ -46,24 +64,63 @@
 
 <main>
     <div class="input">
-    <h2 class="input-title"> 大茅区有文書のお知らせアップロード</h2>
-        <form on:submit|preventDefault={handleSubmit}>
+        <h2 class="input-title"> 大茅区有文書のお知らせアップロード</h2>
+        <form
+            action="?/upload_news"
+            method="POST"
+            enctype="multipart/form-data"
+            use:enhance={() => {
+                return async ({ update_news }) => {
+                    file = null
+                    update_news({ reset: true })
+                }
+            }}
+        >
             <table class="input-table">
                 <tr>
                     <th class="input-item"><label for="name">タイトル</label></th>
-                    <td class="input-body"><input type="text" id="name" name="name" class="form-text"></td>
+                    <td class="input-body"><input type="text" id="name" name="name" class="form-text" bind:value={title}></td>
                 </tr>
                 <tr>
                     <th class="input-item"><label for="name">日付</label></th>
                     <td class="input-body"><p><input type="date" name="example"></p></td>
                 </tr>
                 <tr>
-                    <th class="input-item"><label for="document_explain">説明</label></th>
-                    <td class="input-body"><textarea id="document_explain" name="document_explain" class="form-textarea"></textarea></td>
+                    <th class="input-item"><label for="news_explain">説明</label></th>
+                    <td class="input-body"><textarea id="news_explain" name="news_explain" class="form-textarea" bind:value={explain}></textarea></td>
+                </tr>
+                <tr>
+                    <th class="input-item"><label for="image">画像</label></th>
+                    <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
+                    <td class="input-body">
+                        <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
+                        {#if show_image}
+                        <p>プレビュー</p>
+                        <img id="preview" src="" alt="preview">
+                        {/if}
+                    </td>
                 </tr>
             </table>
 
-            <input type="submit" value="送信" class="input-submit">
+            {#if !file || !title || !explain}
+                <button value="送信" class="input-submit-not-fill" disabled={true}>送信</button>
+            {:else}
+                <button type="submit" value="送信" class="input-submit" disabled={!file}>送信</button>
+            {/if}
+
+            {#if form && !file}
+                <div class="response">
+                    {title}をアップロードしました
+                    <a
+                        href={form.uploaded}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    {form.uploaded}
+                    </a>
+                </div>
+            {/if}
         </form>
     </div>
 </main>
