@@ -1,10 +1,14 @@
-<script>
+<script lang="ts">
 	import arrow from '$lib/images/arrow.png';
 	import document_img from '$lib/images/document_img.jpg';
 	import intro_img from '$lib/images/intro_img.jpg';
 	import right_arrow from '$lib/images/right_arrow.png';
 	import img_path from '$lib/images/sample.jpg';
 	import { closeModal, Modals } from 'svelte-modals';
+	import { page } from '$app/stores';
+    import type { PageData } from "./$types";
+	export let data: PageData;
+	export let newsDatas = data.news;
 </script>
 
 <Modals>
@@ -73,57 +77,21 @@
 
 	<div class="pc_news">
 		<div id="news_card">
+			{#each newsDatas as newsData}
 			<div class="news_card_wrapper news_card_radius">
 				<article class="card">
 					<div class="card_header">
-						<p class="card_title">お知らせのタイトル1</p>
-						<img src={ img_path } alt="" class="card_image">
+						<p class="card_title">{ newsData.news_name }</p>
+						<img src={ newsData.news_path } alt="" class="card_image">
 					</div>
 					<div class="card_body">
 						<p class="card_text">
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
+							{ newsData.news_explain}
 						</p>
 					</div>
 				</article>
 			</div>
-			<div class="news_card_wrapper news_card_radius">
-				<article class="card">
-					<div class="card_header">
-						<p class="card_title">お知らせのタイトル2</p>
-						<img src={ img_path } alt="" class="card_image">
-					</div>
-					<div class="card_body">
-						<p class="card_text">
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-						</p>
-					</div>
-				</article>
-			</div>
-			<div class="news_card_wrapper news_card_radius">
-				<article class="card">
-					<div class="card_header">
-						<p class="card_title">お知らせのタイトル3</p>
-						<img src={ img_path } alt="" class="card_image">
-					</div>
-					<div class="card_body">
-						<p class="card_text">
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-							お知らせの内容が入力されます。
-						</p>
-					</div>
-				</article>
-			</div>
+			{/each}
 			<button type="button"><a href="/news" class="img_button"><img class="right_arrow_img" src={ right_arrow } alt="Read more."></a></button>
 		</div>
 	</div>

@@ -8,6 +8,8 @@
     let title: string | null = null
     let explain: string | null = null
 
+    let selectedImage;
+
     function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
     ) {
@@ -40,20 +42,34 @@
     }
     */
 
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
 
+            reader.onload = () => {
+                selectedImage = reader.result;
+            };
 
-    function previewFile(){
-        console.log('clear');
-        const fileData = new FileReader();
-        fileData.addEventListener("load", function() {
-            //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
-            //プレビュー表示している
-            document.getElementById('preview').src = fileData.result;
-        });
-        fileData.readAsDataURL(file.files[0]);
-        show_image = true;
-        return;
-    }
+            reader.readAsDataURL(file);
+        }
+    };
+
+    // function previewFile(){
+    //     console.log('clear');
+    //     const fileData = new FileReader();
+    //     console.log('clear1');
+    //     fileData.addEventListener("load", function() {
+    //         //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
+    //         //プレビュー表示している
+    //         console.log(fileData.result);
+    //         document.getElementById('preview').src = fileData.result;
+    //     });
+    //     console.log('clear2');
+    //     fileData.readAsDataURL(file.files[0]);
+    //     show_image = true;
+    //     return;
+    // }
 </script>
 
 <main>
@@ -84,10 +100,9 @@
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
                         <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
-                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
-                        {#if show_image}
-                        <p>プレビュー</p>
-                        <img id="preview" src="" alt="preview">
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={handleFileChange}/>
+                        {#if selectedImage}
+                            <img id="preview" src={selectedImage} alt="preview">
                         {/if}
                     </td>
                 </tr>
@@ -209,6 +224,11 @@
         -moz-appearance: none;
         cursor: pointer;
         pointer-events: none;
+    }
+
+    #preview {
+        width: 100%;
+        height: 100%;
     }
 
 

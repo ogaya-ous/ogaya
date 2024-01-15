@@ -2,12 +2,12 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
 	import { signOut } from "@auth/sveltekit/client";
-	import { Dropdown, DropdownItem } from 'flowbite-svelte';
+	import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
 
-	// header ハンバーガーメニューの制御
+	// header
 	let root;
 	let nav_click;
 	let hamburger = false;
@@ -92,14 +92,13 @@
 								{:else} -->
 								{#if $page.data.session}
 									{#if $page.data.session.user.image}
-										<li>
+										<li class="dropdown" style="z-index: 114514">
 											<button style="background-image: url('{$page.data.session.user.image}')" class="avatar"></button>
-											<Dropdown style="position: relative z-index: 114514810">
-												<DropdownItem>Dashboard</DropdownItem>
-												<DropdownItem>Settings</DropdownItem>
-												<DropdownItem>Earnings</DropdownItem>
-												<DropdownItem on:click={() => signOut()}>Sign out</DropdownItem>
-											</Dropdown>
+												<Dropdown>
+													<div class="dropdown-content">
+													<DropdownItem on:click={() => signOut()}>ログアウト</DropdownItem>
+													</div>
+												</Dropdown>
 										</li>
 										<!-- <li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li> -->
 									{/if}
@@ -248,6 +247,12 @@
 		position: fixed;
 		opacity: 0.8;
 	}
+
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
 
 	@media screen and (min-width:480px) { 
 		/*　for iPhone Landscape　(iPhone 横)　*/

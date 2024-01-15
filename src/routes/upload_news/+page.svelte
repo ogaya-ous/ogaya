@@ -2,7 +2,6 @@
     import { enhance } from '$app/forms';
     import axios from "axios";
 
-    let show_image = false;
     export let form;
 
     let file: File | null = null
@@ -11,6 +10,8 @@
     let added_year: string | null = null
     let added_month: string | null = null
     let added_day: string | null = null
+
+    let selectedImage;
 
     function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
@@ -47,19 +48,18 @@
     //     })
     // }
 
-    function previewFile(){
-        console.log('clear');
-        const fileData = new FileReader();
-        fileData.addEventListener("load", function() {
-            //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
-            //プレビュー表示している
-            document.getElementById('preview').src = fileData.result;
-            console.log("aaaa")
-        });
-        fileData.readAsDataURL(input.files[0]);
-        show_image = true;
-        return;
-    }
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                selectedImage = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    };
 </script>
 
 <main>
@@ -94,10 +94,9 @@
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
                         <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
-                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
-                        {#if show_image}
-                        <p>プレビュー</p>
-                        <img id="preview" src="" alt="preview">
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={handleFileChange}/>
+                        {#if selectedImage}
+                            <img id="preview" src={selectedImage} alt="preview">
                         {/if}
                     </td>
                 </tr>
@@ -203,6 +202,23 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         cursor: pointer;
+    }
+    .input-submit-not-fill {
+        width: 250px; /* 横幅指定 */
+        background-color: rgb(243 244 246); /* 背景色 */
+        color: rgb(156 163 175); /* 文字色 */
+        font-weight: bold; /* 文字の太さ */
+        display: block; /* インライン要素をブロック要素に変更 */
+        margin: 0 auto; /* 中央寄せ */
+        font-size: 16px; /* 文字の大きさ */
+        padding: 15px; /* 内側の余白 */
+        border-radius: 100vh; /* 角丸指定 */
+        border: rgb(229 231 235);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        pointer-events: none;
     }
 
 
