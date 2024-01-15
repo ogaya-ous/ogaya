@@ -1,7 +1,21 @@
-<script>    
-    import img_path from '$lib/images/img_doc1.jpg';
+<script lang="ts">
+    import { enhance } from '$app/forms';
     import testimg_path from '$lib/images/first_view.jpg';
-    import test2img_path from '$lib/images/sample.jpg';
+    import { onMount } from 'svelte';
+
+
+    let decipher_text: HTMLElement | null = null;
+    let FormData: string | null = null;
+
+    onMount(() => {
+        FormData = document.getElementById('text-form')?.innerText ?? null;
+        decipher_text = document.getElementById('text-form');
+        decipher_text?.addEventListener('input', () => {
+            FormData = decipher_text?.innerText ?? null;
+        })
+    })
+
+    //let text: string | null = null
 </script>
 
 <main>
@@ -24,25 +38,40 @@
                 </svg>
             </a>
         </li>
-        <a href="document_info" class="btn btn--orange">完了</a>
+        <button type="submit" class="btn btn--orange" form="decipher-form">完了</button>
     </ul>
     <div class="decipher">
         <div class="decipher-item">
             <div class="decipher-item-text">
-                <p class="paper vertical-text" contenteditable="true">
-                    <span>恐れながら書付にてお訴え申し上げます</span>
-                    <span>　　　　　土屋保三郎領分</span>
-                    <span>　　　　　　作州吉田郡坂根村惣代</span>
-                    <span>　　　　　　　訴訟人　庄屋　源太郎</span>
-                    <span>　　　　　　　訴訟人　問屋　源四郎</span>
-                    <span>あきない荷物宿次の件での争い</span>
-                    <span>　　　　　当御支払所</span>
-                    <span>　　　　　　　相手　庄屋　甚兵衛</span>
-                    <span>　　　　　　　相手　年寄　傅四郎</span>
-                    <br>
-                    <span>右の訴訟人源太郎、源四郎が申し上げます。</span><br>
-                    <span>坂根村は昔より、</span>
-                </p>
+                <form
+                    action="?/upload"
+                    id="decipher-form"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    use:enhance={() => {
+                        return async ({ update }) => {
+                            update({ reset: true })
+                        }
+                    }}
+                >
+                    <div class="paper vertical-text" contenteditable="true" id="text-form">
+                        <label for="text-decipher">
+                            <input type="text" name="text-decipher" id="text-decipher" hidden bind:value={FormData}>
+                            <span>恐れながら書付にてお訴え申し上げます</span>
+                            <span>　　　　　土屋保三郎領分</span>
+                            <span>　　　　　　作州吉田郡坂根村惣代</span>
+                            <span>　　　　　　　訴訟人　庄屋　源太郎</span>
+                            <span>　　　　　　　訴訟人　問屋　源四郎</span>
+                            <span>あきない荷物宿次の件での争い</span>
+                            <span>　　　　　当御支払所</span>
+                            <span>　　　　　　　相手　庄屋　甚兵衛</span>
+                            <span>　　　　　　　相手　年寄　傅四郎</span>
+                            <br>
+                            <span>右の訴訟人源太郎、源四郎が申し上げます。</span><br>
+                            <span>坂根村は昔より、</span>
+                        </label>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="decipher-item" id="docImage">

@@ -8,6 +8,21 @@
     export const document_added_year: number = data.document.added_year;
     export const document_added_month: number = data.document.added_month;
     export const document_added_day: number = data.document.added_day;
+
+    export async function download_txt(history_id: string) {
+        const response = await fetch('?/document_info?history_id='+history_id, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Content-Disposition": "attachment"
+            },
+        })
+        const txt = await response.text()
+        const download_txt = document.createElement('a')
+        download_txt.href = window.URL.createObjectURL(new Blob([txt], { type: 'text/plain' }))
+        download_txt.download = document_name+'.txt'
+        download_txt.click()
+    }
 </script>
 
 <main>
@@ -31,23 +46,23 @@
 
             <div class="decipher_bn">
 
-                <a href="decipher" class="btn_04">翻訳する</a>
+                <a href="decipher?document_id={data.document_id}" class="btn_04">翻訳する</a>
 
             </div>
             <h2>翻訳履歴</h2>
             <div class="card-container">
+                {#each data.history as historyData, index}
                 <div class="card">
-                    <h2>ユーザー名</h2>
-                    <p>翻訳文のアップロード日：〇月〇日</p>
+                    <h2>ユーザー名: {data.users[index].name}</h2>
+                    <p>翻訳文のアップロード日：{historyData.added_year}年{historyData.added_month}月{historyData.added_day}日</p>
                     <p>冒頭の翻訳文</p>
-                </div>
-                <div class="card">
-                    <h2>ユーザー名</h2>
-                    <p>翻訳文のアップロード日：〇月〇日</p>
-                    <p>冒頭の翻訳文</p>
+                    <p>{historyData.decoding_content.slice(0, 30)}</p>
+                    <div class="download_btn">
+                        <input type="button" on:click={download_txt(historyData.history_id)} value="テキストファイルをダウンロード">
+                    </div>
                 </div>
                 <!-- Add more cards as needed -->
-            </div>
+                {/each}
         </div>
 
     </section>

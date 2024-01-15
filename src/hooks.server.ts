@@ -1,8 +1,12 @@
 import { AUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { SvelteKitAuth } from "@auth/sveltekit";
 import Google from "@auth/sveltekit/providers/google";
+import { PrismaClient } from "@prisma/client";
 import { redirect, type Handle } from '@sveltejs/kit';
 import { sequence } from "@sveltejs/kit/hooks";
+
+const prisma = new PrismaClient()
 
 async function authorization({ event, resolve }) {
 	if (event.url.pathname.startsWith('/upload')) {
@@ -28,8 +32,16 @@ export const handle = SvelteKitAuth(async (event) => {
 export const handle: Handle = sequence(
 	SvelteKitAuth({
 		providers: [Google({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_CLIENT_SECRET })],
+		adapter: PrismaAdapter(prisma),
         secret: AUTH_SECRET,
-        trustHost: true
+        trustHost: true,
+		callbacks: {
+			async session({ session, user, token }) {
+				session.user = session.user || {};
+				session.user.id = user.id;
+				return session;
+			},
+		},
 	}),
 	authorization
 );
