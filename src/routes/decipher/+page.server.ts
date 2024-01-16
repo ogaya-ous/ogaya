@@ -17,7 +17,7 @@ export const load: PageServerLoad = async (event) => {
   if (session) {
     user_id = session.user.id;
   }
-  return { session };
+  return { session , document_id};
 }
 
 export const actions = {

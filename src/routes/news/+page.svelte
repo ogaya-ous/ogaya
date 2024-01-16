@@ -1,5 +1,6 @@
 <script lang='ts'>
     import { page } from '$app/stores';
+    import test from '$lib/images/logo.png';
     import type { PageData } from "./$types";
 
     export let data: PageData;
@@ -16,6 +17,7 @@
               <li>
                 <p class="text_date"><time>{ newsData.added_year }年{ newsData.added_month }月{ newsData.added_day }</time></p>
                 <img src={ newsData.news_path } alt="work1">
+                <!-- <img src={test} alt="work1"> -->
               </li>
               <li>
                 <h2>{ newsData.news_name }</h2>
@@ -101,11 +103,11 @@
 }
 
 #information article {
-  margin-bottom: 40px;
-  padding: 40px 40px 35px;
+  margin-bottom: 2%;
+  padding: 10px;
   text-align: left;
-  border-radius: 20px;
-  background-color: #faf4df;
+  /* border-radius: 20px; */
+  background-color: #f6ffcc;
 }
 
 #information article .text_date {
@@ -117,7 +119,7 @@
   padding-bottom: 12px;
   font-size: 1.15rem;
   line-height: 1.8em;
-  border-bottom: 2px solid #bab02b;
+  border-bottom: 5px solid #494949;
 }
 
 #information article .text_content {
@@ -149,7 +151,10 @@
 }
 
 #part1 img {
-  width: 70%
+  width: 90%;
+  text-align:center;
+  /* height: 90%; */
+
 }
 
 #part2 img {

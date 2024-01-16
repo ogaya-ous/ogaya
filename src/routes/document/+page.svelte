@@ -26,64 +26,74 @@
         <section id="work" class="cf">
             <h2>文書一覧</h2>
             {#if documentData[0]}
-            <div class="document">
-                <article>
-                    <img src={ documentData[0].document_path } width="313" height="269" alt="work1">
-                    <div class="added_date">
-                        <time>{ documentData[0].added_year }年{ documentData[0].added_month }月{ documentData[0].added_day }日</time>
-                    </div>
-                    <h3><a href="document_info?document_id={ documentData[0].document_id }">{ documentData[0].document_name }</a></h3>
-                    <p>{ documentData[0].document_explain }</p>
-                </article>
-            </div>
+            <a href="document_info?document_id={ documentData[0].document_id }">
+                <div class="document">
+                    <article>
+                        <img src={ documentData[0].document_path } width="313" height="269" alt="work1">
+                        <div class="added_date">
+                            <time>{ documentData[0].added_year }年{ documentData[0].added_month }月{ documentData[0].added_day }日</time>
+                        </div>
+                        <h3><a href="document_info?document_id={ documentData[0].document_id }">{ documentData[0].document_name }</a></h3>
+                        <p>{ documentData[0].document_explain }</p>
+                    </article>
+                </div>
+            </a>
             {/if}
             {#if documentData[1]}
-            <div class="document">
-                <article>
-                    <img src={ documentData[1].document_path } width="313" height="269" alt="work2">
-                    <div class="added_date">
-                        <time>{ documentData[1].added_year }年{ documentData[1].added_month }月{ documentData[1].added_day }日</time>
-                    </div>
-                    <h3><a href="document_info?document_id={ documentData[1].document_id }">{ documentData[1].document_name }</a></h3>
-                    <p>{ documentData[1].document_explain }</p>
-                </article>
-            </div>
+            <a href="document_info?document_id={ documentData[1].document_id }">
+                <div class="document">
+                    <article>
+                        <img src={ documentData[1].document_path } width="313" height="269" alt="work2">
+                        <div class="added_date">
+                            <time>{ documentData[1].added_year }年{ documentData[1].added_month }月{ documentData[1].added_day }日</time>
+                        </div>
+                        <h3><a href="document_info?document_id={ documentData[1].document_id }">{ documentData[1].document_name }</a></h3>
+                        <p>{ documentData[1].document_explain }</p>
+                    </article>
+                </div>
+            </a>
             {/if}
             {#if documentData[2]}
-            <div class="document">
-                <article>
-                    <img src={ documentData[2].document_path } width="313" height="269" alt="work3">
-                    <div class="added_date">
-                        <time>{ documentData[2].added_year }年{ documentData[2].added_month }月{ documentData[2].added_day }日</time>
-                    </div>
-                    <h3><a href="document_info?document_id={ documentData[2].document_id }">{ documentData[2].document_name }</a></h3>
-                    <p>{ documentData[2].document_explain }</p>
-                </article>
-            </div>
+            <a href="document_info?document_id={ documentData[2].document_id }">
+                <div class="document">
+                    <article>
+                        <img src={ documentData[2].document_path } width="313" height="269" alt="work3">
+                        <div class="added_date">
+                            <time>{ documentData[2].added_year }年{ documentData[2].added_month }月{ documentData[2].added_day }日</time>
+                        </div>
+                        <h3><a href="document_info?document_id={ documentData[2].document_id }">{ documentData[2].document_name }</a></h3>
+                        <p>{ documentData[2].document_explain }</p>
+                    </article>
+                </div>
+            </a>
             {/if}
             {#if documentData[3]}
-            <div class="document">
-                <article>
-                    <img src={ documentData[3].document_path } width="313" height="269" alt="work4">
-                    <div class="added_date">
-                        <time>{ documentData[3].added_year }年{ documentData[3].added_month }月{ documentData[3].added_day }日</time>
-                    </div>
-                    <h3><a href="document_info?document_id={ documentData[3].document_id }">{ documentData[3].document_name }</a></h3>
-                    <p>{ documentData[3].document_explain }</p>
-                </article>
-            </div>
+            <a href="document_info?document_id={ documentData[3].document_id }">
+                <div class="document">
+                    <article>
+                        <img src={ documentData[3].document_path } width="313" height="269" alt="work4">
+                        <div class="added_date">
+                            <time>{ documentData[3].added_year }年{ documentData[3].added_month }月{ documentData[3].added_day }日</time>
+                        </div>
+                        <h3><a href="document_info?document_id={ documentData[3].document_id }">{ documentData[3].document_name }</a></h3>
+                        <p>{ documentData[3].document_explain }</p>
+                    </article>
+                </div>
+            </a>
             {/if}
             {#if documentData[4]}
-            <div class="document">
-                <article>
-                    <img src={ documentData[4].document_path } width="313" height="269" alt="work5">
-                    <div class="added_date">
-                        <time>{ documentData[4].added_year }年{ documentData[4].added_month }月{ documentData[4].added_day }日</time>
-                    </div>
-                    <h3><a href="document_info?document_id={ documentData[4].document_id }">{ documentData[4].document_name }</a></h3>
-                    <p>{ documentData[4].document_explain }</p>
-                </article>
-            </div>
+            <a href="document_info?document_id={ documentData[4].document_id }">
+                <div class="document">
+                    <article>
+                        <img src={ documentData[4].document_path } width="313" height="269" alt="work5">
+                        <div class="added_date">
+                            <time>{ documentData[4].added_year }年{ documentData[4].added_month }月{ documentData[4].added_day }日</time>
+                        </div>
+                        <h3><a href="document_info?document_id={ documentData[4].document_id }">{ documentData[4].document_name }</a></h3>
+                        <p>{ documentData[4].document_explain }</p>
+                    </article>
+                </div>
+            </a>
             {/if}
         </section>
     </div>
@@ -189,6 +199,8 @@
         color:#0aa284;
     }
     div#document_list section#work article p{
+        text-decoration: none;
+        color: black;
         line-height: 3.0em;
         border: 1px solid #CCC;
         float: left;

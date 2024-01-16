@@ -80,7 +80,8 @@
 						<div class="inner">
 							<ul>
 								<li><a href="/">ホーム</a></li>
-								<li><a href="/news">ニュース</a></li>
+								<li><a href="/news">お知らせ</a></li>
+								<li><a href="/ogaya_event">翻訳からわかる出来事の紹介</a></li>
 								<li><a href="/document?page=1">文書一覧</a></li>
 								<li><a href="/upload">文書アップロード</a></li>
 								<li><a href="/upload_news">ニュースアップロード</a></li>

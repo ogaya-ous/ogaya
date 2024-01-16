@@ -23,8 +23,9 @@
 
 <main>
     <h2>　文書翻訳</h2>
+    <a href="document_info?document_id={data.document_id}" class="back-button">文書の詳細ページへ戻る</a>
     <ul class="Pagination">
-        <li class="Pagination-Item">
+        <!-- <li class="Pagination-Item">
             <a class="Pagination-Item-Link" href="/pages/1/">
                 <svg xmlns="http://www.w3.org/2000/svg" class="Pagination-Item-Link-Icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
@@ -40,7 +41,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                 </svg>
             </a>
-        </li>
+        </li> -->
         { #if data.session }
             <button type="submit" class="btn btn--orange" form="decipher-form" on:click={() => notifications.success("保存しました", 5000)}>完了</button>
         {:else}
@@ -64,8 +65,8 @@
                     <div class="paper vertical-text" contenteditable="true" id="text-form">
                         <label for="text-decipher">
                             <input type="text" name="text-decipher" id="text-decipher" hidden bind:value={FormData}>
-                            <span>恐れながら書付にてお訴え申し上げます</span>
-                            <span>　　　　　土屋保三郎領分</span>
+                            <span>こちらに翻訳した文章をお書きください。</span>
+                            <!-- <span>　　　　　土屋保三郎領分</span>
                             <span>　　　　　　作州吉田郡坂根村惣代</span>
                             <span>　　　　　　　訴訟人　庄屋　源太郎</span>
                             <span>　　　　　　　訴訟人　問屋　源四郎</span>
@@ -75,7 +76,7 @@
                             <span>　　　　　　　相手　年寄　傅四郎</span>
                             <br>
                             <span>右の訴訟人源太郎、源四郎が申し上げます。</span><br>
-                            <span>坂根村は昔より、</span>
+                            <span>坂根村は昔より、</span> -->
                         </label>
                     </div>
                 </form>
@@ -95,6 +96,20 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+
+        /* 戻るボタンのスタイル */
+    .back-button {
+        position: absolute;
+        color: #383636;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .back-button:hover {
+        background-color: #555;
     }
 
     .decipher {

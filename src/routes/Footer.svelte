@@ -15,7 +15,7 @@
                     <li><a href="https://m.facebook.com/profile.php?id=100064525219339"><img src={ facebook_icon } alt=""></a></li>
                     <li><a href="#"><img src={ instagram_icon } alt=""></a></li>
                     <li><a href="#"><img src={ twitter_icon } alt=""></a></li>
-                    <li><a href="#"><img src={ line_icon } alt=""></a></li>
+                    <!-- <li><a href="#"><img src={ line_icon } alt=""></a></li> -->
                 </div>
             </ul>
         </div>
@@ -52,14 +52,14 @@
             <ul class="list_style">
 				<div class="sp_column">
 					<div class="left_item">
-						<li>Home</li>
-						<li>News</li>
-						<li>Document</li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/news">News</a></li>
 					</div>
 					<div class="right_item">
-						<li>History</li>
-						<li>Contact</li>
-						<li>Login</li>
+						<li><a href="/document?page=1">Document</a></li>
+						<li><a href="/ogaya_event">Old Ogaya event</a></li>
+						<!-- <li>Contact</li> -->
+						<!-- <li>Login</li> -->
 					</div>
 				</div>
             </ul>
@@ -304,6 +304,11 @@
 
 		footer .wrap .right .sp_column .right_item {
 			margin-left: 0;
+		}
+
+		footer .sp_column a{
+			text-decoration: none;
+			color: white;
 		}
 
 		footer .copyright {
