@@ -42,7 +42,7 @@
             </a>
         </li>
         { #if data.session }
-            <button type="submit" class="btn btn--orange" form="decipher-form">完了</button>
+            <button type="submit" class="btn btn--orange" form="decipher-form" on:click={() => notifications.success("保存しました", 5000)}>完了</button>
         {:else}
             <button class="btn btn--orange" on:click={() => notifications.warning("ログインしてください", 5000)}>完了</button>
         {/if}

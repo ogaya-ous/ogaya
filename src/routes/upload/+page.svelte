@@ -1,5 +1,7 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
+    import { notifications } from "../notifications";
+    import Toast from "../Toast.svelte";
 
     let show_image = false;
     export let form;
@@ -8,68 +10,19 @@
     let title: string | null = null
     let explain: string | null = null
 
-    let selectedImage;
+    $: selectedImage = null;
+    let previewFile: boolean = false;
+    console.log("file:"+file)
 
     function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
     ) {
         file = (event.target as HTMLInputElement)?.files?.[0] ?? null
-    }
-
-    /*
-    async function handleSubmit(event) {
-        const url = "https://oogaya.vercel.app/api/upload";
-
-        const formData = new FormData(event.target);
-        const data = {};
-        for (let field of formData) {
-            const [key, value] = field;
-            data[key] = value;
-        }
-        console.log(data)
-
-        await axios.post(url, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then(res => {
-            console.log(res.data);
-            alert("アップロードが完了しました。");
-        }).catch(error => {
-            console.log(error);
-            alert("アップロードに失敗しました。");
-        })
-    }
-    */
-
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-
-            reader.onload = () => {
-                selectedImage = reader.result;
-            };
-
-            reader.readAsDataURL(file);
+            previewFile = true;
+            selectedImage = URL.createObjectURL(file);
         }
-    };
-
-    // function previewFile(){
-    //     console.log('clear');
-    //     const fileData = new FileReader();
-    //     console.log('clear1');
-    //     fileData.addEventListener("load", function() {
-    //         //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
-    //         //プレビュー表示している
-    //         console.log(fileData.result);
-    //         document.getElementById('preview').src = fileData.result;
-    //     });
-    //     console.log('clear2');
-    //     fileData.readAsDataURL(file.files[0]);
-    //     show_image = true;
-    //     return;
-    // }
+    }
 </script>
 
 <main>
@@ -82,6 +35,7 @@
             use:enhance={() => {
                 return async ({ update }) => {
                     file = null
+                    selectedImage = null;
                     update({ reset: true })
                 }
             }}
@@ -100,34 +54,26 @@
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
                         <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
-                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={handleFileChange}/>
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
                         {#if selectedImage}
                             <img id="preview" src={selectedImage} alt="preview">
                         {/if}
                     </td>
                 </tr>
             </table>
-            {#if !file || !title || !explain}
-                <button value="送信" class="input-submit-not-fill" disabled={true}>送信</button>
+            {#if !title}
+                <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("タイトルを入力してください", 5000)}>送信</button>
+            {:else if !explain}
+                <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("説明を入力してください", 5000)}>送信</button>
+            {:else if !file}
+                <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("ファイルを選択してください", 5000)}>送信</button>
             {:else}
-                <button type="submit" value="送信" class="input-submit" disabled={!file}>送信</button>
-            {/if}
-
-            {#if form && !file}
-                <div class="response">
-                    {title}をアップロードしました
-                    <a
-                        href={form.uploaded}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                    {form.uploaded}
-                    </a>
-                </div>
+                <button type="submit" value="送信" class="input-submit" on:click={() => notifications.success("送信しました", 5000)}>送信</button>
             {/if}
         </form>
     </div>
 </main>
+<Toast />
 
 <style>
     * {
