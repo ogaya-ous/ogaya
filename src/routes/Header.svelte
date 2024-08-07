@@ -54,8 +54,9 @@
 								<li class:nav_click={ nav_click }><a href="/">ホーム</a></li>
 								<li class:nav_click={ nav_click }><a href="/news">ニュース</a></li>
 								<li class:nav_click={ nav_click }><a href="/document?page=1">文書一覧</a></li>
-								<li class:nav_click={ nav_click }><a href="/upload">文書アップロード</a></li>
-								<li class:nav_click={ nav_click }><a href="/upload">ニュースアップロード</a></li>
+								<!-- <li class:nav_click={ nav_click }><a href="/upload">文書アップロード</a></li> -->
+								<!-- <li class:nav_click={ nav_click }><a href="/upload">ニュースアップロード</a></li> -->
+								<li class:nav_click={ nav_click }><a href="/manage">管理者画面</a></li>
 								<li class:nav_click={ nav_click }><a href="/login">ログイン</a></li>
 							</ul>
 						</div>
@@ -83,8 +84,10 @@
 								<li><a href="/news">お知らせ</a></li>
 								<li><a href="/ogaya_event">翻訳からわかる出来事の紹介</a></li>
 								<li><a href="/document?page=1">文書一覧</a></li>
-								<li><a href="/upload">文書アップロード</a></li>
-								<li><a href="/upload_news">ニュースアップロード</a></li>
+								<!-- <li><a href="/upload">文書アップロード</a></li>
+								<li><a href="/upload_news">ニュースアップロード</a></li> -->
+								
+								<li class:nav_click={ nav_click }><a href="/manage">管理者画面</a></li>
 								<!--
 								{#if Object.keys($page.data.session || {}).length}
 									{#if $page.data.session.user.image}

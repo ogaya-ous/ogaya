@@ -27,46 +27,6 @@
           </article>
           {/each}
 
-          <!-- {#if newsData[0]}
-          <article id="part1">
-            <ul>
-              <li>
-                <p class="text_date"><time>{ newsData[0].added_year }年{ newsData[0].added_month }月{ newsData[0].added_day }</time></p>
-                <img src={ newsData[0].news_path } alt="work1">
-              </li>
-              <li>
-                <h2>{ newsData[0].news_name }</h2>
-                <p class="text_content">{ newsData[0].news_explain }</p>
-              </li>
-            </ul>
-          </article>
-          {/if} -->
-
-          <!-- <article id="part2">
-            <ul>
-              <li>
-                <p class="text_date"><time datetime="2021-04-05">2021.04.05</time></p>
-                <img src={doc}>
-              </li>
-              <li>
-                <h2>プロフィールを更新しました。</h2>
-                <p class="text_content">プロフィールを更新しました。</p>
-              </li>
-            </ul>
-          </article>
-
-          <article id="part3">
-            <ul>
-              <li>
-                <p class="text_date"><time datetime="2021-04-01">2021.04.01</time></p>
-                <img src={doc}>
-              </li>
-              <li>
-                <h2>PROFILEサイトを公開しました！</h2>
-                <p class="text_content">サイトを公開しました。<br>今後も更新ができるよう頑張ります。</p>
-              </li>
-            </ul> 
-          </article> -->
 
         </div>
     </main>
@@ -83,7 +43,6 @@
 }
 
 #information img {
-    margin-bottom: 40px;
     width: 100%;
 }
 
@@ -107,7 +66,7 @@
   padding: 10px;
   text-align: left;
   /* border-radius: 20px; */
-  background-color: #f6ffcc;
+  background-color: #f1f1f1;
 }
 
 #information article .text_date {

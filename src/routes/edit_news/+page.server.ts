@@ -30,9 +30,9 @@ export const actions = {
 				news_name: title,
 				news_path: url,
 				news_explain: explain,
-				added_year: currentYear,
-				added_month: currentMonth,
-				added_day: currentDay
+        added_year: currentYear,
+        added_month: currentMonth,
+        added_day: currentDay
 			}
 		})
 

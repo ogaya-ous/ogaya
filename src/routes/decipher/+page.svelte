@@ -10,6 +10,8 @@
     let FormData: string | null = null;
     export let data: PageData;
 
+    export const document_path: string = data.document.document_path;
+
     onMount(() => {
         FormData = document.getElementById('text-form')?.innerText ?? null;
         decipher_text = document.getElementById('text-form');
@@ -84,7 +86,7 @@
         </div>
         <div class="decipher-item" id="docImage">
             <div class="dicipher-item-image">
-                <img src={ testimg_path } alt="work1">
+                <img src={ document_path } alt="work1">
             </div>
         </div>
     </div>

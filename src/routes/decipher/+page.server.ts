@@ -17,7 +17,12 @@ export const load: PageServerLoad = async (event) => {
   if (session) {
     user_id = session.user.id;
   }
-  return { session , document_id};
+  const document = await prisma.document.findUnique({
+    where: {
+        document_id: document_id
+    }
+  });
+  return { session , document_id, document};
 }
 
 export const actions = {
@@ -32,8 +37,6 @@ export const actions = {
     if (!session) {
       error(400, { message: 'No session' })
     }
-
-    console.log(form_text)
     await prisma.history.create({
       data: {
         user_id: user_id,

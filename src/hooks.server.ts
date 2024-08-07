@@ -9,7 +9,7 @@ import { sequence } from "@sveltejs/kit/hooks";
 const prisma = new PrismaClient()
 
 async function authorization({ event, resolve }) {
-	if (event.url.pathname.startsWith('/upload')) {
+	if (event.url.pathname.startsWith('/manage')) {
         const session = await event.locals.getSession();
 		if (!session) {
 			throw redirect(303, '/');

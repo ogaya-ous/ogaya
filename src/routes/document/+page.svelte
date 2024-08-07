@@ -12,8 +12,10 @@
     }
     */
     export let data: PageData;
-    export let document_start_id: number = Number(data.documents[0].document_id);
+    
     export let documentData = data.documents;
+
+    export let document_start_id: number = Number(data.documents[0].document_id);
 
     // 文書一覧のページ番号
     $: page_num = $page.url.searchParams.get('page');
