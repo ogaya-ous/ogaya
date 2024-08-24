@@ -5,34 +5,49 @@ import { put } from '@vercel/blob';
 
 const prisma = new PrismaClient({log: ['query', 'info']});
 // console.log(prisma)
+export const load: PageServerLoad = async ({ url }) => {
+	const newsId = Number(url.searchParams.get('news_id'));
+  
+	const news = await prisma.news.findUnique({
+		where: {
+			news_id: newsId
+		}
+	});
+	// console.log(document);
+	return news;
+  }
+
 export const actions = {
-  upload_news: async ({ request }) => {
+  update_news: async ({ request }) => {
 		const form = await request.formData()
+		const news_id = form.get('news_id') 
 		const file = form.get('image-upload') as File
 		const title = form.get('name') as string
 		const explain = form.get('news_explain') as string
-		const date = new Date();
-		const currentDay = date.getDate();
-		const currentMonth = date.getMonth() + 1;
-		const currentYear = date.getFullYear();
+		const added_date = form.get('example')
+		let url = form.get('news_path')
+		const date = new Date(added_date);
+		const year = date.getFullYear();
+		const month = date.getMonth() + 1; // 月は0から始まるので、1を加えます
+		const day = date.getDate();
 
-		if (!file) {
-      error(400, { message: 'No file to upload.' })
-    }
+		console.log(file)
+		if (file && file.name) {
+			url = await put(file.name, file, {
+				access: 'public',
+				token: BLOB_READ_WRITE_TOKEN,
+			})
+		}
 
-		const { url } = await put(file.name, file, {
-      access: 'public',
-      token: BLOB_READ_WRITE_TOKEN,
-    })
-
-		await prisma.news.create({
+		await prisma.news.update({
+			where: { news_id: Number(news_id) },
 			data: {
 				news_name: title,
 				news_path: url,
 				news_explain: explain,
-        added_year: currentYear,
-        added_month: currentMonth,
-        added_day: currentDay
+				added_year: year,
+				added_month: month,
+				added_day: day
 			}
 		})
 

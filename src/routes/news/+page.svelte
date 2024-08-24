@@ -65,6 +65,7 @@
   margin-bottom: 2%;
   padding: 10px;
   text-align: left;
+  height: 30%;
   /* border-radius: 20px; */
   background-color: #f1f1f1;
 }
@@ -110,8 +111,9 @@
 }
 
 #part1 img {
-  width: 90%;
+  max-width: 305px;
   text-align:center;
+  /* margin-left: 10%; */
   /* height: 90%; */
 
 }

@@ -6,12 +6,14 @@
     let show_image = false;
     export let form;
 
-    let file: File | null = null;
-    let title: string | null = null;
-    let explain: string | null = null;
+    let file: File | null = null
+    let title: string | null = null
+    let explain: string | null = null
+    let content: string | null = null
 
     $: selectedImage = null;
     let previewFile: boolean = false;
+    console.log("file:"+file)
 
     async function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
@@ -62,16 +64,16 @@
 
 <main>
     <div class="input">
-        <h2 class="input-title"> 大茅区有文書のアップロード</h2>
+        <h2 class="input-title"> 翻訳済み文書のアップロード</h2>
         <form
-            action="?/upload"
+            action="?/upload_decoded"
             method="POST"
             enctype="multipart/form-data"
             use:enhance={() => {
-                return async ({ update }) => {
+                return async ({ upload }) => {
                     file = null
                     selectedImage = null;
-                    update({ reset: true })
+                    upload({ reset: true })
                 }
             }}
         >
@@ -81,8 +83,12 @@
                     <td class="input-body"><input type="text" id="name" name="name" class="form-text" bind:value={title}></td>
                 </tr>
                 <tr>
-                    <th class="input-item"><label for="document_explain">説明</label></th>
-                    <td class="input-body"><textarea id="document_explain" name="document_explain" class="form-textarea" bind:value={explain}></textarea></td>
+                    <th class="input-item"><label for="decoded_explain">古文書の説明</label></th>
+                    <td class="input-body"><textarea id="decoded_explain" name="decoded_explain" class="form-textarea" bind:value={explain}></textarea></td>
+                </tr>
+                <tr>
+                    <th class="input-item"><label for="decoded_content">翻訳内容</label></th>
+                    <td class="input-body"><textarea id="decoded_content" name="decoded_content" class="form-textarea" bind:value={content}></textarea></td>
                 </tr>
                 <tr>
                     <th class="input-item"><label for="image">タイトル画像</label></th>
@@ -95,12 +101,6 @@
                         {/if}
                     </td>
                 </tr>
-                <!-- <tr>
-                    <th class="input-item"><label for="image">翻訳ページの画像（複数枚可）</label></th>
-                    <td class="input-body">
-                        <input id="image-upload-page" multiple name="image-upload-page" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
-                    </td>
-                </tr> -->
             </table>
             {#if !title}
                 <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("タイトルを入力してください", 5000)}>送信</button>

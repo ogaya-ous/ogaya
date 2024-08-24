@@ -2,6 +2,7 @@
     import doc_manage from '$lib/images/manage_doc.png';
     import news_manage from '$lib/images/manage_news.png';
     import doc_upload from '$lib/images/manage_upload.png';
+    import decode_manage from '$lib/images/manage_decode.png';
 </script>
 
 <main>
@@ -10,8 +11,10 @@
         <div class="square_contents">
             <div class="content"> <img src={doc_manage}> <a href="manage_doc"><p>古文書管理</p></a></div>
             <div class="content"> <img src={news_manage}><a href="manage_news"><p>ニュース管理</p></a></div>
-            <div class="content"> <img src={doc_upload}><a href="upload"><p>文書アップロード</p></a></div>
-            <div class="content"> <img src={doc_upload}><a href="upload_news"><p>ニュースアップロード</p></a></div>
+            <div class="content"> <img src={decode_manage}><a href="manage_decoded"><p>翻訳済み文書管理</p></a></div>
+            <div class="content"> <img src={doc_upload}><a href="upload"><p>古文書<br>アップロード</p></a></div>
+            <div class="content"> <img src={doc_upload}><a href="upload_news"><p>ニュース<br>アップロード</p></a></div>
+            <div class="content"> <img src={doc_upload}><a href="upload_decoded"><p>翻訳済み文書<br>アップロード</p></a></div>
         </div>
     </div>
 </main>
@@ -61,7 +64,7 @@
         text-align: center;
         /* vertical-align: middle; */
         text-decoration: none;
-        width: 120px;
+        width: 35%;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;

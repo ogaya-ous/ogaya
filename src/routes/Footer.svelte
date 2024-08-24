@@ -42,7 +42,7 @@
                         </div>
                         <div class="ogaya_right">
                             <div class="address">大茅地区活性化協議会</div>
-                            <div class="tel">Tel. 090 - 7371 - 9809</div>
+                            <!-- <div class="tel">Tel. 090 - 7371 - 9809</div> -->
                         </div>
                     </div>
                 </li>
@@ -58,6 +58,7 @@
 					<div class="right_item">
 						<li><a href="/document?page=1">Document</a></li>
 						<li><a href="/ogaya_event">Old Ogaya event</a></li>
+						<li><a href="/decoded">Decoding complete</a></li>
 						<!-- <li>Contact</li> -->
 						<!-- <li>Login</li> -->
 					</div>

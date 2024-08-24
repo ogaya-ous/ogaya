@@ -11,6 +11,9 @@
     export let data: PageData;
 
     export const document_path: string = data.document.document_path;
+    export const decoding_content: string = data.history.decoding_content.replace(/\n/g, '<br>'); // 改行を<br>タグに変換
+    console.log('test!!!!!');
+    console.log(decoding_content);
 
     onMount(() => {
         FormData = document.getElementById('text-form')?.innerText ?? null;
@@ -24,15 +27,10 @@
 </script>
 
 <main>
-    <h2>　文書翻訳</h2>
-    <a href="document_info?document_id={data.document_id}" class="back-button">文書の詳細ページへ戻る</a>
-    <ul class="Pagination">
-        { #if data.session }
-            <button type="submit" class="btn btn--orange" form="decipher-form" on:click={() => notifications.success("保存しました", 5000)}>完了</button>
-        {:else}
-            <button class="btn btn--orange" on:click={() => notifications.warning("ログインしてください", 5000)}>完了</button>
-        {/if}
-    </ul>
+    <h2>　翻訳の閲覧</h2>
+    <div class = "head">
+        <a href="document_info?document_id={data.document_id}" class="back-button">文書の詳細ページへ戻る</a>
+    </div>
     <div class="decipher">
         <div class="decipher-item">
             <div class="decipher-item-text">
@@ -47,10 +45,10 @@
                         }
                     }}
                 >
-                    <div class="paper vertical-text" contenteditable="true" id="text-form">
+                    <div class="paper vertical-text" contenteditable="false" id="text-form">
                         <label for="text-decipher">
-                            <textarea name="text-decipher" id="text-decipher" hidden bind:value={FormData}></textarea>
-                            <span>こちらに翻訳した文章をお書きください。</span>
+                            <input type="text" name="text-decipher" id="text-decipher" hidden readonly bind:value={FormData}>
+                            {@html decoding_content}
                         </label>
                     </div>
                 </form>
@@ -72,8 +70,12 @@
         box-sizing: border-box;
     }
 
+    .head {
+        display:block;
+    }
+
         /* 戻るボタンのスタイル */
-        .back-button {
+    .back-button {
         margin-left: 10px;
         position: absolute;
         color: #383636;
@@ -101,7 +103,7 @@
         width: 49%;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 5px;
+        margin-top: 25px;
         margin-bottom: 10px;
         background-color: rgb(228, 227, 178);
     }
@@ -156,53 +158,5 @@
         color: #2c3e50;
         line-height: 2em;
         text-indent: 1em;
-    }
-    .Pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .Pagination a {
-        text-decoration: none;
-    }
-
-    .Pagination li {
-        list-style: none;
-        margin: 5px;
-    }
-
-    .Pagination-Item-Link {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        width: 45px;
-        height: 30px;
-        background: #fff;
-        font-size: 20px;
-        color: #3d3d3e;
-        font-weight: bold;
-        transition: all 0.15s linear;
-    }
-    .Pagination-Item-Link-Icon {
-        width: 20px;
-    }
-    .Pagination-Item-Link.isActive {
-        pointer-events: none;
-        color: #111;
-    }
-    .Pagination-Item-Link:not(.isActive):hover {
-        opacity: 0.5;
-    }
-
-    .btn--orange, a.btn--orange {
-        color: #fff;
-        background-color: #252526;
-        padding: 10px 20px;
-    }
-    .btn--orange:hover, a.btn--orange:hover {
-        color: #fff;
-        background: #252526;
     }
 </style>

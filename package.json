@@ -50,6 +50,7 @@
 		"multer": "^1.4.5-lts.1",
 		"mysql": "^2.18.1",
 		"mysql2": "^2.3.3",
+		"openai": "^4.56.0",
 		"svelte-modals": "^1.2.0",
 		"svelte-notifications": "^0.9.98",
 		"svelte-routing": "^2.4.0",

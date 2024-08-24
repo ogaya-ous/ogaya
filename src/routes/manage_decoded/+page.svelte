@@ -1,56 +1,54 @@
-<script lang='ts'>
+<script lang="ts">
     import { page } from '$app/stores';
-    import test from '$lib/images/logo.png';
     import type { PageData } from "./$types";
 
     export let data: PageData;
-    export let newsDatas = data.news;
+    export let decodeDatas = data.decodeds;
 
     // 削除済みの文書を除外するフィルタリング関数
-    const filteredDocDatas = newsDatas.filter(news => !news.delete_flag);
+    const filteredDecodeDatas = decodeDatas.filter(decode => !decode.delete_flag);
 
-    async function deleteNews(newsId: number) {
+    async function deleteDecoded(decodedId: number) {
         // 削除確認ダイアログを表示
         const confirmed = window.confirm("本当に削除しますか？");
         if (!confirmed) {
             return;
         }
-        console.log(newsId);
-        const response = await fetch(`?news_id=${newsId}`, {
+        const response = await fetch(`?decoded_id=${decodedId}`, {
             method: 'DELETE'
         });
 
         if (response.ok) {
-            console.log('News deleted');
+            console.log('Decoded deleted');
             // 削除後の処理: 再取得または再描画
             // ここでページを再読み込みすることも可能
             location.reload();
         } else {
-            console.error('Failed to delete news');
+            console.error('Failed to delete decoded');
         }
     }
 </script>
 
 <main>
     <div class="manage">
-        <h1>お知らせ管理</h1>
+        <h1>翻訳済み文書の管理</h1>
 
         <table>
             <tr>
-              <th>お知らせのタイトル</th>
+              <th>文書のタイトル</th>
               <th>アップロード日</th>
               <th>編集ボタン</th>
               <th>削除ボタン</th>
             </tr>
-            {#each filteredDocDatas as newsData}
+            {#each filteredDecodeDatas as decodeData}
             <tr>
-              <td>{ newsData.news_name }</td>
-              <td>{ newsData.added_year }年{ newsData.added_month }月{ newsData.added_day }</td>
-              <td><a href="edit_news?news_id={newsData.news_id}"><p id="edit">編集</p></a></td>
-              <td><button id="delete" on:click={() => deleteNews(newsData.news_id)}>削除</button></td>
+              <td>{ decodeData.decoded_name }</td>
+              <td>{ decodeData.added_year }年{ decodeData.added_month }月{ decodeData.added_day }</td>
+              <td><button id="edit"><a href="edit_decoded?decoded_id={ decodeData.decoded_id }">編集</a></button></td>
+              <td><button id="delete" on:click={() => deleteDecoded(decodeData.decoded_id)}>削除</button></td>
             </tr>
             {/each}
-          </table>
+        </table>
     </div>
 </main>
 
@@ -104,7 +102,7 @@
         background-image: url(icon-crab.png)
     }
 
-    table td p#edit{
+    table td button#edit{
         text-align: center;
         color: #000000;
         font-size: 130%;
@@ -112,14 +110,20 @@
         text-align: center;
         /* vertical-align: middle; */
         text-decoration: none;
-        width: 120px;
+        width: 250px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
         background: #fab05b;
         color: #fff;
         border-radius: 100vh;
+        border: none;
         transition: 0.5s;
+    }
+
+    table td button#edit a {
+        color: #ffffff;
+        text-decoration: none;
     }
 
     table td button#delete{
@@ -141,7 +145,7 @@
         transition: 0.5s;
     }
 
-    a{
+    a {
         text-decoration: none;
     }
 

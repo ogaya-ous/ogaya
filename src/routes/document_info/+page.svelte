@@ -56,7 +56,8 @@
                     <h2>ユーザー名: {data.users[index].name}</h2>
                     <p>翻訳文のアップロード日：{historyData.added_year}年{historyData.added_month}月{historyData.added_day}日</p>
                     <p>冒頭の翻訳文</p>
-                    <p>{historyData.decoding_content.slice(0, 30)}</p>
+                    <p>{historyData.decoding_content.slice(0, 50)}</p>
+                    <a href="decipher_view?document_id={data.document_id}&history_id={historyData.history_id}"><button class="decipher_view">翻訳文を見る</button></a>
                     <div class="download_btn">
                         <input type="button" on:click={download_txt(historyData.history_id)} value="テキストファイルをダウンロード">
                     </div>
@@ -82,6 +83,7 @@
 
     .back-button:hover {
         background-color: #555;
+        color: #fff;
     }
     /* container */
     .wrapper{
@@ -219,5 +221,35 @@
     .card p {
         font-size: 14px;
         color: #555;
+    }
+
+    .card a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .decipher_view  {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 220px;
+        height: 30px;
+        /* padding: 12px 24px; */
+        font-family: sans-serif;
+        font-size: 16px;
+        border: 0px;
+        color: #fff;
+        text-align: center;
+        overflow-wrap: anywhere;
+        background-color: #008cff;
+        margin: 10px;
+    }
+
+    .download_btn {
+        display: inline-block;
+        margin-top: 10px;
+        text-align: center;
+        background-color: #6e6e6e;
     }
 </style>

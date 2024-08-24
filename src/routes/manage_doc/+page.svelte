@@ -11,6 +11,9 @@
     async function deleteDocument(documentId: number) {
         // 削除確認ダイアログを表示
         const confirmed = window.confirm("本当に削除しますか？");
+        if (!confirmed) {
+            return;
+        }
         // console.log("test");
         const response = await fetch(`?document_id=${documentId}`, {
             method: 'DELETE'
@@ -42,7 +45,7 @@
             <tr>
               <td>{ docData.document_name }</td>
               <td>{ docData.added_year }年{ docData.added_month }月{ docData.added_day }</td>
-              <td><a href="#"><p id="edit">編集</p></a></td>
+              <td><button id="edit"><a href="edit_doc?document_id={ docData.document_id }">編集</a></button></td>
               <td><button id="delete" on:click={() => deleteDocument(docData.document_id)}>削除</button></td>
             </tr>
             {/each}
@@ -100,7 +103,7 @@
         background-image: url(icon-crab.png)
     }
 
-    table td p#edit{
+    table td button#edit{
         text-align: center;
         color: #000000;
         font-size: 130%;
@@ -108,14 +111,20 @@
         text-align: center;
         /* vertical-align: middle; */
         text-decoration: none;
-        width: 120px;
+        width: 250px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
         background: #fab05b;
         color: #fff;
         border-radius: 100vh;
+        border: none;
         transition: 0.5s;
+    }
+
+    table td button#edit a {
+        color: #ffffff;
+        text-decoration: none;
     }
 
     table td button#delete{
