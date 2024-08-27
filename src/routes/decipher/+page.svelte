@@ -85,7 +85,13 @@
                 >完了</button
             >
         {/if}
-        <button class="btn btn--blue" on:click={aiDecipher}>AI翻訳</button>
+
+        <button class="btn btn--blue ai-btn" on:click={aiDecipher}>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-robot" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 1em; height: 1em; margin-right: 0.5em;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a2 2 0 012 2v1h-4V4a2 2 0 012-2zm-6 7h12a2 2 0 012 2v7a2 2 0 01-2 2H6a2 2 0 01-2-2v-7a2 2 0 012-2zm0 2v7h12v-7H6zm3 1a1 1 0 110 2 1 1 0 010-2zm6 0a1 1 0 110 2 1 1 0 010-2zM9 18h6v2H9v-2z" />
+            </svg>
+            AI翻訳
+        </button>
     </ul>
     <div class="decipher">
         <div class="decipher-item">
@@ -162,12 +168,10 @@
         text-decoration: none;
         border-radius: 5px;
         font-weight: bold;
-        display: block;
     }
 
     .back-button:hover {
         background-color: #555;
-        color: #fff;
     }
 
     .decipher {
@@ -301,5 +305,33 @@
 
     .ai-translation p {
         margin: 0;
+    }
+    .ai-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 10px;
+    }
+
+    .ai-btn:hover {
+        background: linear-gradient(45deg, #2575fc, #6a11cb);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .icon-robot {
+        width: 1em;
+        height: 1em;
+        margin-right: 0.5em;
     }
 </style>
