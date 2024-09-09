@@ -29,6 +29,11 @@ export const actions = {
   upload: async ({ request }) => {
     const form = await request.formData();
     const form_text = form.get('text-decipher') as string;
+    const decoding_gpt = form.get('translated-text') as string;
+
+    console.log('server method');
+    console.log(form_text);
+    console.log('finished log');
 
     if (!form_text) {
       error(400, { message: 'No text of decipher' })
@@ -42,7 +47,7 @@ export const actions = {
         user_id: user_id,
         document_id: document_id,
         decoding_content: form_text,
-        decoding_gpt: 'test',
+        decoding_gpt: decoding_gpt,
         added_day: currentDay,
         added_month: currentMonth,
         added_year: currentYear

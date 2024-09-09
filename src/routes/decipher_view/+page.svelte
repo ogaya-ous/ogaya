@@ -12,7 +12,8 @@
 
     export const document_path: string = data.document.document_path;
     export const decoding_content: string = data.history.decoding_content.replace(/\n/g, '<br>'); // 改行を<br>タグに変換
-    console.log('test!!!!!');
+    export const decoding_gpt: string = data.history.decoding_gpt;
+
     console.log(decoding_content);
 
     onMount(() => {
@@ -22,8 +23,6 @@
             FormData = decipher_text?.innerText ?? null;
         })
     })
-
-    //let text: string | null = null
 </script>
 
 <main>
@@ -52,6 +51,16 @@
                         </label>
                     </div>
                 </form>
+            </div>
+            <div class="ai-translation">
+                <h3>AI翻訳結果</h3>
+                <!-- <p id="ai-translation-text">
+                    aaaa
+                    {@html translatedText}
+                </p> -->
+                <p id="ai-translation-text">
+                    {@html decoding_gpt}
+                </p>
             </div>
         </div>
         <div class="decipher-item" id="docImage">
@@ -83,15 +92,17 @@
         text-decoration: none;
         border-radius: 5px;
         font-weight: bold;
-        display: block;
+        display: inline-block;
     }
 
     .back-button:hover {
         background-color: #555;
         color: #fff;
+        display: inline-block;
     }
 
     .decipher {
+        margin-top: 25px;
         display: flex;
         justify-content: space-around;
         width: 100%;
@@ -158,5 +169,11 @@
         color: #2c3e50;
         line-height: 2em;
         text-indent: 1em;
+    }
+
+    p#ai-translation-text{
+        background-color: #fff;
+        margin: 10px;
+        font-size: 18px;
     }
 </style>

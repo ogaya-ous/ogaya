@@ -7,9 +7,11 @@
     import type { PageData } from "./$types";
 
     let decipher_text: HTMLElement | null = null;
-    let FormData: string | null = null;
+    let FormData: string = 'こちらに翻訳を入力してください。';
     let translatedText: string = "";
     export let data: PageData;
+
+    let ai_flag: boolean = false;
 
     export const document_path: string = data.document.document_path;
 
@@ -30,60 +32,50 @@
             const data = await response.json();
             translatedText = data.answer.replace(/\n/g, "<br>");
             notifications.success("AI翻訳が完了しました", 5000);
+            ai_flag = true;
         } catch (error) {
             console.error(error);
         }
     }
 
-    onMount(() => {
-        FormData = document.getElementById("text-form")?.innerText ?? null;
-        decipher_text = document.getElementById("text-form");
-        decipher_text?.addEventListener("input", () => {
-            FormData = decipher_text?.innerText ?? null;
-        });
-    });
+    // onMount(() => {
+    //     decipher_text = document.getElementById("text-form");
+    //     decipher_text?.addEventListener("input", () => {
+    //         FormData = decipher_text?.innerText ?? '';
+    //         console.log(FormData); // デバッグ用: コンソールに出力して確認
+    //     });
+    // });
 
     //let text: string | null = null
 </script>
 
 <main>
     <h2>文書翻訳</h2>
-    <a href="document_info?document_id={data.document_id}" class="back-button"
-        >文書の詳細ページへ戻る</a
-    >
+    <a href="document_info?document_id={data.document_id}" class="back-button">文書の詳細ページへ戻る</a>
     <ul class="Pagination">
-        <!-- <li class="Pagination-Item">
-            <a class="Pagination-Item-Link" href="/pages/1/">
-                <svg xmlns="http://www.w3.org/2000/svg" class="Pagination-Item-Link-Icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-                </svg>
-            </a>
-        </li>
-        <li class="Pagination-Item">
-            <a class="Pagination-Item-Link current" id="current" href="/pages/1/"><span>1/20</span></a>
-        </li>
-        <li class="Pagination-Item">
-            <a class="Pagination-Item-Link" href="/pages/5/">
-                <svg xmlns="http://www.w3.org/2000/svg" class="Pagination-Item-Link-Icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                </svg>
-            </a>
-        </li> -->
-        {#if data.session}
+        {#if !data.session}
             <button
-                type="submit"
-                class="btn btn--orange"
-                form="decipher-form"
-                on:click={() => notifications.success("保存しました", 5000)}
-                >完了</button
+            class="btn btn--orange"
+            on:click={() =>
+                notifications.warning("ログインしてください", 5000)}
+            >完了</button
+            >
+        {:else if ai_flag==false}
+            <button
+            class="btn btn--orange"
+            on:click={() =>
+                notifications.warning("AI翻訳を実行してください", 5000)}
+            >完了</button
             >
         {:else}
+        <a href="document_info?document_id={data.document_id}">
             <button
-                class="btn btn--orange"
-                on:click={() =>
-                    notifications.warning("ログインしてください", 5000)}
-                >完了</button
-            >
+            type="submit"
+            class="btn btn--orange"
+            form="decipher-form"
+            on:click={() => notifications.success("保存しました", 5000)}
+            >完了</button
+        ></a>
         {/if}
 
         <button class="btn btn--blue ai-btn" on:click={aiDecipher}>
@@ -107,34 +99,9 @@
                         };
                     }}
                 >
-                    <div
-                        class="paper vertical-text"
-                        contenteditable="true"
-                        id="text-form"
-                    >
-                        <label for="text-decipher">
-                            <input
-                                type="text"
-                                name="text-decipher"
-                                id="text-decipher"
-                                hidden
-                                bind:value={FormData}
-                            />
-                            <!-- <span>こちらに翻訳した文章をお書きください。</span> -->
-                            <span> 土屋保三郎領分</span>
-                            <span> 作州吉田郡坂根村惣代</span>
-                            <span> 訴訟人　庄屋　源太郎</span>
-                            <span> 訴訟人　問屋　源四郎</span>
-                            <span>あきない荷物宿次の件での争い</span>
-                            <span> 当御支払所</span>
-                            <span> 相手　庄屋　甚兵衛</span>
-                            <span> 相手　年寄　傅四郎</span>
-                            <br />
-                            <span>右の訴訟人源太郎、源四郎が申し上げます。</span
-                            ><br />
-                            <span>坂根村は昔より、</span>
-                        </label>
-                    </div>
+                    <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {FormData}></textarea>
+                    <input type="hidden" name="translated-text" value={translatedText} />
+                    <!-- <textarea name="text-decipher" id="text-decipher"  rows="10" cols="50"></textarea> -->
                 </form>
             </div>
             <div class="ai-translation">
@@ -172,6 +139,7 @@
 
     .back-button:hover {
         background-color: #555;
+        color: #fff;
     }
 
     .decipher {

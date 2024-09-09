@@ -33,7 +33,7 @@
 				大茅地区に残されている大茅区有文書の解読を目指しています。
 			</p>
 			<div class="join_btn">
-				<a href="/document">参加する</a>
+				<a href="/document?page=1">参加する</a>
 			</div>
 		</div>
 	</div>

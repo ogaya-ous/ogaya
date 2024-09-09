@@ -79,11 +79,13 @@
         text-decoration: none;
         border-radius: 5px;
         font-weight: bold;
+        display: inline-block;
     }
 
     .back-button:hover {
         background-color: #555;
         color: #fff;
+        display: inline-block;
     }
     /* container */
     .wrapper{
