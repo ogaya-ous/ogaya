@@ -6,24 +6,25 @@ import { put } from '@vercel/blob';
 const prisma = new PrismaClient({log: ['query', 'info']});
 
 export const load: PageServerLoad = async ({ url }) => {
-  const documentId = Number(url.searchParams.get('document_id'));
+  const decodedId = Number(url.searchParams.get('decoded_id'));
 
-  const document = await prisma.document.findUnique({
+  const decoded = await prisma.decoded.findUnique({
       where: {
-          document_id: documentId
+          decoded_id: decodedId
       }
   });
-  return document;
+  return decoded;
 }
 
 export const actions = {
   update: async ({ request }) => {
     const form = await request.formData()
-    const document_id = form.get('document_id')
+    const decoded_id = form.get('decoded_id')
     const file = form.get('image-upload') as File
-    let url = form.get('document_path')
+    let url = form.get('decoded_path')
     const title = form.get('name') as string
-    const explain = form.get('document_explain') as string
+    const explain = form.get('decoded_explain') as string
+    const content = form.get('decoded_content') as string
     // const date = new Date();
     // const currentDay = date.getDate();
     // const currentMonth = date.getMonth() + 1;
@@ -36,12 +37,13 @@ export const actions = {
 			})
 		}
 
-    await prisma.document.update({
-      where: { document_id: Number(document_id) },
+    await prisma.decoded.update({
+      where: { decoded_id: Number(decoded_id) },
       data: {
-        document_name: title,
-        document_path: url,
-        document_explain: explain
+        decoded_name: title,
+        decoded_path: url,
+        decoded_explain: explain,
+        decoded_content: content
       },
     })
 

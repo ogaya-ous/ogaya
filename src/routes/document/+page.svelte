@@ -137,23 +137,6 @@
 
 <style>
 @media only screen and (min-width: 769px) {
-    div#document_list section#work article {
-        width: 33%;
-    }
-    div#document_list section#work article img {
-        max-width: 250px;
-    }
-    div#document_list section#work article h3 {
-        line-height: 2.0em;
-    }
-    div#document_list section#work article p {
-        font-size: 0.8em;
-        line-height: 2.0em;
-        display: block;
-    }
-}
-
-@media only screen and (min-width: 961px) {
     section#work h2 {
         color:rgba(255, 254, 254, 0.966);
         background-color: rgba(8, 8, 8, 0.521);
@@ -216,8 +199,8 @@
 
     #document_list .document {
         overflow: hidden;
-		border-radius: 8px;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
     }
 
     div#document_list .document .added_date {
@@ -266,5 +249,119 @@
         color: #fff;
     }
 }
+
+
+section#work h2 {
+    color:rgba(255, 254, 254, 0.966);
+    background-color: rgba(8, 8, 8, 0.521);
+}
+div.document {
+    display:flex;
+    margin: 30px 0 30px;
+    padding: 10px;
+    background-color: rgba(8, 8, 8, 0.048);
+}
+
+div#document_list {
+    max-width: 960px;
+    margin: 0 auto;
+    color: rgb(3, 3, 3);
+}
+div#document_list section#work article {
+    width: 100%;
+}
+div#document_list section#work article img {
+    float: left;
+    max-width: 305px;
+    margin-right: 20px;
+    cursor: pointer;
+    object-fit: cover;
+    object-position: right top;
+}
+div#document_list section#work article h3 {
+    border-left: 5px solid #000;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    padding-left: 10px;
+    text-align: left;
+    float: left;
+    font-size: 1.3em;
+}
+
+div#document_list section#work article a {
+    color: black;
+    text-decoration: none;
+}
+
+div#document_list section#work article a:hover {
+    text-decoration: none;
+    color:#0aa284;
+}
+div#document_list section#work article p{
+    text-decoration: none;
+    color: black;
+    line-height: 3.0em;
+    border: 1px solid #CCC;
+    float: left;
+    width: 60%;
+}
+
+div#document_list section#work article .added_date {
+    display: block;
+    width: 600px;
+}
+
+#document_list .document {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+}
+
+div#document_list .document .added_date {
+    float: left;
+    color: rgba(0,0,0,0.6);
+    font-size: 14px;
+}
+.example {
+    list-style: none;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.example li {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+    border: 1px #ccc solid;
+    color:#000053;
+    border-radius: 5px / 5px;
+    margin: 2px;
+}
+
+.example li a{
+    display: block;
+    text-decoration: none;
+}
+
+.example li a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #003396;
+}
+
+.example .non {
+    background-color: #ccc;
+    color:#333;
+}
+
+.example .this {
+    background-color: #777;
+    color: #fff;
+}
+
 
 </style>

@@ -25,7 +25,7 @@
                 <br>
             <label>
                 <input type="checkbox" bind:checked={ agree } class="checkbox" />
-                <a href="利用規約のURL">利用規約</a>および<a href="プライバシーポリシーのURL">プライバシーポリシー</a>に同意します
+                <a href="terms_of_service">利用規約</a>および<a href="privacy_policy">プライバシーポリシー</a>に同意します
             </label>
         </div>
     </div>

@@ -30,10 +30,10 @@
 			<h1>源流集落の<br>歴史をひも解く。</h1>
 			<p>
 				よってたかって大茅地区は、<br class="br_tab_hidden">岡山県北部にある西粟倉村大茅地区の<br class="br_pc_hidden">区有文書解読を目的とした古文書翻訳サイトです。<br>
-				大茅地区すべての区有文書の解読を目指します。
+				大茅地区に残されている大茅区有文書の解読を目指しています。
 			</p>
 			<div class="join_btn">
-				<a href="/register">参加する</a>
+				<a href="/document?page=1">参加する</a>
 			</div>
 		</div>
 	</div>
@@ -104,11 +104,11 @@
 			<h2 class="title">
 				<span>Introduction</span>
 					<p class="intro_copy">
-						訪れてほしい、大茅地区に<br>感じてほしい、源流の大自然
+						春の花畑から冬の銀世界まで、<br>心が躍る季節の風景がここに。
 					</p>
 			</h2>
 			<p class="ogaya">
-				大茅地区は、<br>
+				大茅地区は、
 				雄大な自然と交流できる岡山県県北の集落です。
 			</p>
 			<p class="yotte_ogaya">
@@ -142,7 +142,7 @@
 		<div class="text">
 			<h2 class="title">
 				<span>About</span>
-				<p class="about_copy">区有文書から<br>大茅地区の歴史をひも解く</p>
+				<p class="about_copy">区有文書から<br>大茅地区の歴史をひも解く。</p>
 			</h2>
 			<p class="document">
 				大茅区有文書は、1695年より戦後1960年までの<br>
@@ -152,7 +152,7 @@
 			<p class="document_detail">
 				20年以上前に解読できる方2人で数年かけて<br>
 				目録を作成しました。<br>
-				現在、この目録がある事で<br>
+				現在、この目録がある事で
 				どの様な古文書が存在するのか<br>
 				判断が可能な状態になっております。<br>
 				しかし、目録を作成された恩師たちも<br>
@@ -160,13 +160,11 @@
 				少なくなっています。
 			</p>
 			<p class="document_outlook">
-				大茅地区の祖先の人達知り、<br>
+				大茅地区の祖先の人達知り、
 				後世に残して行くためにも<br>
-				区有文書の内容を伝える必要が有ると<br>
-				感じています。<br>
+				区有文書の内容を伝える必要が有ると感じています。<br>
 				よってたかって大茅地区を通して<br>
-				皆様の力をお借りし、<br>
-				永年温めて来ました、<br>
+				皆様の力をお借りし、永年温めて来ました、<br>
 				解読が出来ればと期待しています。<br>
 			</p>
 		</div>
@@ -625,7 +623,7 @@
 		}
 
 		#intro .text h2.title p.intro_copy {
-			width: 540px;
+			width: 600px;
 			font-size: 36px;
 		}
 
@@ -667,7 +665,7 @@
 			text-align: left;
 			margin-left: 4.65%;
 			margin-right: 4.65%;
-			width: 558.437px;
+			width: 600px;
 			padding: 20px 0 0;
 		}
 

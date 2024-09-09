@@ -66,7 +66,18 @@ model document {
   added_month      Int
   added_day        Int
   delete_flag      Boolean   @default(false)
+  images           image[] 
   history          history[]
+}
+
+model image {
+  image_id     Int      @id @default(autoincrement())
+  document_id  Int
+  image_path   String   // 画像のパスやURL
+  added_year   Int
+  added_month  Int
+  added_day    Int
+  document     document @relation(fields: [document_id], references: [document_id],  onDelete: Cascade)
 }
 
 model history {
@@ -77,6 +88,7 @@ model history {
   added_month      Int
   added_day        Int
   decoding_content String
+  decoding_gpt     String
   document         document @relation(fields: [document_id], references: [document_id])
   user             User     @relation(fields: [user_id], references: [id])
 }
@@ -91,3 +103,16 @@ model news {
   added_day    Int
   delete_flag  Boolean @default(false)
 }
+
+model decoded {
+  decoded_id      Int      @id @default(autoincrement())
+  decoded_name    String
+  decoded_path    String
+  decoded_explain String
+  decoded_content String
+  added_year      Int
+  added_month     Int
+  added_day       Int
+  delete_flag     Boolean @default(false)
+}
+

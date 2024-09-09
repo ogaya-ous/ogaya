@@ -14,13 +14,50 @@
 
     let selectedImage;
 
-    function onChange(
+    async function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
     ) {
-        file = (event.target as HTMLInputElement)?.files?.[0] ?? null
+        file = (event.target as HTMLInputElement)?.files?.[0] ?? null;
+
         if (file) {
-            selectedImage = URL.createObjectURL(file);
+            // 圧縮処理
+            const compressedFile = await compressImage(file, 0.7); // 圧縮率を0.7（70%の品質）に設定
+            previewFile = true;
+            selectedImage = URL.createObjectURL(compressedFile);
+            file = compressedFile; // 圧縮後のファイルをfile変数に保存
         }
+    }
+
+    // 画像圧縮関数
+    async function compressImage(file: File, quality: number): Promise<File> {
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+
+        return new Promise((resolve, reject) => {
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                canvas.toBlob(
+                    (blob) => {
+                        if (blob) {
+                            resolve(new File([blob], file.name, { type: file.type }));
+                        } else {
+                            reject(new Error("Blob generation failed"));
+                        }
+                    },
+                    file.type,
+                    quality
+                );
+            };
+
+            img.onerror = () => reject(new Error("Image load failed"));
+        });
     }
 </script>
 

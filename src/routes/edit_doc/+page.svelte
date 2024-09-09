@@ -2,17 +2,25 @@
     import { enhance } from '$app/forms';
     import { notifications } from "../notifications";
     import Toast from "../Toast.svelte";
+    import type { PageData } from "./$types";
+
+    export let data: PageData;
+    console.log('data_view')
+    console.log(data)
+    export const document_id: number = data.document_id;
+    export const document_name: string = data.document_name;
+    export const document_path: string = data.document_path;
+    export const document_explain: string = data.document_explain;
 
     let show_image = false;
     export let form;
 
     let file: File | null = null
-    let title: string | null = null
-    let explain: string | null = null
+    let title: string = document_name
+    let explain: string =document_explain
 
-    $: selectedImage = null;
+    $: selectedImage = document_path;
     let previewFile: boolean = false;
-    console.log("file:"+file)
 
     function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
@@ -29,7 +37,7 @@
     <div class="input">
         <h2 class="input-title"> 大茅区有文書の編集</h2>
         <form
-            action="?/upload"
+            action="?/update"
             method="POST"
             enctype="multipart/form-data"
             use:enhance={() => {
@@ -40,6 +48,9 @@
                 }
             }}
         >
+
+            <input type="hidden" name="document_id" value="{document_id}" />
+            <input type="hidden" name="document_path" value="{document_path}" />
             <table class="input-table">
                 <tr>
                     <th class="input-item"><label for="name">タイトル</label></th>
@@ -65,8 +76,8 @@
                 <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("タイトルを入力してください", 5000)}>送信</button>
             {:else if !explain}
                 <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("説明を入力してください", 5000)}>送信</button>
-            {:else if !file}
-                <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("ファイルを選択してください", 5000)}>送信</button>
+            <!-- {:else if !file} -->
+                <!-- <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("ファイルを選択してください", 5000)}>送信</button> -->
             {:else}
                 <button type="submit" value="送信" class="input-submit" on:click={() => notifications.success("送信しました", 5000)}>送信</button>
             {/if}
