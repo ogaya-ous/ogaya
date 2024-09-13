@@ -6,13 +6,19 @@
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
+	import { checkRole, checkPermissions } from '$lib/checkRoles';
+	import { PERMISSIONS, ROLES } from '../constants'
+
+	const user = $page.data.session.user
+
+	const can_view_admin_page = checkPermissions(user, PERMISSIONS.VIEW_ADMIN_PAGE)
 
 	// header
 	let root;
 	let nav_click;
 	let hamburger = false;
 
-	console.log($page.data);
+	// console.log($page.data);
 
 	onMount(() => {
 		let btn = root.querySelector(".toggle-btn");
@@ -88,7 +94,9 @@
 								<!-- <li><a href="/upload">文書アップロード</a></li>
 								<li><a href="/upload_news">ニュースアップロード</a></li> -->
 								
-								<li class:nav_click={ nav_click }><a href="/manage">管理者画面</a></li>
+								{#if can_view_admin_page}
+									<li class:nav_click={ nav_click }><a href="/manage">管理者画面</a></li>
+								{/if}
 								<!--
 								{#if Object.keys($page.data.session || {}).length}
 									{#if $page.data.session.user.image}

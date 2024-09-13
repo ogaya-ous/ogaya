@@ -8,11 +8,12 @@ import { sequence } from "@sveltejs/kit/hooks";
 
 const prisma = new PrismaClient()
 
-async function authorization({ event, resolve }) {
+const authorization: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname.startsWith('/manage')) {
-        const session = await event.locals.getSession();
+		const session = await event.locals.getSession();
+		console.log(session)
 		if (!session) {
-			throw redirect(303, '/');
+			throw redirect(303, '/')
 		}
 	}
 	return resolve(event);
@@ -39,6 +40,7 @@ export const handle: Handle = sequence(
 			async session({ session, user, token }) {
 				session.user = session.user || {};
 				session.user.id = user.id;
+				session.user.role = user.role;
 				return session;
 			},
 		},
