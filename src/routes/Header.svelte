@@ -37,12 +37,10 @@
 		}
 	});
 	export function handleOpen() {
+		console.log("handleOpen")
 		openModal(Modal, {
 			title: "ログイン",
 			message: "This is an alert",
-			onOpenAnother: () => {
-				handleOpen()
-			}
 		})
 	}
 </script>

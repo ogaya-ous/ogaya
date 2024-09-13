@@ -1,11 +1,21 @@
 <script>
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
+	import Modal from './Modal.svelte';
+	import { closeModal, Modals } from 'svelte-modals';
 
 </script>
 
 <Header />
+<Modals>
+	<div
+		slot="backdrop"
+		class="backdrop"
+		on:click={closeModal}
+	/>
+</Modals>
 <main>
+	
 	<slot />
 </main>
 <Footer />
@@ -14,6 +24,15 @@
 	* {
     	margin: 0;
     	padding: 0;
+	}
+	.backdrop {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: rgba(0,0,0,0.50);
+		z-index: 3
 	}
 </style>
 
