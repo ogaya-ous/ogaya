@@ -9,16 +9,20 @@
 	import { checkRole, checkPermissions } from '$lib/checkRoles';
 	import { PERMISSIONS, ROLES } from '../constants'
 
-	const user = $page.data.session.user
+	const user: any | null = $page.data.session
+	let can_view_admin_page: boolean = false;
 
-	const can_view_admin_page = checkPermissions(user, PERMISSIONS.VIEW_ADMIN_PAGE)
+	if (user) {
+		can_view_admin_page = checkPermissions(user.user, PERMISSIONS.VIEW_ADMIN_PAGE)
+	}
 
 	// header
 	let root;
 	let nav_click;
 	let hamburger = false;
 
-	// console.log($page.data);
+	console.log($page.data);
+	console.log(can_view_admin_page)
 
 	onMount(() => {
 		let btn = root.querySelector(".toggle-btn");
