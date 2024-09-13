@@ -1,19 +1,18 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
-    import { notifications } from "../notifications";
-    import Toast from "../Toast.svelte";
+    import { notifications } from "../../notifications";
+    import Toast from "../../Toast.svelte";
 
-    let show_image = false;
     export let form;
 
     let file: File | null = null
     let title: string | null = null
     let explain: string | null = null
-    let content: string | null = null
+    let added_year: string | null = null
+    let added_month: string | null = null
+    let added_day: string | null = null
 
-    $: selectedImage = null;
-    let previewFile: boolean = false;
-    console.log("file:"+file)
+    let selectedImage;
 
     async function onChange(
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
@@ -64,16 +63,16 @@
 
 <main>
     <div class="input">
-        <h2 class="input-title"> 翻訳済み文書のアップロード</h2>
+        <h2 class="input-title"> 大茅区有文書のお知らせアップロード</h2>
         <form
-            action="?/upload_decoded"
+            action="?/upload_news"
             method="POST"
             enctype="multipart/form-data"
             use:enhance={() => {
-                return async ({ upload }) => {
+                return async ({ update_news }) => {
                     file = null
                     selectedImage = null;
-                    upload({ reset: true })
+                    update_news({ reset: true })
                 }
             }}
         >
@@ -83,15 +82,15 @@
                     <td class="input-body"><input type="text" id="name" name="name" class="form-text" bind:value={title}></td>
                 </tr>
                 <tr>
-                    <th class="input-item"><label for="decoded_explain">古文書の説明</label></th>
-                    <td class="input-body"><textarea id="decoded_explain" name="decoded_explain" class="form-textarea" bind:value={explain}></textarea></td>
+                    <th class="input-item"><label for="date">日付</label></th>
+                    <td class="input-body"><p><input type="date" name="example"></p></td>
                 </tr>
                 <tr>
-                    <th class="input-item"><label for="decoded_content">翻訳内容</label></th>
-                    <td class="input-body"><textarea id="decoded_content" name="decoded_content" class="form-textarea" bind:value={content}></textarea></td>
+                    <th class="input-item"><label for="news_explain">説明</label></th>
+                    <td class="input-body"><textarea id="news_explain" name="news_explain" class="form-textarea" bind:value={explain}></textarea></td>
                 </tr>
                 <tr>
-                    <th class="input-item"><label for="image">タイトル画像</label></th>
+                    <th class="input-item"><label for="image">画像</label></th>
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
                         <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
@@ -107,7 +106,7 @@
             {:else if !explain}
                 <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("説明を入力してください", 5000)}>送信</button>
             {:else if !file}
-                <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("ファイルを選択してください", 5000)}>送信</button>
+                <button type="button" value="送信" class="input-submit" on:click={() => notifications.warning("ファイルを入力してください", 5000)}>送信</button>
             {:else}
                 <button type="submit" value="送信" class="input-submit" on:click={() => notifications.success("送信しました", 5000)}>送信</button>
             {/if}
@@ -211,11 +210,6 @@
         -moz-appearance: none;
         cursor: pointer;
         pointer-events: none;
-    }
-
-    #preview {
-        width: 100%;
-        height: 100%;
     }
 
 

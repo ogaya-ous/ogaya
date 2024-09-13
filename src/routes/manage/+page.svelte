@@ -9,12 +9,12 @@
     <div class="manage">
         <h1>管理者画面</h1>
         <div class="square_contents">
-            <div class="content"> <img src={doc_manage}> <a href="manage_doc"><p>古文書管理</p></a></div>
-            <div class="content"> <img src={news_manage}><a href="manage_news"><p>ニュース管理</p></a></div>
-            <div class="content"> <img src={decode_manage}><a href="manage_decoded"><p>翻訳済み文書管理</p></a></div>
-            <div class="content"> <img src={doc_upload}><a href="upload"><p>古文書<br>アップロード</p></a></div>
-            <div class="content"> <img src={doc_upload}><a href="upload_news"><p>ニュース<br>アップロード</p></a></div>
-            <div class="content"> <img src={doc_upload}><a href="upload_decoded"><p>翻訳済み文書<br>アップロード</p></a></div>
+            <div class="content"> <img src={doc_manage}> <a href="./manage/manage_doc"><p>古文書管理</p></a></div>
+            <div class="content"> <img src={news_manage}><a href="./manage/manage_news"><p>ニュース管理</p></a></div>
+            <div class="content"> <img src={decode_manage}><a href="./manage/manage_decoded"><p>翻訳済み文書管理</p></a></div>
+            <div class="content"> <img src={doc_upload}><a href="./manage/upload"><p>古文書<br>アップロード</p></a></div>
+            <div class="content"> <img src={doc_upload}><a href="./manage/upload_news"><p>ニュース<br>アップロード</p></a></div>
+            <div class="content"> <img src={doc_upload}><a href="./manage/upload_decoded"><p>翻訳済み文書<br>アップロード</p></a></div>
         </div>
     </div>
 </main>

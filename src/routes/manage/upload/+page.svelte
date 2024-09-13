@@ -1,7 +1,7 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
-    import { notifications } from "../notifications";
-    import Toast from "../Toast.svelte";
+    import { notifications } from "../../notifications";
+    import Toast from "../../Toast.svelte";
 
     let show_image = false;
     export let form;
