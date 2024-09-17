@@ -1,14 +1,11 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Account {
@@ -17,15 +14,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -44,6 +40,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          String?   @default("USER")
   accounts      Account[]
   sessions      Session[]
   history       history[]
@@ -66,18 +63,19 @@ model document {
   added_month      Int
   added_day        Int
   delete_flag      Boolean   @default(false)
-  images           image[] 
+  view_flag        Boolean   @default(false)
   history          history[]
+  images           image[]
 }
 
 model image {
-  image_id     Int      @id @default(autoincrement())
-  document_id  Int
-  image_path   String   // 画像のパスやURL
-  added_year   Int
-  added_month  Int
-  added_day    Int
-  document     document @relation(fields: [document_id], references: [document_id],  onDelete: Cascade)
+  image_id    Int      @id @default(autoincrement())
+  document_id Int
+  image_path  String
+  added_year  Int
+  added_month Int
+  added_day   Int
+  document    document @relation(fields: [document_id], references: [document_id], onDelete: Cascade)
 }
 
 model history {
@@ -105,7 +103,7 @@ model news {
 }
 
 model decoded {
-  decoded_id      Int      @id @default(autoincrement())
+  decoded_id      Int     @id @default(autoincrement())
   decoded_name    String
   decoded_path    String
   decoded_explain String
@@ -114,5 +112,5 @@ model decoded {
   added_month     Int
   added_day       Int
   delete_flag     Boolean @default(false)
+  view_flag       Boolean @default(false)
 }
-

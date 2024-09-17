@@ -39,6 +39,7 @@
               <th>文書のタイトル</th>
               <th>アップロード日</th>
               <th>編集ボタン</th>
+              <th>表示/非表示ボタン</th>
               <th>削除ボタン</th>
             </tr>
             {#each filteredDocDatas as docData}
@@ -46,6 +47,7 @@
               <td>{ docData.document_name }</td>
               <td>{ docData.added_year }年{ docData.added_month }月{ docData.added_day }</td>
               <td><button id="edit"><a href="edit_doc?document_id={ docData.document_id }">編集</a></button></td>
+              <td><button id="view"><a href="#">表示</a></button></td>
               <td><button id="delete" on:click={() => deleteDocument(docData.document_id)}>削除</button></td>
             </tr>
             {/each}
@@ -54,11 +56,6 @@
 </main>
 
 <style>
-
-    .manage {
-        
-        
-    }
     h1 {
         color:rgb(255, 255, 255);
         background-color: rgba(8, 8, 8, 0.521);
@@ -84,34 +81,14 @@
         padding: 15px 0;
     }
 
-    table td.icon{
-        background-size: 35px;
-        background-position: left 5px center;
-        background-repeat: no-repeat;
-        padding-left: 30px;
-    }
-
-    table td.icon.bird{
-        background-image: url(icon-bird.png)
-    }
-
-    table td.icon.whale{
-        background-image: url(icon-whale.png)
-    }
-
-    table td.icon.crab{
-        background-image: url(icon-crab.png)
-    }
-
     table td button#edit{
         text-align: center;
         color: #000000;
         font-size: 130%;
         display: block;
         text-align: center;
-        /* vertical-align: middle; */
         text-decoration: none;
-        width: 250px;
+        width: 170px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
@@ -133,10 +110,9 @@
         font-size: 130%;
         display: block;
         text-align: center;
-        /* vertical-align: middle; */
         text-decoration: none;
-        width: 250px;
-        margin: auto;
+        width: 170px;
+        margin: 0 10% 0 10%;
         padding: 1rem 4rem;
         font-weight: bold;
         background: #888888;
@@ -146,9 +122,32 @@
         transition: 0.5s;
     }
 
-    a {
+    table td button#view a {
+        color: #ffffff;
         text-decoration: none;
     }
+
+    table td button#view{
+        text-align: center;
+        color: #000000;
+        font-size: 130%;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: 170px;
+        margin: auto;
+        padding: 1rem 4rem;
+        font-weight: bold;
+        background: #00b42d;
+        color: #fff;
+        border-radius: 100vh;
+        border: none;
+        transition: 0.5s;
+    }
+
+    /* a {
+        text-decoration: none;
+    } */
 
 
 </style>

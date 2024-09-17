@@ -1,14 +1,19 @@
-<script>
+<script lang="ts">
     import doc from '$lib/images/document_img.jpg';
+    import type { PageData } from "./$types";
+    export let data: PageData;
+
+    export const history: string = data.history;
+    console.log(history);
 </script>
 
 <main>
-    <h2>　文書解読リスト</h2>
+    <h2>　〇〇さんの翻訳履歴</h2>
     <div id="cardlayout-wrap"><!-- カードレイアウトをラッピング -->
         <section class="card-list">
             <a class="card-link" href="#">
                 <figure class="card-figure"><img src={doc}></figure>
-                <h4 class="card-user">ユーザーネーム</h4>
+                <h5 class="card-day">ユーザーネーム</h5>
                 <h2 class="card-title">文書の名前</h2>
                 <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
@@ -16,7 +21,7 @@
         <section class="card-list">
             <a class="card-link" href="#">
                 <figure class="card-figure"><img src={doc}></figure>
-                <h4 class="card-user">ユーザーネーム</h4>
+                <h5 class="card-day">ユーザーネーム</h5>
                 <h2 class="card-title">文書の名前</h2>
                 <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
@@ -24,7 +29,7 @@
         <section class="card-list">
             <a class="card-link" href="#">
                 <figure class="card-figure"><img src={doc}></figure>
-                <h4 class="card-user">ユーザーネーム</h4>
+                <h5 class="card-day">ユーザーネーム</h5>
                 <h2 class="card-title">文書の名前</h2>
                 <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
@@ -32,7 +37,7 @@
         <section class="card-list">
             <a class="card-link" href="#">
                 <figure class="card-figure"><img src={doc}></figure>
-                <h4 class="card-user">ユーザーネーム</h4>
+                <h5 class="card-day">ユーザーネーム</h5>
                 <h2 class="card-title">文書の名前</h2>
                 <p class="card-text-tax">冒頭の翻訳文</p>
             </a>
@@ -91,8 +96,9 @@
     }
 
     /* カードレイアウトのユーザー名部分 */
-    .card-user {
+    .card-day {
         margin: 0.6em 0 0;
+        text-decoration: none;
     }
 
     /* カードレイアウトの説明文部分 */
