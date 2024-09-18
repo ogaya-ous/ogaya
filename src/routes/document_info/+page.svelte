@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { PageData } from "./$types";
+    import complete_path from '$lib/images/complete_icon.png';
 
     export let data: PageData;
     export const document_name: string = data.document.document_name;
@@ -8,6 +9,7 @@
     export const document_added_year: number = data.document.added_year;
     export const document_added_month: number = data.document.added_month;
     export const document_added_day: number = data.document.added_day;
+    export const complete_flag: boolean = data.document.complete_flag;
 
     export async function download_txt(history_id: string) {
         const response = await fetch('?/document_info?history_id='+history_id, {
@@ -45,8 +47,11 @@
             </div>
 
             <div class="decipher_bn">
-
-                <a href="decipher?document_id={data.document_id}" class="btn_04">翻訳する</a>
+                {#if !complete_flag}
+                    <a href="decipher?document_id={data.document_id}" class="btn_04">翻訳する</a>
+                {:else}
+                    <div class="btn_complete">翻訳完了</div>
+                {/if}
 
             </div>
             <h2>翻訳履歴</h2>
@@ -122,6 +127,13 @@
     .wrapper .text{
         padding:50px;
     }
+    .wrapper img#complete{
+        position: relative;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+
+
     .wrapper .text .heading{
         margin:0px 0px 40px 0px;
         font-size: 24px;
@@ -152,6 +164,22 @@
     a.btn_04:hover {
         color: #5c5c5c;
         background: #f9f6c8;
+    }
+
+    .btn_complete {
+        font-size: 130%;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: 120px;
+        margin: auto;
+        padding: 1rem 4rem;
+        font-weight: bold;
+        border: 2px solid #555;
+        background: #555;
+        color: #fff;
+        border-radius: 100vh;
+        transition: 0.5s;
     }
 
     .text h2 {

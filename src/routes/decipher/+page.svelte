@@ -14,6 +14,9 @@
     let ai_flag: boolean = false;
 
     export const document_path: string = data.document.document_path;
+    export const recentHistory = data.recentHistory;
+
+    console.log(recentHistory);
 
     async function aiDecipher() {
         try {
@@ -37,16 +40,6 @@
             console.error(error);
         }
     }
-
-    // onMount(() => {
-    //     decipher_text = document.getElementById("text-form");
-    //     decipher_text?.addEventListener("input", () => {
-    //         FormData = decipher_text?.innerText ?? '';
-    //         console.log(FormData); // デバッグ用: コンソールに出力して確認
-    //     });
-    // });
-
-    //let text: string | null = null
 </script>
 
 <main>
@@ -99,7 +92,11 @@
                         };
                     }}
                 >
-                    <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {FormData}></textarea>
+                    {#if recentHistory}
+                        <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {recentHistory.decoding_content}></textarea>
+                    {:else}
+                        <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {FormData}></textarea>
+                    {/if}
                     <input type="hidden" name="translated-text" value={translatedText} />
                     <!-- <textarea name="text-decipher" id="text-decipher"  rows="10" cols="50"></textarea> -->
                 </form>

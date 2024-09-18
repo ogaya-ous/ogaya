@@ -63,7 +63,7 @@ model document {
   added_month      Int
   added_day        Int
   delete_flag      Boolean   @default(false)
-  complete_flag        Boolean   @default(false)
+  complete_flag    Boolean   @default(false)
   history          history[]
   images           image[]
 }
