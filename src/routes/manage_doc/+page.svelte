@@ -28,6 +28,21 @@
             console.error('Failed to delete document');
         }
     }
+
+    async function completeDocument(documentId: number) {
+        const response = await fetch(`?document_id=${documentId}`, {
+            method: 'PATCH'
+        });
+
+        if (response.ok) {
+            console.log('Document completed successfully');
+            // 削除後の処理: 再取得または再描画
+            // ここでページを再読み込みすることも可能
+            location.reload();
+        } else {
+            console.error('Failed to complete document');
+        }
+    }
 </script>
 
 <main>
@@ -39,7 +54,7 @@
               <th>文書のタイトル</th>
               <th>アップロード日</th>
               <th>編集ボタン</th>
-              <th>表示/非表示ボタン</th>
+              <th>翻訳完了ボタン</th>
               <th>削除ボタン</th>
             </tr>
             {#each filteredDocDatas as docData}
@@ -47,7 +62,15 @@
               <td>{ docData.document_name }</td>
               <td>{ docData.added_year }年{ docData.added_month }月{ docData.added_day }</td>
               <td><button id="edit"><a href="edit_doc?document_id={ docData.document_id }">編集</a></button></td>
-              <td><button id="view"><a href="#">表示</a></button></td>
+              <td>
+                {#if !docData.complete_flag}
+                    <button id="view" class="decoding" on:click={() => completeDocument(docData.document_id)}>翻訳中</button>
+                {:else}
+                    <button id="view" class="complete" on:click={() => completeDocument(docData.document_id)}>翻訳済</button>
+                {/if}
+              </td>
+
+
               <td><button id="delete" on:click={() => deleteDocument(docData.document_id)}>削除</button></td>
             </tr>
             {/each}
@@ -77,7 +100,7 @@
 
     table th,table td{
         text-align: center;
-        width: 25%;
+        width: 20%;
         padding: 15px 0;
     }
 
@@ -88,7 +111,7 @@
         display: block;
         text-align: center;
         text-decoration: none;
-        width: 170px;
+        width: 200px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
@@ -111,8 +134,8 @@
         display: block;
         text-align: center;
         text-decoration: none;
-        width: 170px;
-        margin: 0 10% 0 10%;
+        width: 200px;
+        margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
         background: #888888;
@@ -127,14 +150,14 @@
         text-decoration: none;
     }
 
-    table td button#view{
+    table td .decoding{
         text-align: center;
         color: #000000;
         font-size: 130%;
         display: block;
         text-align: center;
         text-decoration: none;
-        width: 170px;
+        width: 200px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
@@ -144,10 +167,26 @@
         border: none;
         transition: 0.5s;
     }
-
-    /* a {
+    
+    table td .complete{
+        text-align: center;
+        color: #000000;
+        font-size: 130%;
+        display: block;
+        text-align: center;
         text-decoration: none;
-    } */
+        width: 200px;
+        margin: auto;
+        padding: 1rem 4rem;
+        font-weight: bold;
+        background: #eaed22;
+        color: #fff;
+        border-radius: 100vh;
+        border: none;
+        transition: 0.5s;
+    }
+
+
 
 
 </style>

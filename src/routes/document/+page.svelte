@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import type { PageData } from "./$types";
-    // import img_path from '$lib/images/img_doc1.jpg';
+    import complete_path from '$lib/images/complete_icon.png';
     // import axios from 'axios';
 
     /*
@@ -31,11 +31,14 @@
             <a href="document_info?document_id={ documentData[0].document_id }">
                 <div class="document">
                     <article>
-                        <img src={ documentData[0].document_path } width="313" height="269" alt="work1">
+                        <img class="doc_image" src={ documentData[0].document_path } width="313" height="269" alt="work1">
                         <div class="added_date">
                             <time>{ documentData[0].added_year }年{ documentData[0].added_month }月{ documentData[0].added_day }日</time>
                         </div>
                         <h3><a href="document_info?document_id={ documentData[0].document_id }">{ documentData[0].document_name }</a></h3>
+                        {#if documentData[0].complete_flag}
+                            <img id="complete" src={ complete_path } width="100"  alt="work1">
+                        {/if}
                         <p>{ documentData[0].document_explain }</p>
                     </article>
                 </div>
@@ -45,11 +48,14 @@
             <a href="document_info?document_id={ documentData[1].document_id }">
                 <div class="document">
                     <article>
-                        <img src={ documentData[1].document_path } width="313" height="269" alt="work2">
+                        <img class="doc_image" src={ documentData[1].document_path } width="313" height="269" alt="work2">
                         <div class="added_date">
                             <time>{ documentData[1].added_year }年{ documentData[1].added_month }月{ documentData[1].added_day }日</time>
                         </div>
                         <h3><a href="document_info?document_id={ documentData[1].document_id }">{ documentData[1].document_name }</a></h3>
+                        {#if documentData[1].complete_flag}
+                            <img id="complete" src={ complete_path } width="100"  alt="work1">
+                        {/if}
                         <p>{ documentData[1].document_explain }</p>
                     </article>
                 </div>
@@ -59,11 +65,14 @@
             <a href="document_info?document_id={ documentData[2].document_id }">
                 <div class="document">
                     <article>
-                        <img src={ documentData[2].document_path } width="313" height="269" alt="work3">
+                        <img class="doc_image" src={ documentData[2].document_path } width="313" height="269" alt="work3">
                         <div class="added_date">
                             <time>{ documentData[2].added_year }年{ documentData[2].added_month }月{ documentData[2].added_day }日</time>
                         </div>
                         <h3><a href="document_info?document_id={ documentData[2].document_id }">{ documentData[2].document_name }</a></h3>
+                        {#if documentData[2].complete_flag}
+                            <img id="complete" src={ complete_path } width="100"  alt="work1">
+                        {/if}
                         <p>{ documentData[2].document_explain }</p>
                     </article>
                 </div>
@@ -73,11 +82,14 @@
             <a href="document_info?document_id={ documentData[3].document_id }">
                 <div class="document">
                     <article>
-                        <img src={ documentData[3].document_path } width="313" height="269" alt="work4">
+                        <img class="doc_image" src={ documentData[3].document_path } width="313" height="269" alt="work4">
                         <div class="added_date">
                             <time>{ documentData[3].added_year }年{ documentData[3].added_month }月{ documentData[3].added_day }日</time>
                         </div>
                         <h3><a href="document_info?document_id={ documentData[3].document_id }">{ documentData[3].document_name }</a></h3>
+                        {#if documentData[3].complete_flag}
+                            <img id="complete" src={ complete_path } width="100"  alt="work1">
+                        {/if}
                         <p>{ documentData[3].document_explain }</p>
                     </article>
                 </div>
@@ -87,11 +99,14 @@
             <a href="document_info?document_id={ documentData[4].document_id }">
                 <div class="document">
                     <article>
-                        <img src={ documentData[4].document_path } width="313" height="269" alt="work5">
+                        <img class="doc_image" src={ documentData[4].document_path } width="313" height="269" alt="work5">
                         <div class="added_date">
                             <time>{ documentData[4].added_year }年{ documentData[4].added_month }月{ documentData[4].added_day }日</time>
                         </div>
                         <h3><a href="document_info?document_id={ documentData[4].document_id }">{ documentData[4].document_name }</a></h3>
+                        {#if documentData[4].complete_flag}
+                            <img id="complete" src={ complete_path } width="100"  alt="work1">
+                        {/if}
                         <p>{ documentData[4].document_explain }</p>
                     </article>
                 </div>
@@ -136,22 +151,22 @@
 </main>
 
 <style>
-@media only screen and (min-width: 769px) {
+/* widthが950pxより大きい際に適用 */
+@media only screen and (min-width: 950px) {
     section#work h2 {
         color:rgba(255, 254, 254, 0.966);
         background-color: rgba(8, 8, 8, 0.521);
+    }
+    div#document_list {
+        max-width: 960px;
+        margin: 0 auto;
+        color: rgb(3, 3, 3);
     }
     div.document {
         display:flex;
         margin: 30px 0 30px;
         padding: 10px;
         background-color: rgba(8, 8, 8, 0.048);
-    }
-
-    div#document_list {
-        max-width: 960px;
-        margin: 0 auto;
-        color: rgb(3, 3, 3);
     }
     div#document_list section#work article {
         width: 100%;
@@ -172,6 +187,9 @@
         text-align: left;
         float: left;
         font-size: 1.3em;
+    }
+    div#document_list section#work img#complete {
+        float: right;
     }
 
     div#document_list section#work article a {
@@ -249,119 +267,4 @@
         color: #fff;
     }
 }
-
-
-section#work h2 {
-    color:rgba(255, 254, 254, 0.966);
-    background-color: rgba(8, 8, 8, 0.521);
-}
-div.document {
-    display:flex;
-    margin: 30px 0 30px;
-    padding: 10px;
-    background-color: rgba(8, 8, 8, 0.048);
-}
-
-div#document_list {
-    max-width: 960px;
-    margin: 0 auto;
-    color: rgb(3, 3, 3);
-}
-div#document_list section#work article {
-    width: 100%;
-}
-div#document_list section#work article img {
-    float: left;
-    max-width: 305px;
-    margin-right: 20px;
-    cursor: pointer;
-    object-fit: cover;
-    object-position: right top;
-}
-div#document_list section#work article h3 {
-    border-left: 5px solid #000;
-    /* margin-top: 10px; */
-    margin-bottom: 10px;
-    padding-left: 10px;
-    text-align: left;
-    float: left;
-    font-size: 1.3em;
-}
-
-div#document_list section#work article a {
-    color: black;
-    text-decoration: none;
-}
-
-div#document_list section#work article a:hover {
-    text-decoration: none;
-    color:#0aa284;
-}
-div#document_list section#work article p{
-    text-decoration: none;
-    color: black;
-    line-height: 3.0em;
-    border: 1px solid #CCC;
-    float: left;
-    width: 60%;
-}
-
-div#document_list section#work article .added_date {
-    display: block;
-    width: 600px;
-}
-
-#document_list .document {
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
-}
-
-div#document_list .document .added_date {
-    float: left;
-    color: rgba(0,0,0,0.6);
-    font-size: 14px;
-}
-.example {
-    list-style: none;
-    display: flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.example li {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 12px;
-    border: 1px #ccc solid;
-    color:#000053;
-    border-radius: 5px / 5px;
-    margin: 2px;
-}
-
-.example li a{
-    display: block;
-    text-decoration: none;
-}
-
-.example li a:hover {
-    color: #fff;
-    text-decoration: none;
-    background-color: #003396;
-}
-
-.example .non {
-    background-color: #ccc;
-    color:#333;
-}
-
-.example .this {
-    background-color: #777;
-    color: #fff;
-}
-
-
 </style>
