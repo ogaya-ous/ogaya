@@ -22,7 +22,15 @@ export const load: PageServerLoad = async (event) => {
         document_id: document_id
     }
   });
-  return { session , document_id, document};
+  const recentHistory = await prisma.history.findFirst({
+    where: {
+        user_id: session.user.id
+    },
+    orderBy: [
+      {history_id: 'desc'}
+    ]
+  });
+  return { session , document_id, document, recentHistory: recentHistory || null};
 }
 
 export const actions = {
