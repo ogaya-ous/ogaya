@@ -110,9 +110,8 @@
 										<li class="dropdown" style="z-index: 114514">
 											<button style="background-image: url('{$page.data.session.user.image}')" class="avatar"></button>
 												<Dropdown>
-													<div class="dropdown-content">
-													<DropdownItem on:click={() => signOut()}>ログアウト</DropdownItem>
-													</div>
+													<div class="dropdown-content"><DropdownItem><a href="/">翻訳履歴</a></DropdownItem></div>
+													<div class="dropdown-content"><DropdownItem on:click={() => signOut()}>ログアウト</DropdownItem></div>
 												</Dropdown>
 										</li>
 										<!-- <li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li> -->
@@ -267,6 +266,19 @@
 		position: relative;
 		display: inline-block;
 	}
+
+	.dropdown-content {
+		/* display: none;
+        position: absolute; */
+        background-color: #f9f9f9;
+        width: 160px;
+		height: 50px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		font-size: 14px;
+		text-decoration: none;
+        /* z-index: 100; */
+    }
+
 
 
 	@media screen and (min-width:480px) { 
