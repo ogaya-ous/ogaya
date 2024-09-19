@@ -11,8 +11,7 @@ const prisma = new PrismaClient()
 const authorization: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname.startsWith('/manage')) {
 		const session = await event.locals.getSession();
-		//console.log(session)
-		if (!session) {
+		if (session?.user?.role != "ADMIN") {
 			throw redirect(303, '/')
 		}
 	}

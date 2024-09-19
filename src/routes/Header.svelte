@@ -18,8 +18,8 @@
 	}
 
 	// header
-	let root;
-	let nav_click;
+	let root: HTMLElement;
+	let nav_click: HTMLElement;
 	let hamburger = false;
 
 	console.log($page.data);
