@@ -1,38 +1,19 @@
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
+# cloneから起動までの流れ
+1. ~/.ssh/rsa_id.pubがあるか確認
+2. 無ければ、以下を実行
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub
+# 出てきたヤツをコピーしてgithubに設定する
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+3. git cloneする
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone git@github.com:iruk23/ogaya.git
 ```
-
-## Building
-
-To create a production version of your app:
-
+4. 以下実行
 ```bash
-npm run build
+cd ogaya
+npm i
+npx prisma generate
+npm run dev --open
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

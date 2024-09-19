@@ -2,12 +2,13 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/logo.png';
 	import { signOut } from "@auth/sveltekit/client";
-	import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+	import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader, Button } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import { openModal } from 'svelte-modals';
 	import Modal from './Modal.svelte';
 	import { checkRole, checkPermissions } from '$lib/checkRoles';
 	import { PERMISSIONS, ROLES } from '../constants'
+	import { ChevronDownOutline } from 'flowbite-svelte-icons';
 
 	const user: any | null = $page.data.session
 	let can_view_admin_page: boolean = false;
@@ -110,9 +111,8 @@
 										<li class="dropdown" style="z-index: 114514">
 											<button style="background-image: url('{$page.data.session.user.image}')" class="avatar"></button>
 												<Dropdown>
-													<div class="dropdown-content">
-													<DropdownItem on:click={() => signOut()}>ログアウト</DropdownItem>
-													</div>
+														<DropdownItem>翻訳履歴</DropdownItem>
+														<DropdownItem on:click={() => signOut()}>ログアウト</DropdownItem>
 												</Dropdown>
 										</li>
 										<!-- <li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li> -->
