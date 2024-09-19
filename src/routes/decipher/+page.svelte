@@ -7,7 +7,7 @@
     import type { PageData } from "./$types";
 
     let decipher_text: HTMLElement | null = null;
-    let FormData: string = 'こちらに翻訳を入力してください。';
+    let FormData: string;
     let translatedText: string = "";
     export let data: PageData;
 
@@ -16,7 +16,9 @@
     export const document_path: string = data.document.document_path;
     export const recentHistory = data.recentHistory;
 
-    console.log(recentHistory);
+    if (recentHistory) {
+        FormData = recentHistory.decoding_content;
+    }
 
     async function aiDecipher() {
         try {
@@ -92,11 +94,7 @@
                         };
                     }}
                 >
-                    {#if recentHistory}
-                        <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {recentHistory.decoding_content}></textarea>
-                    {:else}
-                        <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {FormData}></textarea>
-                    {/if}
+                    <textarea class="paper vertical-text" name="text-decipher" id="text-form" bind:value = {FormData}></textarea>
                     <input type="hidden" name="translated-text" value={translatedText} />
                     <!-- <textarea name="text-decipher" id="text-decipher"  rows="10" cols="50"></textarea> -->
                 </form>

@@ -3,46 +3,26 @@
     import type { PageData } from "./$types";
     export let data: PageData;
 
-    export const history: string = data.history;
-    console.log(history);
+    export const historys: string = data.history;
+    export const session = data.session;
+    console.log(historys);
+    console.log(historys[0].document);
 </script>
 
 <main>
-    <h2>　〇〇さんの翻訳履歴</h2>
+    <h2>　{session.user.name}さんの翻訳履歴</h2>
     <div id="cardlayout-wrap"><!-- カードレイアウトをラッピング -->
-        <section class="card-list">
-            <a class="card-link" href="#">
-                <figure class="card-figure"><img src={doc}></figure>
-                <h5 class="card-day">ユーザーネーム</h5>
-                <h2 class="card-title">文書の名前</h2>
-                <p class="card-text-tax">冒頭の翻訳文</p>
-            </a>
-        </section>
-        <section class="card-list">
-            <a class="card-link" href="#">
-                <figure class="card-figure"><img src={doc}></figure>
-                <h5 class="card-day">ユーザーネーム</h5>
-                <h2 class="card-title">文書の名前</h2>
-                <p class="card-text-tax">冒頭の翻訳文</p>
-            </a>
-        </section>
-        <section class="card-list">
-            <a class="card-link" href="#">
-                <figure class="card-figure"><img src={doc}></figure>
-                <h5 class="card-day">ユーザーネーム</h5>
-                <h2 class="card-title">文書の名前</h2>
-                <p class="card-text-tax">冒頭の翻訳文</p>
-            </a>
-        </section>
-        <section class="card-list">
-            <a class="card-link" href="#">
-                <figure class="card-figure"><img src={doc}></figure>
-                <h5 class="card-day">ユーザーネーム</h5>
-                <h2 class="card-title">文書の名前</h2>
-                <p class="card-text-tax">冒頭の翻訳文</p>
-            </a>
-        </section>
-    </div><!-- カードレイアウトをラッピング -->
+        {#each historys as history}
+            <section class="card-list">
+                <a class="card-link" href="/decipher_view?document_id={history.document.document_id}&history_id={history.history_id}">
+                    <figure class="card-figure"><img src={history.document.document_path}></figure>
+                    <h5 class="card-day">{history.document.added_year}年{history.document.added_month}月{history.document.added_day}日</h5>
+                    <h2 class="card-title">{history.document.document_name}</h2>
+                    <p class="card-text-tax">{history.decoding_content}</p>
+                </a>
+            </section>
+        {/each}
+    </div>
 
 </main>
 
@@ -93,6 +73,7 @@
         color: #333;
         text-align: center;
         font-size: 1.8em;
+        color: #ececec;
     }
 
     /* カードレイアウトのユーザー名部分 */
