@@ -1,19 +1,28 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import logo from '$lib/images/logo.png';
+	import { page } from "$app/stores";
+	import logo from "$lib/images/logo.png";
 	import { signOut } from "@auth/sveltekit/client";
-	import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader, Button } from 'flowbite-svelte';
-	import { onMount } from 'svelte';
-	import { openModal } from 'svelte-modals';
-	import Modal from './Modal.svelte';
-	import { checkRole, checkPermissions } from '$lib/checkRoles';
-	import { PERMISSIONS, ROLES } from '../constants'
+	import {
+		Dropdown,
+		DropdownItem,
+		DropdownDivider,
+		DropdownHeader,
+		Button,
+	} from "flowbite-svelte";
+	import { onMount } from "svelte";
+	import { openModal } from "svelte-modals";
+	import Modal from "./Modal.svelte";
+	import { checkRole, checkPermissions } from "$lib/checkRoles";
+	import { PERMISSIONS, ROLES } from "../constants";
 
-	const user: any | null = $page.data.session
+	const user: any | null = $page.data.session;
 	let can_view_admin_page: boolean = false;
 
 	if (user) {
-		can_view_admin_page = checkPermissions(user.user, PERMISSIONS.VIEW_ADMIN_PAGE)
+		can_view_admin_page = checkPermissions(
+			user.user,
+			PERMISSIONS.VIEW_ADMIN_PAGE,
+		);
 	}
 
 	// header
@@ -22,7 +31,7 @@
 	let hamburger = false;
 
 	console.log($page.data);
-	console.log(can_view_admin_page)
+	console.log(can_view_admin_page);
 
 	onMount(() => {
 		let btn = root.querySelector(".toggle-btn");
@@ -34,38 +43,43 @@
 
 		nav_click.onclick = () => {
 			hamburger = false;
-		}
+		};
 	});
 	export function handleOpen() {
-		console.log("handleOpen")
+		console.log("handleOpen");
 		openModal(Modal, {
 			title: "ログイン",
 			message: "This is an alert",
-		})
+		});
 	}
 </script>
 
-
 <header>
-	<div bind:this={ root }>
+	<div bind:this={root}>
 		<!-- スマホヘッダー -->
 		<div class="sp_nav">
-			<div id="navigation" class:hamburger = { hamburger }>
+			<div id="navigation" class:hamburger>
 				<div class="logo">
-					<a href="/"><img src={ logo } alt=""></a>
+					<a href="/"><img src={logo} alt="" /></a>
 				</div>
 				<div class="menu_list">
 					<nav>
 						<div class="inner">
-							<img src={ logo } alt="">
+							<img src={logo} alt="" />
 							<ul>
-								<li class:nav_click={ nav_click }><a href="/">ホーム</a></li>
-								<li class:nav_click={ nav_click }><a href="/news">ニュース</a></li>
-								<li class:nav_click={ nav_click }><a href="/document?page=1">文書一覧</a></li>
+								<li class:nav_click><a href="/">ホーム</a></li>
+								<li class:nav_click>
+									<a href="/news">ニュース</a>
+								</li>
+								<li class:nav_click>
+									<a href="/document?page=1">文書一覧</a>
+								</li>
 								<!-- <li class:nav_click={ nav_click }><a href="/upload">文書アップロード</a></li> -->
 								<!-- <li class:nav_click={ nav_click }><a href="/upload">ニュースアップロード</a></li> -->
-								<li class:nav_click={ nav_click }><a href="/manage">管理者画面</a></li>
-								<li class:nav_click={ nav_click }><a href="/login">ログイン</a></li>
+								<li class:nav_click>
+									<a href="/manage">管理者画面</a>
+								</li>
+								<li class:nav_click><a href="">ログイン</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -82,7 +96,7 @@
 		<div class="pc_nav">
 			<div id="navigation">
 				<div class="logo">
-					<a href="/"><img src={ logo } alt=""></a>
+					<a href="/"><img src={logo} alt="" /></a>
 				</div>
 				<div class="menu_list">
 					<nav>
@@ -90,14 +104,22 @@
 							<ul>
 								<li><a href="/">ホーム</a></li>
 								<li><a href="/news">お知らせ</a></li>
-								<li><a href="/ogaya_event">翻訳からわかる出来事の紹介</a></li>
+								<li>
+									<a href="/ogaya_event"
+										>翻訳からわかる出来事の紹介</a
+									>
+								</li>
 								<li><a href="/document?page=1">文書一覧</a></li>
-								<li><a href="/decode">翻訳済み文書のまとめ</a></li>
+								<li>
+									<a href="/decode">翻訳済み文書のまとめ</a>
+								</li>
 								<!-- <li><a href="/upload">文書アップロード</a></li>
 								<li><a href="/upload_news">ニュースアップロード</a></li> -->
-								
+
 								{#if can_view_admin_page}
-									<li class:nav_click={ nav_click }><a href="/manage">管理者画面</a></li>
+									<li class:nav_click>
+										<a href="/manage">管理者画面</a>
+									</li>
 								{/if}
 								<!--
 								{#if Object.keys($page.data.session || {}).length}
@@ -107,17 +129,35 @@
 								{:else} -->
 								{#if $page.data.session}
 									{#if $page.data.session.user.image}
-										<li class="dropdown" style="z-index: 114514">
-											<button style="background-image: url('{$page.data.session.user.image}')" class="avatar"></button>
-												<Dropdown>
-														<DropdownItem>翻訳履歴</DropdownItem>
-														<DropdownItem on:click={() => signOut()}>ログアウト</DropdownItem>
-												</Dropdown>
+										<li
+											class="dropdown"
+											style="z-index: 114514"
+										>
+											<button
+												style="background-image: url('{$page
+													.data.session.user.image}')"
+												class="avatar"
+											></button>
+											<Dropdown>
+												<DropdownItem
+													>翻訳履歴</DropdownItem
+												>
+												<DropdownItem
+													on:click={() => signOut()}
+													>ログアウト</DropdownItem
+												>
+											</Dropdown>
 										</li>
 										<!-- <li><button class="login_btn" on:click={() => signOut()}>ログアウト</button></li> -->
 									{/if}
 								{:else}
-									<li><button class="login_btn" on:click={ handleOpen }>ログイン</button></li>
+									<li>
+										<button
+											class="login_btn"
+											on:click={handleOpen}
+											>ログイン</button
+										>
+									</li>
 								{/if}
 							</ul>
 						</div>
@@ -144,7 +184,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		font-family: 'Noto Sans JP', sans-serif;
+		font-family: "Noto Sans JP", sans-serif;
 		background-color: rgba(121, 121, 121, 0.082);
 	}
 
@@ -267,8 +307,7 @@
 		display: inline-block;
 	}
 
-
-	@media screen and (min-width:480px) { 
+	@media screen and (min-width: 480px) {
 		/*　for iPhone Landscape　(iPhone 横)　*/
 		.sp_nav nav .inner {
 			padding: 10px 50px;
@@ -279,15 +318,14 @@
 		}
 	}
 
-	@media screen and (min-width:768px) and ( max-width:1024px) {
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
 		/*　for iPad 　*/
 		.sp_nav nav {
-		left: -1000px;
+			left: -1000px;
+		}
 	}
 
-	}
-
-	@media screen and (min-width:1024px) {
+	@media screen and (min-width: 1024px) {
 		.sp_nav {
 			display: none;
 		}
@@ -299,7 +337,7 @@
 		.pc_nav #navigation {
 			display: flex;
 			justify-content: space-between;
-			font-family: 'Noto Sans JP', sans-serif;
+			font-family: "Noto Sans JP", sans-serif;
 			background-color: rgba(121, 121, 121, 0.082);
 		}
 
@@ -342,7 +380,7 @@
 			color: white;
 			padding: 10px 30px;
 			border-radius: 10px;
-			background-color: #0F4C3A;
+			background-color: #0f4c3a;
 			margin-right: 35px;
 			font-size: 16px;
 			border: none;
