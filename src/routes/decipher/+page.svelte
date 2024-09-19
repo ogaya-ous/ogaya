@@ -1,7 +1,5 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-    import testimg_path from "$lib/images/first_view.jpg";
-    import { onMount } from "svelte";
     import Toast from "../Toast.svelte";
     import { notifications } from "../notifications";
     import type { PageData } from "./$types";

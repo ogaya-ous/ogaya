@@ -1,8 +1,7 @@
 import type { RequestHandler } from './$types';
-import { PrismaClient } from '@prisma/client';
 
 import { ChatOpenAI } from "@langchain/openai";
-import { PromptTemplate, StructuredPrompt } from "@langchain/core/prompts";
+import { PromptTemplate} from "@langchain/core/prompts";
 import { StructuredOutputParser } from "langchain/output_parsers";
 import { OPENAI_API_KEY } from '$env/static/private';
 
