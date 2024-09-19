@@ -8,7 +8,6 @@
 	import Modal from './Modal.svelte';
 	import { checkRole, checkPermissions } from '$lib/checkRoles';
 	import { PERMISSIONS, ROLES } from '../constants'
-	import { ChevronDownOutline } from 'flowbite-svelte-icons';
 
 	const user: any | null = $page.data.session
 	let can_view_admin_page: boolean = false;
