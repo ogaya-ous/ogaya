@@ -27,6 +27,7 @@
 </main>
 
 <style>
+@media only screen and (min-width: 969px) {
     h3 {
         text-align: center;
     }
@@ -69,4 +70,49 @@
         font-weight: bold;
         margin-bottom: 10px;
     }
+}
+@media (max-width: 768px) {
+    .contents {
+        flex-direction: column; /* 縦並びに変更 */
+        min-height: auto; /* 高さを自動調整 */
+    }
+
+    .content1 {
+        width: 100%; /* 幅を100%に */
+        margin: 0; /* マージンをリセット */
+    }
+
+    .content2 {
+        width: 100%; /* 幅を100%に */
+        margin: 0; /* マージンをリセット */
+    }
+
+    .ogaya_image {
+        width: 90%; /* 画像の幅を100%に */
+        height: auto; /* 高さを自動調整 */
+        margin: 10px auto; /* 上部のマージン */
+    }
+
+    .title {
+        font-size: 18px; /* タイトルのサイズを調整 */
+        text-align: center;
+
+    }
+
+    h3 {
+        font-size: 20px; /* サブタイトルのサイズを調整 */
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .explain {
+        font-size: 16px; /* 説明文のサイズを調整 */
+        margin: 0 5%; /* マージンを少し狭める */
+        text-align: center;
+    }
+
+    p#decoded_title {
+        font-size: 18px; /* デコードされたタイトルのサイズを調整 */
+    }
+}
 </style>

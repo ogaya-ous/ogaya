@@ -1,7 +1,7 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
-    import { notifications } from "../notifications";
-    import Toast from "../Toast.svelte";
+    import { notifications } from "../../notifications";
+    import Toast from "../../Toast.svelte";
     import type { PageData } from "./$types";
 
     export let data: PageData;
@@ -69,7 +69,7 @@
                     <!--<td class="input-body"><input accept="image/*" multiple type="file" id="image" name="image" onchage="previewFile(event);"></td>-->
                     <td class="input-body">
                         <!--<input accept="image/*" multiple type="file" id="image" name="image" bind:this={file} on:change={previewFile}>-->
-                        <input id="image-upload" name="image-upload" type="file" accept="image/*" class="sr-only" on:change={onChange}/>
+                        <input id="image-upload" name="image-upload" type="file" accept="image/*" on:change={onChange}/>
                         {#if selectedImage}
                             <img id="preview" src={selectedImage} alt="preview">
                         {/if}
@@ -190,6 +190,10 @@
     #preview {
         width: 100%;
         height: 100%;
+    }
+
+    #image-upload {
+        margin: 10px;
     }
 
 

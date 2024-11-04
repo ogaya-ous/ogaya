@@ -21,6 +21,7 @@
 </main>
 
 <style>
+    @media only screen and (min-width: 950px) {
     .contents{
         display: flex;
         min-height:100vh;
@@ -49,4 +50,49 @@
         width: 100%;
         /* margin-left: 10%; */
     }
+}
+
+@media only screen and (max-width: 949px) {
+    .contents {
+        display: block;
+        padding: 15px;
+        min-height: 100vh;
+        background-color: #f8f8f8; /* 背景色を追加 */
+    }
+
+    .content1 {
+        width: 100%;
+        text-align: left;
+        margin: 0 0 20px; /* 下部余白を追加 */
+    }
+
+    .content1 p {
+        font-size: 0.6em; /* フォントサイズを大きく */
+        line-height: 1.6em; /* 行間を広げて読みやすく */
+        margin-bottom: 15px; /* 各段落の下に余白を追加 */
+    }
+
+    .content2 {
+        width: 100%;
+        text-align: center;
+        margin: 0; /* マージンをリセット */
+    }
+
+    .title {
+        font-size: 20px; /* タイトルのフォントサイズを調整 */
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333; /* タイトルの色を変更 */
+    }
+
+    .ogaya_image {
+        width: 90%; /* 画像幅を90%に設定 */
+        height: auto; /* 高さを自動調整 */
+        border-radius: 8px; /* 画像に角丸を追加 */
+        margin: 0 auto; /* 画像を中央揃え */
+        display: block; /* 画像をブロック要素に設定 */
+        margin-bottom: 15px; /* 画像の下に余白を追加 */
+    }
+}
 </style>

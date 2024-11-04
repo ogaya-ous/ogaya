@@ -121,7 +121,8 @@
     }
     .wrapper .image{
         display:block;
-        max-width:100%;
+        width:auto;
+        max-height: 300px;
         margin:0px auto;
     }
     .wrapper .text{
@@ -151,7 +152,7 @@
         text-align: center;
         vertical-align: middle;
         text-decoration: none;
-        width: 120px;
+        width: 300px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
@@ -180,6 +181,11 @@
         color: #fff;
         border-radius: 100vh;
         transition: 0.5s;
+    }
+
+    .doc-image {
+        height: 200px;
+        width: auto;
     }
 
     .text h2 {
@@ -278,8 +284,20 @@
 
     .download_btn {
         display: inline-block;
-        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 300px;
+        height: 31px;
+        /* padding: 12px 24px; */
+        padding: 5px;
+        font-family: sans-serif;
+        font-size: 16px;
+        border: 0px;
+        color: #fff;
         text-align: center;
+        overflow-wrap: anywhere;
         background-color: #6e6e6e;
+        margin: 12px;
     }
 </style>

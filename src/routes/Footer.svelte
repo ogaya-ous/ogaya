@@ -186,22 +186,26 @@
 		letter-spacing: 1px;
 	}
 
-	@media screen and (min-width: 480px) {
+	@media screen and (max-width: 767px) {
 		footer .wrap .left {
 			margin-left: 60px;
+			font-size: 9px;
 		}
 
 		footer .wrap .center .address_erea,
 		footer .wrap .center .contact_erea {
 			margin-left: 60px;
+			font-size: 9px;
 		}
 
 		footer .wrap .right {
 			margin-left: 60px;
+			font-size: 9px;
 		}
 
 		footer .wrap .right .sp_column .right_item {
 			margin-left: 60px;
+			font-size: 9px;
 		}
 	}
 
