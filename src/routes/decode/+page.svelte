@@ -33,6 +33,7 @@
 </main>
 
 <style>
+  @media only screen and (min-width: 769px) {
   /* information
   ------------------------------ */
   #information {
@@ -115,4 +116,59 @@
     width: 50%;
     list-style-type:none;
   }
+}
+@media (max-width: 768px) {
+    #information {
+        padding: 40px 0; /* 上下のパディングを縮小 */
+        background-color: #fafafa; /* 背景色を維持 */
+    }
+
+    #information h1 {
+        font-size: 1.1rem; /* タイトルサイズを調整 */
+        margin-bottom: 20px; /* マージンを縮小 */
+        text-align: center;
+    }
+
+    #information article {
+        padding: 10px; /* パディングを維持 */
+        margin-bottom: 20px; /* 各記事のマージンを調整 */
+        background-color: #f1f1f1; /* 背景色を維持 */
+        border-radius: 10px; /* 角を丸くする */
+    }
+
+    #information article .text_date {
+        font-size: 0.75rem; /* 日付サイズを調整 */
+    }
+
+    #information article h2 {
+        font-size: 1.25rem; /* サブタイトルサイズを調整 */
+        margin-bottom: 15px; /* マージンを調整 */
+    }
+
+    #information article .text_content {
+        line-height: 1.5em; /* 行間を調整 */
+        font-size: 0.9rem; /* テキストサイズを調整 */
+    }
+
+    #information img {
+        width: 100%; /* 画像の幅を100%に */
+        height: auto; /* 高さを自動調整 */
+    }
+
+    ul {
+        flex-direction: column; /* 縦並びに変更 */
+        padding: 0; /* パディングをリセット */
+    }
+
+    li {
+        width: 100%; /* 幅を100%に */
+        margin-bottom: 10px; /* 各リスト項目の間隔を調整 */
+    }
+
+    #part1 img {
+        max-width: 100%; /* 画像の最大幅を100%に */
+        margin: 0 auto; /* 中央揃え */
+        display: block; /* ブロック表示に */
+    }
+}
   </style>

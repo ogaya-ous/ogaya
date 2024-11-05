@@ -5,8 +5,13 @@
 
     export const historys: string = data.history;
     export const session = data.session;
-    console.log(historys);
-    console.log(historys[0].document);
+
+    function truncateText(text: string, maxLength: number): string {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + '...'; // 文字数制限を超えた場合に省略記号を追加
+        }
+        return text;
+    }
 </script>
 
 <main>
@@ -18,7 +23,7 @@
                     <figure class="card-figure"><img src={history.document.document_path}></figure>
                     <h5 class="card-day">{history.document.added_year}年{history.document.added_month}月{history.document.added_day}日</h5>
                     <h2 class="card-title">{history.document.document_name}</h2>
-                    <p class="card-text-tax">{history.decoding_content}</p>
+                    <p class="card-text-tax">{truncateText(history.decoding_content, 100)}</p>
                 </a>
             </section>
         {/each}
@@ -58,8 +63,9 @@
     /* カードレイアウト内の画像を幅いっぱいに表示 */
     #cardlayout-wrap img {
         display: block;
-        max-width: 100%;
-        height: auto;
+        width: auto;
+        max-height: 200px;
+        margin: auto;
     }
 
     .card-figure {

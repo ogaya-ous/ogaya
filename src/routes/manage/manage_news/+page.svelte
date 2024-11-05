@@ -55,11 +55,7 @@
 </main>
 
 <style>
-
-    .manage {
-        
-        
-    }
+@media only screen and (min-width: 950px) {
     h1 {
         color:rgb(255, 255, 255);
         background-color: rgba(8, 8, 8, 0.521);
@@ -144,6 +140,65 @@
     a{
         text-decoration: none;
     }
+}
 
+/* スマートフォン用のスタイル */
+@media only screen and (max-width: 950px) {
+    h1 {
+        font-size: 1.1rem;
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        background-color: rgba(8, 8, 8, 0.7);
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        margin: 0;
+    }
+
+    table td {
+        padding: 10px;
+        font-size: 0.7rem;
+    }
+
+    table th {
+        background-color: #9a9a9a;
+        color: #ffffff;
+        padding: auto;
+        font-size: 0.6rem;
+    }
+
+    table td {
+        padding: 12px 5px;
+    }
+
+    table td button#edit,
+    table td button#delete,
+    table td .decoding,
+    table td .complete {
+        font-size: 0.7rem;
+        width: 100%;
+        padding: 0.6rem 1rem;
+        margin: 5px 0;
+    }
+
+    /* ボタンごとのスタイル */
+    table td button#edit {
+        background: #fab05b;
+    }
+
+    table td button#delete {
+        background: #888888;
+    }
+
+    table td .decoding {
+        background: #00b42d;
+    }
+
+    table td .complete {
+        background: #eaed22;
+    }
+}
 
 </style>

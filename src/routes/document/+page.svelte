@@ -31,7 +31,9 @@
             <a href="document_info?document_id={ documentData[0].document_id }">
                 <div class="document">
                     <article>
-                        <img class="doc_image" src={ documentData[0].document_path } width="313" height="269" alt="work1">
+                        <div class="document-image">
+                            <img class="doc_image" src={ documentData[0].document_path } width="313" height="269" alt="work1">
+                        </div>
                         <div class="added_date">
                             <time>{ documentData[0].added_year }年{ documentData[0].added_month }月{ documentData[0].added_day }日</time>
                         </div>
@@ -48,7 +50,9 @@
             <a href="document_info?document_id={ documentData[1].document_id }">
                 <div class="document">
                     <article>
-                        <img class="doc_image" src={ documentData[1].document_path } width="313" height="269" alt="work2">
+                        <div class="document-image">
+                            <img class="doc_image" src={ documentData[1].document_path } width="313" height="269" alt="work2">
+                        </div>
                         <div class="added_date">
                             <time>{ documentData[1].added_year }年{ documentData[1].added_month }月{ documentData[1].added_day }日</time>
                         </div>
@@ -65,7 +69,9 @@
             <a href="document_info?document_id={ documentData[2].document_id }">
                 <div class="document">
                     <article>
-                        <img class="doc_image" src={ documentData[2].document_path } width="313" height="269" alt="work3">
+                        <div class="document-image">
+                            <img class="doc_image" src={ documentData[2].document_path } width="313" height="269" alt="work3">
+                        </div>
                         <div class="added_date">
                             <time>{ documentData[2].added_year }年{ documentData[2].added_month }月{ documentData[2].added_day }日</time>
                         </div>
@@ -82,7 +88,9 @@
             <a href="document_info?document_id={ documentData[3].document_id }">
                 <div class="document">
                     <article>
-                        <img class="doc_image" src={ documentData[3].document_path } width="313" height="269" alt="work4">
+                        <div class="document-image">
+                            <img class="doc_image" src={ documentData[3].document_path } width="313" height="269" alt="work4">
+                        </div>
                         <div class="added_date">
                             <time>{ documentData[3].added_year }年{ documentData[3].added_month }月{ documentData[3].added_day }日</time>
                         </div>
@@ -99,7 +107,9 @@
             <a href="document_info?document_id={ documentData[4].document_id }">
                 <div class="document">
                     <article>
-                        <img class="doc_image" src={ documentData[4].document_path } width="313" height="269" alt="work5">
+                        <div class="document-image">
+                            <img class="doc_image" src={ documentData[4].document_path } width="313" height="269" alt="work5">
+                        </div>
                         <div class="added_date">
                             <time>{ documentData[4].added_year }年{ documentData[4].added_month }月{ documentData[4].added_day }日</time>
                         </div>
@@ -171,13 +181,20 @@
     div#document_list section#work article {
         width: 100%;
     }
-    div#document_list section#work article img {
+
+    div#document_list .document-image {
+        width: 305px;
+        height: 215px;
         float: left;
-        max-width: 305px;
         margin-right: 20px;
         cursor: pointer;
         object-fit: cover;
         object-position: right top;
+    }
+    div#document_list section#work article img {
+        width: auto;
+        margin: auto;
+        max-height: 215px;
     }
     div#document_list section#work article h3 {
         border-left: 5px solid #000;
@@ -266,5 +283,127 @@
         background-color: #777;
         color: #fff;
     }
+}
+
+@media only screen and (max-width: 949px) {
+    section#work h2 {
+        font-size: 1.2em;
+        color: rgba(255, 254, 254, 0.966);
+        background-color: rgba(8, 8, 8, 0.521);
+        padding: 0.5em;
+    }
+    
+    div#document_list {
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    div.document {
+        display: block;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(8, 8, 8, 0.048);
+    }
+
+    div#document_list .document-image {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+
+    div#document_list section#work article img {
+        width: 100%;
+        height: 200px;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    div#document_list section#work article h3 {
+        font-size: 1.1em;
+        padding-left: 5px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    div#document_list section#work img#complete {
+        display: block;
+        margin: 10px auto;
+        width: 80px;
+    }
+
+    div#document_list section#work article p {
+        font-size: 0.9em;
+        line-height: 1.5em;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    div#document_list section#work article .added_date {
+        display: block;
+        text-align: center;
+        font-size: 0.85em;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    .example {
+        padding: 0;
+        justify-content: center;
+    }
+
+    .example li {
+        height: 30px;
+        width: 30px;
+        font-size: 10px;
+        line-height: 30px;
+        margin: 2px;
+    }
+
+    .example li a {
+        font-size: 0.85em;
+    }
+
+
+    .example {
+        list-style: none;
+        display: flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .example li {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 12px;
+        border: 1px #ccc solid;
+        color:#000053;
+        border-radius: 5px / 5px;
+        margin: 2px;
+    }
+
+    .example li a{
+        display: block;
+        text-decoration: none;
+    }
+
+    .example li a:hover {
+        color: #fff;
+        text-decoration: none;
+        background-color: #003396;
+    }
+
+    .example .non {
+        background-color: #ccc;
+        color:#333;
+    }
+
+    .example .this {
+        background-color: #777;
+        color: #fff;
+    }
+    
 }
 </style>

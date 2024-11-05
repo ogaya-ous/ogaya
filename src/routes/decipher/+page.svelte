@@ -78,8 +78,14 @@
             AI翻訳
         </button>
     </ul>
+
     <div class="decipher">
-        <div class="decipher-item">
+        <div class="decipher-item" id="docImage">
+            <div class="dicipher-item-image">
+                <img src={document_path} alt="work1" />
+            </div>
+        </div>
+        <div class="decipher-item" id="docText">
             <div class="decipher-item-text" id="form-container">
                 <form
                     action="?/upload"
@@ -104,174 +110,145 @@
                 </p>
             </div>
         </div>
-        <div class="decipher-item" id="docImage">
-            <div class="dicipher-item-image">
-                <img src={document_path} alt="work1" />
-            </div>
-        </div>
     </div>
 </main>
 <Toast />
 
 <style>
+@media only screen and (min-width: 950px) {
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: 'Noto Sans JP', sans-serif; /* フォントを統一 */
     }
 
     /* 戻るボタンのスタイル */
     .back-button {
         position: absolute;
-        color: #383636;
-        padding: 10px 15px;
+        color: #fff;
+        padding: 5px 10px;
         text-decoration: none;
         border-radius: 5px;
         font-weight: bold;
+        background-color: #3d3d3d; /* ボタンの色 */
+        transition: background-color 0.3s;
     }
 
     .back-button:hover {
-        background-color: #555;
-        color: #fff;
+        background-color: #555; /* ホバー時の色 */
     }
 
+    /* メインコンテナ */
     .decipher {
         display: flex;
         justify-content: space-around;
-        width: 100%;
-        height: 100%;
         align-items: flex-start;
+        flex-wrap: wrap; /* レスポンシブ対応 */
+        padding: 20px; /* パディングを追加 */
     }
 
+    /* 各セクションのスタイル */
     .decipher-item {
-        width: 49%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5px;
-        margin-bottom: 10px;
+        flex: 1 1 45%; /* 自動的にサイズを調整 */
+        margin: 10px; /* セクション間のスペース */
         background-color: rgb(228, 227, 178);
+        border-radius: 10px; /* 角を丸くする */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        overflow: hidden; /* 子要素のオーバーフローを隠す */
+        transition: transform 0.2s; /* ホバー効果 */
+    }
+
+    .decipher-item:hover {
+        transform: scale(1.02); /* ホバー時に少し拡大 */
     }
 
     .decipher-item-text {
-        padding: 5px;
+        padding: 20px; /* パディングを追加 */
     }
 
+    /* 画像のスタイル */
     .dicipher-item-image {
         padding: 5px;
     }
 
     #docImage img {
-        height: 100%;
-        width: 100%;
+        width: auto; /* 画像をコンテナに合わせる */
+        max-height: 500px; /* アスペクト比を保つ */
+        border-radius: 10px; /* 角を丸くする */
+        margin: auto;
     }
 
+    /* テキストエリアのスタイル */
     .paper {
-        display: block;
         width: 100%;
-        height: 78%;
-        -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: tb-rl;
+        height: 500px; /* 固定の高さに設定 */
         writing-mode: vertical-rl;
-        font-size: 20px;
-        line-height: 2em;
-        overflow-x: scroll;
-        border: solid;
-        float: left;
-        background-color: #fff;
+        font-size: 18px; /* フォントサイズを少し小さく */
+        line-height: 1.5em; /* 行間を調整 */
+        border: 1px solid #ddd; /* 境界線 */
+        border-radius: 5px; /* 角を丸くする */
+        padding: 10px; /* パディングを追加 */
+        background-color: #fff; /* 背景色 */
     }
 
+    /* ヘッダー */
     h2 {
-        margin: 5px;
-        color: aliceblue;
-        background-color: #7b7b7b;
+        margin: 5px 0;
+        color: #333; /* テキストの色 */
+        text-align: center; /* 中央揃え */
+        font-size: 1.5em; /* フォントサイズを大きく */
     }
 
-    .paper span {
-        display: block;
-    }
-    .vertical-text {
-        -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: tb-rl;
-        writing-mode: vertical-rl;
-        font-size: 20px;
-        font-family: "Noto Serif JP", serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-feature-settings: "palt";
-        font-feature-settings: "palt";
-        color: #2c3e50;
-        line-height: 2em;
-        text-indent: 1em;
-    }
+    /* ページネーション */
     .Pagination {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 5px 0; /* 上下のマージン */
     }
 
-    .Pagination a {
-        text-decoration: none;
-    }
-
-    .Pagination li {
-        list-style: none;
-        margin: 5px;
-    }
-
-    .Pagination-Item-Link {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        width: 45px;
-        height: 30px;
-        background: #fff;
-        font-size: 20px;
-        color: #3d3d3e;
+    .Pagination button {
+        background-color: #6a11cb; /* ボタンの色 */
+        color: white; /* テキストの色 */
+        border: none;
+        border-radius: 25px; /* 丸いボタン */
+        padding: 10px 20px; /* ボタンのパディング */
         font-weight: bold;
-        transition: all 0.15s linear;
-    }
-    .Pagination-Item-Link-Icon {
-        width: 20px;
-    }
-    .Pagination-Item-Link.isActive {
-        pointer-events: none;
-        color: #111;
-    }
-    .Pagination-Item-Link:not(.isActive):hover {
-        opacity: 0.5;
+        cursor: pointer; /* カーソルをポインターに */
+        transition: background-color 0.3s; /* ホバー効果 */
     }
 
-    .btn--orange,
-    a.btn--orange {
-        color: #fff;
-        background-color: #252526;
-        padding: 10px 20px;
+    .Pagination button:hover {
+        background-color: #2575fc; /* ホバー時の色 */
     }
-    .btn--orange:hover,
-    a.btn--orange:hover {
-        color: #fff;
-        background: #252526;
-    }
+
+    /* AI翻訳結果 */
     .ai-translation {
-        padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        margin-top: 10px;
+        padding: 15px; /* パディングを追加 */
+        background-color: #f9f9f9; /* 背景色 */
+        border: 1px solid #ddd; /* 境界線 */
+        margin-top: 5px; /* 上のマージン */
         width: 100%;
+        border-radius: 5px; /* 角を丸くする */
     }
+
     .ai-translation h3 {
-        margin-bottom: 10px;
+        margin-bottom: 5px; /* 下のマージン */
+        font-size: 1.5em; /* フォントサイズを大きく */
     }
 
     .ai-translation p {
-        margin: 0;
+        margin: 0; /* マージンをリセット */
+        color: #333; /* テキストの色 */
     }
+
+    /* AIボタンのスタイル */
     .ai-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.5em 1em;
+        padding: 10px 20px;
         font-size: 1em;
         font-weight: bold;
         color: white;
@@ -281,18 +258,163 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: all 0.3s ease;
-        margin-left: 10px;
+        margin-left: 10px; /* 左のマージン */
     }
 
     .ai-btn:hover {
         background: linear-gradient(45deg, #2575fc, #6a11cb);
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
+        transform: translateY(-2px); /* ホバー時に少し上に移動 */
     }
 
+    /* アイコンのスタイル */
     .icon-robot {
         width: 1em;
         height: 1em;
-        margin-right: 0.5em;
+        margin-right: 0.5em; /* 右のマージン */
     }
+}
+
+@media only screen and (max-width: 950px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Noto Sans JP', sans-serif; /* フォントを統一 */
+    }
+
+    /* 戻るボタンのスタイル */
+    .back-button {
+        padding: 5px;
+        font-size: 0.5em; /* フォントサイズを小さく */
+    }
+
+    /* メインコンテナ */
+    .decipher {
+        flex-direction: column; /* 縦に並べる */
+        align-items: center; /* 中央揃え */
+        padding: 10px; /* パディングを追加 */
+    }
+
+    /* 各セクションのスタイル */
+    .decipher-item {
+        width: 100%; /* 幅を90%に設定 */
+        margin: 2px 0; /* 上下のマージンを追加 */
+        background-color: rgb(228, 227, 178);
+        border-radius: 10px; /* 角を丸くする */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        overflow: hidden; /* 子要素のオーバーフローを隠す */
+    }
+
+    .decipher-item-text {
+        padding: 5px; /* パディングを追加 */
+    }
+
+    /* 画像のスタイル */
+    #docImage img {
+        width: auto; /* 幅を100%に設定 */
+        max-height: 300px; /* 最大高さを300pxに設定 */
+        border-radius: 10px; /* 角を丸くする */
+        margin: auto;
+    }
+
+    /* テキストエリアのスタイル */
+    .paper {
+        width: 100%;
+        height: 300px; /* 固定の高さに設定 */
+        writing-mode: vertical-rl;
+        font-size: 13px; /* フォントサイズを少し小さく */
+        line-height: 1.5em; /* 行間を調整 */
+        border: 1px solid #ddd; /* 境界線 */
+        border-radius: 5px; /* 角を丸くする */
+        padding: 10px; /* パディングを追加 */
+        background-color: #fff; /* 背景色 */
+    }
+
+    /* ヘッダー */
+    h2 {
+        margin: 10px 0; /* マージンを調整 */
+        font-size: 0.9em; /* フォントサイズを小さく */
+        text-align: center;
+    }
+
+    /* ページネーション */
+    .Pagination {
+        flex-direction: column; /* 縦に並べる */
+        align-items: center; /* 中央揃え */
+        margin: 2px 0; /* 上下のマージン */
+    }
+
+    .Pagination button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 0.5em;
+        font-weight: bold;
+        color: white;
+        background:#6a11cb;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 20%; /* 左のマージン */
+    }
+
+    .Pagination button:hover {
+        background-color: #2575fc; /* ホバー時の色 */
+    }
+
+    /* AI翻訳結果 */
+    .ai-translation {
+        padding: 10px; /* パディングを追加 */
+        background-color: #f9f9f9; /* 背景色 */
+        border: 1px solid #ddd; /* 境界線 */
+        margin-top: 2px; /* 上のマージン */
+        width: 100%; /* 幅を100%に設定 */
+        border-radius: 5px; /* 角を丸くする */
+    }
+
+    /* AIボタンのスタイル */
+    .ai-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 0.5em;
+        font-weight: bold;
+        color: white;
+        background: #ff0101;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 10%; /* 左のマージン */
+    }
+
+    .ai-btn:hover {
+        background: linear-gradient(45deg, #2575fc, #6a11cb);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px); /* ホバー時に少し上に移動 */
+    }
+
+    /* アイコンのスタイル */
+    .icon-robot {
+        width: 1em;
+        height: 1em;
+        margin-right: 0.5em; /* 右のマージン */
+    }
+    .decipher {
+        flex-direction: column; /* 縦並び */
+    }
+    .decipher-item #docImage{
+        order: 1; /* 最初に表示 */
+    }
+
+    .decipher-item #docText{
+        order: 2; /* 次に表示 */
+    }
+}
 </style>

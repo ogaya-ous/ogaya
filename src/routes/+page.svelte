@@ -36,33 +36,17 @@
 		</h2>
 		<div class="news_list">
 			<ul>
-				<li class="news_area">
-					<span class="news_title">お知らせタイトル1</span>
-					<a href="#">
-						<p class="news_text">お知らせの内容が入力されます。</p>
-					</a>
-					<div class="news_image">
-						<img src={ arrow } alt="">
-					</div>
-				</li>
-				<li class="news_area">
-					<span class="news_title">お知らせタイトル2</span>
-					<a href="#">
-						<p class="news_text">お知らせの内容が入力されます。</p>
-					</a>
-					<div class="news_image">
-						<img src={ arrow } alt="">
-					</div>
-				</li>
-				<li class="news_area">
-					<span class="news_title">お知らせタイトル3</span>
-					<a href="#">
-						<p class="news_text">お知らせの内容が入力されます。</p>
-					</a>
-					<div class="news_image">
-						<img src={ arrow } alt="">
-					</div>
-				</li>
+				{#each newsDatas as newsData}
+					<li class="news_area">
+						<span class="news_title">{ newsData.news_name }</span><br>
+						<a href="news">
+							<p class="news_text">{newsData.added_year}年{newsData.added_month}月{newsData.added_day}日</p>
+						</a>
+						<div class="news_image">
+							<img src={ arrow } alt="">
+						</div>
+					</li>
+				{/each}
 			</ul>
 		</div>
 	</div>
@@ -280,7 +264,7 @@
 	.sp_news .news_title {
 		grid-row: 1 / 2;
 		grid-column: 1 / 2;
-		font-size: 18px;
+		font-size: 15px;
 		font-weight: bold;
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 	}
@@ -419,7 +403,7 @@
 		font-weight: bold;
 	}
 
-	@media screen and (min-width:480px) { 
+	@media screen and (max-width:767px) { 
 		/* ファーストビュー */
 		#first_view .content {
 			position: absolute;
