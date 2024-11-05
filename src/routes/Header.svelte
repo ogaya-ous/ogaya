@@ -32,17 +32,21 @@
 
 
 	onMount(() => {
-		let btn = root.querySelector(".toggle-btn");
-		let nav_click = root.querySelector("nav_click");
+    let btn = root.querySelector(".toggle-btn");
+    if (btn) {
+        btn.onclick = () => {
+            hamburger = !hamburger;
+        };
+    }
 
-		btn.onclick = () => {
-			hamburger = !hamburger;
-		};
-
-		nav_click.onclick = () => {
-			hamburger = false;
-		};
+    let nav_clicks = root.querySelectorAll(".nav_click");
+    nav_clicks.forEach(element => {
+        element.onclick = () => {
+            hamburger = false;
+			};
+		});
 	});
+
 	export function handleOpen() {
 		console.log("handleOpen");
 		openModal(Modal, {
