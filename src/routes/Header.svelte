@@ -39,7 +39,7 @@
         };
     }
 
-    let nav_clicks = root.querySelectorAll(".nav_click");
+    let nav_clicks = root.querySelectorAll(".inner");
     nav_clicks.forEach(element => {
         element.onclick = () => {
             hamburger = false;
