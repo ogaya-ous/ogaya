@@ -87,6 +87,7 @@
 <Toast />
 
 <style>
+    @media only screen and (min-width: 950px) {
     * {
         box-sizing: border-box;
         color: #333;
@@ -191,5 +192,98 @@
     #image-upload {
         margin: 10px;
     }
+    }
+    @media only screen and (max-width: 949px) {
+        * {
+            box-sizing: border-box;
+            color: #333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+        }
 
+        .input {
+            width: 90%; /* 幅を90%に設定して中央寄せ */
+            margin: 20px auto; /* 上下の余白を追加 */
+            padding: 20px 0; /* 上下の内側の余白 */
+        }
+
+        .input-title {
+            font-size: 20px; /* タイトルのフォントサイズを小さく */
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .input-table {
+            width: 100%; /* 幅を100%に設定 */
+            margin-bottom: 15px;
+            border-collapse: collapse;
+        }
+
+        .input-item,
+        .input-body {
+            padding: 15px; /* 内側の余白を少し減らす */
+            border: 1px solid #ccc;
+            font-size: 14px; /* フォントサイズを小さく */
+        }
+
+        .input-item {
+            text-align: left; /* テキスト左寄せ */
+            width: 40%; /* 横幅40%指定 */
+            background-color: #eee; /* グレーの背景色 */
+        }
+
+        .input-body {
+            width: 60%; /* 横幅60%指定 */
+        }
+
+        .form-text,
+        .form-textarea {
+            width: 100%; /* 幅を100%に設定 */
+            padding: 10px; /* 内側の余白 */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-textarea {
+            height: 120px; /* 高さを調整 */
+        }
+
+        .input-submit {
+            width: 90%; /* 幅を90%に設定 */
+            background-color: #333; /* 背景色 */
+            color: #fff; /* 文字色 */
+            font-weight: bold; /* 文字の太さ */
+            display: block; /* インライン要素をブロック要素に変更 */
+            margin: 20px auto; /* 中央寄せ */
+            font-size: 16px; /* 文字の大きさ */
+            padding: 12px; /* 内側の余白 */
+            border-radius: 50px; /* 角丸指定 */
+            border: none;
+            cursor: pointer;
+        }
+
+        .input-submit-not-fill {
+            width: 90%; /* 幅を90%に設定 */
+            background-color: rgb(243 244 246); /* 背景色 */
+            color: rgb(156 163 175); /* 文字色 */
+            font-weight: bold; /* 文字の太さ */
+            display: block; /* インライン要素をブロック要素に変更 */
+            margin: 20px auto; /* 中央寄せ */
+            font-size: 16px; /* 文字の大きさ */
+            padding: 12px; /* 内側の余白 */
+            border-radius: 50px; /* 角丸指定 */
+            border: rgb(229 231 235);
+            pointer-events: none; /* クリックを無効にする */
+        }
+
+        .input-file {
+            margin: 10px 0; /* 上下の余白を追加 */
+        }
+
+        #preview {
+            width: 100%; /* 幅を100%に設定 */
+            height: auto; /* 高さは自動調整 */
+            margin-top: 10px; /* 上の余白を追加 */
+        }
+    }
 </style>

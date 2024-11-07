@@ -46,7 +46,7 @@
             <tr>
               <td>{ newsData.news_name }</td>
               <td>{ newsData.added_year }年{ newsData.added_month }月{ newsData.added_day }</td>
-              <td><a href="edit_news?news_id={newsData.news_id}"><p id="edit">編集</p></a></td>
+              <td><a href="edit_news?news_id={newsData.news_id}"><button id="edit">編集</button></a></td>
               <td><button id="delete" on:click={() => deleteNews(newsData.news_id)}>削除</button></td>
             </tr>
             {/each}
