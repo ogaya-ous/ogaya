@@ -1,6 +1,6 @@
 {
 	"name": "oogaya",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "prisma generate && prisma db push --accept-data-loss && vite build",
