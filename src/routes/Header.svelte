@@ -24,7 +24,7 @@
       PERMISSIONS.VIEW_ADMIN_PAGE
     );
   }
-
+  //
   // header
   let root: HTMLElement;
   let nav_click: HTMLElement;
