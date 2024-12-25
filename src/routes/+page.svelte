@@ -243,7 +243,8 @@
     <div class="text">
       <h2 class="title">
         <span>repellent device</span>
-        <p class="intro_copy">AIと音を用いた害獣対策</p>
+        <p class="intro_copy">害獣対策と環境モニタリングを<br>目的としたスマート大茅IoT
+        </p>
       </h2>
       <p class="ogaya">
         近年，岡山県英田郡西粟倉村大茅では，<br />
