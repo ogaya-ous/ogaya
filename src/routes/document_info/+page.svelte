@@ -172,7 +172,7 @@
         display: block;
         text-align: center;
         text-decoration: none;
-        width: 120px;
+        width: 300px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;

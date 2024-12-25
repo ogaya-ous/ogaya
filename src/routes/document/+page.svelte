@@ -207,6 +207,7 @@
     }
     div#document_list section#work img#complete {
         float: right;
+        width: 15%;
     }
 
     div#document_list section#work article a {
