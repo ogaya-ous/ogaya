@@ -4,16 +4,26 @@
   import intro_img from "$lib/images/intro_img.jpg";
   import right_arrow from "$lib/images/right_arrow.png";
   import img_path from "$lib/images/sample.jpg";
-  import deer from "$lib/images/deer_device.png";
+  import deer from "$lib/images/deer_device2.png";
   import { page } from "$app/stores";
   import type { PageData } from "./$types";
   export let data: PageData;
   export let newsDatas = data.news;
 
+  let firstItem = data.latestItem;
+
   // 文字列をトリミングする関数
   function truncate(text: string, maxLength: number): string {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   }
+
+  function extractValue(obj: any) {
+    if (obj?.S) return obj.S;
+    if (obj?.N) return obj.N;
+    return obj;
+  }
+
+  console.log(data);
 </script>
 
 <svelte:head>
@@ -38,6 +48,75 @@
       </div>
     </div>
   </div>
+
+  <dev class="device">
+    <h2 id="cont">現在の装置の画像</h2>
+
+    <div class="content">
+      <div class="content-item">
+        <table>
+          <tr>
+            <th>温度(℃)</th>
+            <th>湿度(％)</th>
+            <th>気圧(hPa)</th>
+            <th>積雪高(cm)</th>
+          </tr>
+          <tr>
+            <td>{extractValue(firstItem.temp_in)}</td>
+            <td>{extractValue(firstItem.humidity_in)}</td>
+            <td>{extractValue(firstItem.pressure_in)}</td>
+            <td>{Math.round(Number(68 - extractValue(firstItem.snow_dis)))}</td>
+          </tr>
+          <!-- <tr>
+            <th>人感</th>
+            <th>積雪高</th>
+            <th>加速度Y</th>
+            <th>加速度Z</th>
+          </tr>
+          <tr>
+            <td>{extractValue(firstItem.motion)}</td>
+            <td>{extractValue(firstItem.snow_dis)}</td>
+            <td>{extractValue(firstItem.accelation_y)}</td>
+            <td>{extractValue(firstItem.accelation_z)}</td>
+          </tr> -->
+          <!-- <tr>
+              <th>コンピュータの消費電力</th>
+              <th>ツイータの消費電力</th>
+              <th>ウーハの消費電力</th>
+              <th>積雪高</th>
+            </tr>
+            <tr>
+              <td>{extractValue(firstItem.raspi_power)}</td>
+              <td>{extractValue(firstItem.twee_power)}</td>
+              <td>{extractValue(firstItem.woo_power)}</td>
+              <td>{extractValue(firstItem.snow_dis)}</td>
+            </tr> -->
+        </table>
+      </div>
+
+      <div class="content-item">
+        {#if data.imageUrl}
+          <img
+            src={data.imageUrl}
+            alt="最新の装置の画像"
+            class="device-image"
+          />
+        {:else}
+          <p>画像が見つかりませんでした。</p>
+        {/if}
+        <h2>現在の装置の画像</h2>
+      </div>
+    </div>
+  </dev>
+
+  <div id="intro">
+    <div class="text">
+      <h2 class="title">
+        <span>News</span>
+      </h2>
+    </div>
+  </div>
+
   <div class="sp_news">
     <h2 class="news_header">
       <span>お知らせ</span>
@@ -159,7 +238,7 @@
 
   <div id="intro">
     <div class="sp_ogaya_img">
-      <img src={intro_img} alt="" />
+      <img src={deer} alt="" />
     </div>
     <div class="text">
       <h2 class="title">
@@ -274,6 +353,78 @@
     border-top: solid 2px currentColor;
     border-right: solid 2px currentColor;
     transform: translateY(-50%) rotate(45deg);
+  }
+
+  .device h2.title span {
+    display: block;
+    margin: 10px 0 10px;
+    font-size: 12px;
+    font-family: "Roboto Condensed", sans-serif;
+    letter-spacing: 5px;
+  }
+
+  .device h2#cont {
+    padding: 0.8rem 0;
+    margin-bottom: 0.2rem;
+    background-image: linear-gradient(90deg, #b2d5de 0 20%, #dedede 20%);
+    background-repeat: no-repeat;
+    background-size: 100% 10%;
+    background-position: bottom;
+    color: #323232;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+  }
+
+  .device .content {
+    width: 50%;
+    margin: 0px auto;
+    /* padding: 40px 0px; */
+    display: flex;
+  }
+
+  .device .content-item {
+    width: 40%;
+    margin: auto;
+  }
+
+  .device .content-item h2 {
+    text-align: center;
+  }
+
+  .device .content-item table {
+    margin-top: 10%;
+  }
+
+  .device img {
+    height: 200px;
+    width: auto;
+    margin: auto;
+    background-color: #212121;
+  }
+
+  .device table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+
+  .device table tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+  }
+
+  .device table tr:hover {
+    background-color: #d4f0fd;
+  }
+
+  table th,
+  table td {
+    text-align: center;
+    width: 25%;
+    /* padding: 15px 0; */
   }
 
   /* お知らせ */
@@ -573,7 +724,7 @@
     }
 
     .pc_news #news_card {
-      margin: 20px 80px;
+      margin: 5px 50px;
       display: flex;
     }
 

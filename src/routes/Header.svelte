@@ -124,7 +124,7 @@
               <ul>
                 <li><a href="/">ホーム</a></li>
                 <li>
-                  <a href="https://repellent-device.vercel.app/">鹿忌避装置</a>
+                  <a href="https://repellent-device.vercel.app/">大茅IoT</a>
                 </li>
                 <li><a href="/news">お知らせ</a></li>
                 <li><a href="/ogaya_event">翻訳からわかる出来事の紹介</a></li>
