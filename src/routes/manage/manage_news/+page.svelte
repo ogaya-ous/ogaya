@@ -100,7 +100,7 @@
         background-image: url(icon-crab.png)
     }
 
-    table td p#edit{
+    table td button#edit{
         text-align: center;
         color: #000000;
         font-size: 130%;
@@ -108,7 +108,7 @@
         text-align: center;
         /* vertical-align: middle; */
         text-decoration: none;
-        width: 120px;
+        width: 250px;
         margin: auto;
         padding: 1rem 4rem;
         font-weight: bold;
