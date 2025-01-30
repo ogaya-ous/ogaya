@@ -53,7 +53,7 @@
     <h2 id="cont">現在の装置の画像</h2>
 
     <div class="content">
-      <div class="content-item">
+      <div class="content-item device-data">
         <table>
           <tr>
             <th>温度(℃)</th>
@@ -243,7 +243,8 @@
     <div class="text">
       <h2 class="title">
         <span>repellent device</span>
-        <p class="intro_copy">害獣対策と環境モニタリングを<br>目的としたスマート大茅IoT
+        <p class="intro_copy">
+          害獣対策と環境モニタリングを<br />目的としたスマート大茅IoT
         </p>
       </h2>
       <p class="ogaya">
@@ -281,10 +282,10 @@
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
-  /* レスポンシブ化 (記述: モバイルファースト) */
-  /* ファーストビュー */
+  /* 共通スタイル */
   #first_view {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -294,7 +295,6 @@
     background-attachment: fixed;
     background-size: cover;
     height: calc(100vh - 55px);
-    width: auto;
   }
 
   #first_view .content {
@@ -307,17 +307,13 @@
     color: white;
     font-size: 45px;
     line-height: 1.5;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 20px;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
   }
 
   #first_view p {
     color: white;
-    margin-top: 10px;
-    margin-left: 16px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 16px;
     font-family: serif;
   }
 
@@ -328,8 +324,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 20px;
-    margin-left: 15px;
+    margin: 20px 0 0 15px;
     max-width: 280px;
     padding: 10px 25px;
     color: #313131;
@@ -342,90 +337,13 @@
     content: "";
     position: absolute;
     top: 50%;
-    bottom: 0;
     right: 2rem;
-    font-size: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: right 0.3s;
     width: 6px;
     height: 6px;
     border-top: solid 2px currentColor;
     border-right: solid 2px currentColor;
     transform: translateY(-50%) rotate(45deg);
-  }
-
-  .device h2.title span {
-    display: block;
-    margin: 10px 0 10px;
-    font-size: 12px;
-    font-family: "Roboto Condensed", sans-serif;
-    letter-spacing: 5px;
-  }
-
-  .device h2#cont {
-    padding: 0.8rem 0;
-    margin-bottom: 0.2rem;
-    background-image: linear-gradient(90deg, #b2d5de 0 20%, #dedede 20%);
-    background-repeat: no-repeat;
-    background-size: 100% 10%;
-    background-position: bottom;
-    color: #323232;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: center;
-    width: 50%;
-    margin: auto;
-  }
-
-  .device .content {
-    width: 50%;
-    margin: 0px auto;
-    /* padding: 40px 0px; */
-    display: flex;
-  }
-
-  .device .content-item {
-    width: 40%;
-    margin: auto;
-  }
-
-  .device .content-item h2 {
-    text-align: center;
-  }
-
-  .device .content-item table {
-    margin-top: 10%;
-  }
-
-  .device img {
-    height: 200px;
-    width: auto;
-    margin: auto;
-    background-color: #212121;
-  }
-
-  .device table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-  }
-
-  .device table tr {
-    border-bottom: solid 1px #eee;
-    cursor: pointer;
-  }
-
-  .device table tr:hover {
-    background-color: #d4f0fd;
-  }
-
-  table th,
-  table td {
-    text-align: center;
-    width: 25%;
-    /* padding: 15px 0; */
+    transition: right 0.3s;
   }
 
   /* お知らせ */
@@ -434,8 +352,7 @@
   }
 
   .sp_news {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 30px 0;
     padding: 0 5.13%;
   }
 
@@ -490,22 +407,19 @@
     transform: translateY(80%);
   }
 
-  /* .right_arrow_img {
-		margin-top: 10%;
-		width: 5%;
-		height: 5%;
-	} */
-
+  /* ボタン */
   button {
     padding: 0;
     border: none;
     background: transparent;
   }
+
   button img {
     display: block;
     width: 50%;
   }
-  button :hover {
+
+  button:hover {
     filter: brightness(10%);
   }
 
@@ -615,43 +529,88 @@
     font-weight: bold;
   }
 
-  /* 鹿忌避装置*/
+  /* 鹿忌避装置 */
   .deer_img {
     height: 500px;
     width: auto;
   }
 
-  @media screen and (max-width: 767px) {
-    /* ファーストビュー */
-    #first_view .content {
-      position: absolute;
-      padding-top: 0;
-      top: 25vh;
+  @media screen and (max-width: 1023px) {
+    .device h2.title span {
+      display: block;
+      margin: 10px 0 10px;
+      font-size: 12px;
+      font-family: "Roboto Condensed", sans-serif;
+      letter-spacing: 5px;
     }
 
-    /* お知らせ */
-    .sp_news {
-      padding: 0 30px;
+    .device h2#cont {
+      padding: 0.8rem 0;
+      margin-bottom: 0.2rem;
+      background-image: linear-gradient(90deg, #b2d5de 0 20%, #dedede 20%);
+      background-repeat: no-repeat;
+      background-size: 100% 10%;
+      background-position: bottom;
+      color: #323232;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      width: 50%;
+      margin: auto;
     }
 
-    .sp_news .news_area {
-      padding: 8.27% 0 8.27% 8.27%;
+    .device .content {
+      /* width: 80%; */
+      margin: 0px auto;
+      /* padding: 40px 0px; */
+      display: block;
+    }
+
+    .device .content-item {
+      /* width: 40%; */
+      margin: auto 20;
+    }
+
+    .device .content-item h2 {
+      text-align: center;
+    }
+
+    .device .content-item table {
+      margin-top: 10%;
+    }
+
+    .device img {
+      height: 200px;
+      width: auto;
+      margin: auto;
+      background-color: #212121;
+    }
+
+    .device table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    .device table tr {
+      border-bottom: solid 1px #eee;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .device table tr:hover {
+      background-color: #d4f0fd;
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    /* ファーストビュー */
-    .br_tab_hidden {
-      display: none;
-    }
-
-    /* お知らせ */
+  /* レスポンシブデザイン */
+  @media screen and (min-width: 768px) {
+    /* タブレット用スタイル */
     .sp_news {
       padding: 0 13.02%;
     }
 
     .sp_news .news_area {
-      grid-template-rows: 30px 20px;
       grid-template-columns: 400px 50px;
     }
 
@@ -663,11 +622,8 @@
   }
 
   @media screen and (min-width: 1024px) {
-    /* ファーストビュー */
-    .br_tab_hidden {
-      display: none;
-    }
-
+    /* PC用スタイル */
+    .br_tab_hidden,
     .br_pc_hidden {
       display: none;
     }
@@ -687,7 +643,6 @@
       margin-top: 10%;
       margin-left: 60px;
       margin-bottom: 50px;
-      font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
     }
 
     #first_view p {
@@ -696,9 +651,7 @@
 
     .join_btn a {
       margin-top: 2%;
-      margin-right: 0;
       margin-left: 70px;
-      margin-bottom: 0;
     }
 
     .join_btn a:hover {
@@ -710,7 +663,71 @@
       right: 1.4rem;
     }
 
-    /* お知らせ */
+    .device h2.title span {
+      display: block;
+      margin: 10px 0 10px;
+      font-size: 12px;
+      font-family: "Roboto Condensed", sans-serif;
+      letter-spacing: 5px;
+    }
+
+    .device h2#cont {
+      padding: 0.8rem 0;
+      margin-bottom: 0.2rem;
+      background-image: linear-gradient(90deg, #b2d5de 0 20%, #dedede 20%);
+      background-repeat: no-repeat;
+      background-size: 100% 10%;
+      background-position: bottom;
+      color: #323232;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      width: 50%;
+      margin: auto;
+    }
+
+    .device .content {
+      width: 50%;
+      margin: 0px auto;
+      /* padding: 40px 0px; */
+      display: flex;
+    }
+
+    .device .content-item {
+      width: 40%;
+      margin: auto;
+    }
+
+    .device .content-item h2 {
+      text-align: center;
+    }
+
+    .device .content-item table {
+      margin-top: 10%;
+    }
+
+    .device img {
+      height: 200px;
+      width: auto;
+      margin: auto;
+      background-color: #212121;
+    }
+
+    .device table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    .device table tr {
+      border-bottom: solid 1px #eee;
+      cursor: pointer;
+    }
+
+    .device table tr:hover {
+      background-color: #d4f0fd;
+    }
+
     .sp_news {
       display: none;
     }
