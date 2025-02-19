@@ -81,11 +81,11 @@ model image {
 model history {
   history_id       Int      @id @default(autoincrement())
   document_id      Int
-  decoding_content String
   user_id          String
-  added_day        Int
-  added_month      Int
   added_year       Int
+  added_month      Int
+  added_day        Int
+  decoding_content String
   decoding_gpt     String
   document         document @relation(fields: [document_id], references: [document_id])
   user             User     @relation(fields: [user_id], references: [id])
@@ -113,4 +113,9 @@ model decoded {
   added_day       Int
   delete_flag     Boolean @default(false)
   view_flag       Boolean @default(false)
+}
+
+model device {
+  device_id Int     @id @default(autoincrement())
+  view_flag Boolean @default(false)
 }

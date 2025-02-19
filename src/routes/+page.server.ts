@@ -36,6 +36,12 @@ export const load: PageServerLoad = async () => {
             s3Client.send(new ListObjectsV2Command(s3Params)),
         ]);
 
+        const devices = await prisma.device.findUnique({
+            where: {
+                device_id: 1,  // device_id が 1 のものを取得
+            },
+        });
+
         // DynamoDBのデータを取得し、idが最大のデータを選択
         const items = dynamoData.Items || [];
         const latestItem = items.reduce((maxItem, item) => {
@@ -61,6 +67,7 @@ export const load: PageServerLoad = async () => {
             news: newsData, // ニュースデータ
             latestItem, // DynamoDBの最新データ
             imageUrl, // 最新画像のURL
+            devices,
         };
     } catch (error) {
         console.error("Error fetching data:", error);
@@ -69,6 +76,7 @@ export const load: PageServerLoad = async () => {
             news: [],
             latestItem: null,
             imageUrl: null,
+            devices: null,
         };
     }
 };

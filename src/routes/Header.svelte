@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from "$app/stores"; // $pageからデータを取得
   import logo from "$lib/images/logo.png";
   import { signOut } from "@auth/sveltekit/client";
   import {
@@ -18,13 +18,18 @@
   const user: any | null = $page.data.session;
   let can_view_admin_page: boolean = false;
 
+  // リアクティブにデバイス情報を取得
+  $: device = $page.data.devices || {}; // デバイス情報がない場合は空のオブジェクトを代入
+
+  console.log(device);
+
   if (user) {
     can_view_admin_page = checkPermissions(
       user.user,
       PERMISSIONS.VIEW_ADMIN_PAGE
     );
   }
-  //
+
   // header
   let root: HTMLElement;
   let nav_click: HTMLElement;
@@ -69,10 +74,14 @@
               <img src={logo} alt="" />
               <ul>
                 <li class:nav_click><a href="/">ホーム</a></li>
-                <li class:nav_click>
-                  <a href="https://repellent-device.vercel.app/">スマート大茅IoT</a>
-                </li>
-                <li class:nav_click><a href="/news">ニュース</a></li>
+                {#if !device.view_flag}
+                  <li class:nav_click>
+                    <a href="https://repellent-device.vercel.app/"
+                      >スマート大茅IoT</a
+                    >
+                  </li>
+                {/if}
+                <li class:nav_click><a href="/news">お知らせ</a></li>
                 <li class:nav_click><a href="/document?page=1">文書一覧</a></li>
                 <li><a href="/ogaya_event">翻訳からわかる出来事の紹介</a></li>
                 <li><a href="/decode">翻訳済み文書のまとめ</a></li>
@@ -123,9 +132,13 @@
             <div class="inner">
               <ul>
                 <li><a href="/">ホーム</a></li>
-                <li>
-                  <a href="https://repellent-device.vercel.app/">スマート大茅IoT</a>
-                </li>
+                {#if !device.view_flag}
+                  <li>
+                    <a href="https://repellent-device.vercel.app/"
+                      >スマート大茅IoT</a
+                    >
+                  </li>
+                {/if}
                 <li><a href="/news">お知らせ</a></li>
                 <li><a href="/ogaya_event">翻訳からわかる出来事の紹介</a></li>
                 <li><a href="/document?page=1">文書一覧</a></li>
@@ -145,7 +158,9 @@
                         class="avatar"
                       ></button>
                       <Dropdown>
-                        <DropdownItem>翻訳履歴</DropdownItem>
+                        <DropdownItem
+                          ><a href="/history">翻訳履歴</a></DropdownItem
+                        >
                         <DropdownItem on:click={() => signOut()}
                           >ログアウト</DropdownItem
                         >
@@ -323,6 +338,7 @@
   .dropdown {
     position: relative;
     display: inline-block;
+    width: 100px;
   }
 
   @media screen and (min-width: 480px) {

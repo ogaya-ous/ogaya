@@ -9,6 +9,7 @@
   import type { PageData } from "./$types";
   export let data: PageData;
   export let newsDatas = data.news;
+  export let device = data.devices.view_flag;
 
   let firstItem = data.latestItem;
 
@@ -48,26 +49,28 @@
       </div>
     </div>
   </div>
+  {#if !device}
+    <dev class="device">
+      <h2 id="cont">現在の装置の画像</h2>
 
-  <dev class="device">
-    <h2 id="cont">現在の装置の画像</h2>
-
-    <div class="content">
-      <div class="content-item device-data">
-        <table>
-          <tr>
-            <th>温度(℃)</th>
-            <th>湿度(％)</th>
-            <th>気圧(hPa)</th>
-            <th>積雪高(cm)</th>
-          </tr>
-          <tr>
-            <td>{extractValue(firstItem.temp_in)}</td>
-            <td>{extractValue(firstItem.humidity_in)}</td>
-            <td>{extractValue(firstItem.pressure_in)}</td>
-            <td>{Math.round(Number(68 - extractValue(firstItem.snow_dis)))}</td>
-          </tr>
-          <!-- <tr>
+      <div class="content">
+        <div class="content-item device-data">
+          <table>
+            <tr>
+              <th>温度(℃)</th>
+              <th>湿度(％)</th>
+              <th>気圧(hPa)</th>
+              <th>積雪高(cm)</th>
+            </tr>
+            <tr>
+              <td>{extractValue(firstItem.temp_in)}</td>
+              <td>{extractValue(firstItem.humidity_in)}</td>
+              <td>{extractValue(firstItem.pressure_in)}</td>
+              <td
+                >{Math.round(Number(68 - extractValue(firstItem.snow_dis)))}</td
+              >
+            </tr>
+            <!-- <tr>
             <th>人感</th>
             <th>積雪高</th>
             <th>加速度Y</th>
@@ -79,7 +82,7 @@
             <td>{extractValue(firstItem.accelation_y)}</td>
             <td>{extractValue(firstItem.accelation_z)}</td>
           </tr> -->
-          <!-- <tr>
+            <!-- <tr>
               <th>コンピュータの消費電力</th>
               <th>ツイータの消費電力</th>
               <th>ウーハの消費電力</th>
@@ -91,32 +94,24 @@
               <td>{extractValue(firstItem.woo_power)}</td>
               <td>{extractValue(firstItem.snow_dis)}</td>
             </tr> -->
-        </table>
+          </table>
+        </div>
+
+        <div class="content-item">
+          {#if data.imageUrl}
+            <img
+              src={data.imageUrl}
+              alt="最新の装置の画像"
+              class="device-image"
+            />
+          {:else}
+            <p>画像が見つかりませんでした。</p>
+          {/if}
+          <h2>現在の装置の画像</h2>
+        </div>
       </div>
-
-      <div class="content-item">
-        {#if data.imageUrl}
-          <img
-            src={data.imageUrl}
-            alt="最新の装置の画像"
-            class="device-image"
-          />
-        {:else}
-          <p>画像が見つかりませんでした。</p>
-        {/if}
-        <h2>現在の装置の画像</h2>
-      </div>
-    </div>
-  </dev>
-
-  <div id="intro">
-    <div class="text">
-      <h2 class="title">
-        <span>News</span>
-      </h2>
-    </div>
-  </div>
-
+    </dev>
+  {/if}
   <div class="sp_news">
     <h2 class="news_header">
       <span>お知らせ</span>
@@ -141,6 +136,13 @@
   </div>
 
   <div class="pc_news">
+    <div id="intro">
+      <div class="text">
+        <h2 class="title">
+          <span>News</span>
+        </h2>
+      </div>
+    </div>
     <div id="news_card">
       {#each newsDatas as newsData}
         <div class="news_card_wrapper news_card_radius">
@@ -236,45 +238,47 @@
     </div>
   </div>
 
-  <div id="intro">
-    <div class="sp_ogaya_img">
-      <img src={deer} alt="" />
-    </div>
-    <div class="text">
-      <h2 class="title">
-        <span>repellent device</span>
-        <p class="intro_copy">
-          害獣対策と環境モニタリングを<br />目的としたスマート大茅IoT
+  {#if !device}
+    <div id="intro">
+      <div class="sp_ogaya_img">
+        <img src={deer} alt="" />
+      </div>
+      <div class="text">
+        <h2 class="title">
+          <span>repellent device</span>
+          <p class="intro_copy">
+            害獣対策と環境モニタリングを<br />目的としたスマート大茅IoT
+          </p>
+        </h2>
+        <p class="ogaya">
+          近年，岡山県英田郡西粟倉村大茅では，<br />
+          鹿による農作物被害が課題となっています．<br /><br />
+          従来の被害対策として，侵入防止柵の設置や捕獲などの<br />
+          対策が講じられてきましたが，十分な効果は得られておらず，<br />
+          持続的な被害軽減策が求められています．<br /><br />
+
+          そこで大茅の課題解決を目的とした音を利用した鹿忌避システムを開発中です．<br
+          /><br />
+          鹿忌避システムでは、鹿の音に対する慣れの低減を目的とした食事の検知を行っています。<br
+          /><br />
+
+          食事の検知を行うことで、長期間の忌避効果を得られることが考えられます。
+          本サイトでは、開発中の鹿忌避装置のデータ、装置の画像を閲覧できます。<br
+          />
+          <button type="button" class="more"
+            ><a href="https://repellent-device.vercel.app/" class="img_button"
+              >もっと見る</a
+            ></button
+          >
         </p>
-      </h2>
-      <p class="ogaya">
-        近年，岡山県英田郡西粟倉村大茅では，<br />
-        鹿による農作物被害が課題となっています．<br /><br />
-        従来の被害対策として，侵入防止柵の設置や捕獲などの<br />
-        対策が講じられてきましたが，十分な効果は得られておらず，<br />
-        持続的な被害軽減策が求められています．<br /><br />
-
-        そこで大茅の課題解決を目的とした音を利用した鹿忌避システムを開発中です．<br
-        /><br />
-        鹿忌避システムでは、鹿の音に対する慣れの低減を目的とした食事の検知を行っています。<br
-        /><br />
-
-        食事の検知を行うことで、長期間の忌避効果を得られることが考えられます。
-        本サイトでは、開発中の鹿忌避装置のデータ、装置の画像を閲覧できます。<br
-        />
-        <button type="button" class="more"
-          ><a href="https://repellent-device.vercel.app/" class="img_button"
-            >もっと見る</a
-          ></button
-        >
-      </p>
-    </div>
-    <div class="ogaya_img">
-      <div class="inner">
-        <img class="deer_img" src={deer} alt="" />
+      </div>
+      <div class="ogaya_img">
+        <div class="inner">
+          <img class="deer_img" src={deer} alt="" />
+        </div>
       </div>
     </div>
-  </div>
+  {/if}
 </main>
 
 <style>
